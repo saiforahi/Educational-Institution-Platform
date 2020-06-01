@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <title>EnfoMe | Homepage</title>
     <!-- Stylesheets -->
-    <link href="css\bootstrap.css" rel="stylesheet">
-    <link href="css\main.css" rel="stylesheet">
-    <link href="css\responsive.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 
-    <link rel="shortcut icon" href="images\favicon.png" type="image/x-icon">
-    <link rel="icon" href="images\favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
@@ -23,24 +23,23 @@
 
 <body>
     @yield('content')
-    <script src="js\jquery.js"></script>
-    <script src="js\popper.min.js"></script>
-    <script src="js\jquery.scrollTo.js"></script>
-    <script src="js\bootstrap.min.js"></script>
-    <script src="js\jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js\jquery.fancybox.js"></script>
-    <script src="js\appear.js"></script>
-    <script src="js\swiper.min.js"></script>
-    <script src="js\element-in-view.js"></script>
-    <script src="js\jquery.paroller.min.js"></script>
-    <script src="js\parallax.min.js"></script>
-    <script src="js\tilt.jquery.min.js"></script>
+    <script src="{{asset('js\jquery.js')}}"></script>
+    <script src="{{asset('js\popper.min.js')}}"></script>
+    <script src="{{asset('js\jquery.scrollTo.js')}}"></script>
+    <script src="{{asset('js\bootstrap.min.js')}}"></script>
+    <script src="{{asset('js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
+    <script src="{{asset('js\jquery.fancybox.js')}}"></script>
+    <script src="{{asset('js\appear.js')}}"></script>
+    <script src="{{asset('js\swiper.min.js')}}"></script>
+    <script src="{{asset('js\element-in-view.js')}}"></script>
+    <script src="{{asset('js\jquery.paroller.min.js')}}"></script>
+    <script src="{{asset('js\parallax.min.js')}}"></script>
+    <script src="{{asset('js\tilt.jquery.min.js')}}"></script>
     <!--Master Slider-->
-    <script src="js\jquery.easing.min.js"></script>
-    <script src="js\owl.js"></script>
-    <script src="js\wow.js"></script>
-    <script src="js\jquery-ui.js"></script>
-    <script src="js\script.js"></script>
-
+    <script src="{{asset('js\jquery.easing.min.js')}}"></script>
+    <script src="{{asset('js\owl.js')}}"></script>
+    <script src="{{asset('js\wow.js')}}"></script>
+    <script src="{{asset('js\jquery-ui.js')}}"></script>
+    <script src="{{asset('js\script.js')}}"></script>
 </body>
 </html>
