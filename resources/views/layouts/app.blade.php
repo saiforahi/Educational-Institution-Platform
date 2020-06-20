@@ -1,45 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>EnfoMe | Homepage</title>
-    <!-- Stylesheets -->
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-
-    <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
-    <link rel="icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-
-    <!-- Responsive -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if(Route::current()->getName()=='register')
+        <link rel="stylesheet" href="{{asset('css/signup_style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/signup_responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('css/mobile_responsive.css')}}">
+        <title>Sign Up Form</title>
+    @endif
+    @if(Route::current()->getName()=='login')
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="{{asset('css/login_style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/login_responsive.css')}}">
+        <title>Enfo_ME login</title>
+    @endif
 </head>
-
 <body>
     @yield('content')
-    <script src="{{asset('js\jquery.js')}}"></script>
-    <script src="{{asset('js\popper.min.js')}}"></script>
-    <script src="{{asset('js\jquery.scrollTo.js')}}"></script>
-    <script src="{{asset('js\bootstrap.min.js')}}"></script>
-    <script src="{{asset('js\jquery.mCustomScrollbar.concat.min.js')}}"></script>
-    <script src="{{asset('js\jquery.fancybox.js')}}"></script>
-    <script src="{{asset('js\appear.js')}}"></script>
-    <script src="{{asset('js\swiper.min.js')}}"></script>
-    <script src="{{asset('js\element-in-view.js')}}"></script>
-    <script src="{{asset('js\jquery.paroller.min.js')}}"></script>
-    <script src="{{asset('js\parallax.min.js')}}"></script>
-    <script src="{{asset('js\tilt.jquery.min.js')}}"></script>
-    <!--Master Slider-->
-    <script src="{{asset('js\jquery.easing.min.js')}}"></script>
-    <script src="{{asset('js\owl.js')}}"></script>
-    <script src="{{asset('js\wow.js')}}"></script>
-    <script src="{{asset('js\jquery-ui.js')}}"></script>
-    <script src="{{asset('js\script.js')}}"></script>
+
+    @if(Route::current()->getName()=='register')
+        <script src="{{asset('js/mobile_part.js')}}"></script>
+        <script src="{{asset('js/mobile_part_app.js')}}"></script>
+        <script src="{{asset('js/particles.min.js')}}"></script>
+        <script src="{{asset('js/appSignup.js')}}"></script>
+        <script src="{{asset('js/main.js')}}"></script>
+    @endif
+    @if(Route::current()->getName()=='login')
+        <script src="{{asset('js/particles.min.js')}}"></script>
+        <script src="{{asset('js/app.js')}}"></script>
+        <script src="{{asset('js/tab_pa.js')}}"></script>
+        <script src="{{asset('js/tab_pa_app.js')}}"></script>
+        <script src="{{asset('js/mob_pa.js')}}"></script>
+        <script src="{{asset('js/mob_pa_app.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
+    @endif
 </body>
 </html>

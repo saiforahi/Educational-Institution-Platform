@@ -1,0 +1,75 @@
+@media screen and (max-width: 1580px){
+    :root{
+        --borderRad: 70px !important;
+    }
+    .container{
+        width: 1080px;
+        max-width: 100%;
+        height: 530px;
+    }
+    .overlay .ins_text_container, .overlay .stu_text_container{
+        font-size: 10px;
+    }
+    .overlay #insitute, .overlay #student{
+        margin-top: 40px;
+        font-size: 10px;
+        padding: 10px 20px;
+        border-radius: 25px;
+    }
+    .ins_form_container input, .stu_form_container input{
+        width: 260px;
+        height: 35px;
+        margin-top: 5px;
+        border-radius: 5px;
+        padding-left: 10px;
+        font-size: 10px;
+    }
+    .ins_form_container #submit_btn, .stu_form_container #submit_btn{
+        width: 160px;
+        margin-top: 35px;
+    }
+}
+@media screen and (max-width: 1080px){
+    :root{
+        --borderRad: 50px !important;
+    }
+    .container{
+        width: 780px;
+        max-width: 100%;
+        height: 380px;
+    }
+    .overlay .ins_text_container, .overlay .stu_text_container{
+        font-size: 8px;
+    }
+    .overlay #insitute, .overlay #student{
+        margin-top: 30px;
+        font-size: 8px;
+        padding: 5px 10px;
+        border-radius: 15px;
+    }
+    .ins_form_container input, .stu_form_container input{
+        width: 190px;
+        height: 25px;
+        margin-top: 5px;
+        border-radius: 3px;
+        padding-left: 7px;
+        font-size: 7px;
+    }
+    .ins_form_container #submit_btn, .stu_form_container #submit_btn{
+        width: 120px;
+        margin-top: 15px;
+    }
+    .ins_form_container h1, .stu_form_container h1{
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    
+}
+@media screen and (max-width: 780px){
+    .full_width{
+        height: 0;
+    }
+    .container{
+        display: none;
+    }
+}
