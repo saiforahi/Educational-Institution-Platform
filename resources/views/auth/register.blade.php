@@ -5,7 +5,8 @@
         <div class="common institute_container">
                 <div class="ins_form_container">
                     <h1>Sign up as an Institute</h1>
-                    <form action="#">
+                    <form action="{{ route('register') }}" method="POST">
+                        @csrf
                         <input name="institute" type="text" placeholder="Institute Name" required>
                         <input name="fullname" type="text" placeholder="Full Name" required>
                         <input name="phone" type="tel" placeholder="Contact Number" required>
@@ -19,7 +20,7 @@
                         <input name="password_confirmation" type="password" placeholder="Confirm Password" required>
                         <input name="address" type="text" placeholder="Full Address" required>
                         <input name="instituteType" type="text" placeholder="Institute Type"><br>
-                        <input type="submit" value="SIGN UP" id="submit_btn">
+                        <input name="submit" type="submit" value="submit" id="submit_btn">
                     </form>
                 </div>
         </div>
@@ -32,7 +33,6 @@
                     <input name="email" type="email" placeholder="E-mail Address" required>
                     <input name="password" type="password" placeholder="Password" required>
                     <input name="password_confirmation" type="password" placeholder="Confirm Password" required>
-                    <input name="institute_id" type="text" placeholder="Institute Type" required>
                     <select name="institute" id="instituteName">
                         <option value="select" selected> --Select-- </option>
                         <option value="a"> Institute A </option>

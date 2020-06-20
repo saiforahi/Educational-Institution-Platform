@@ -16,6 +16,7 @@ class CreateInstitutesTable extends Migration
         Schema::create('institutes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('address');
             $table->string('type');
             $table->foreignId('admin_id')->constrained('admins');
             $table->timestamps();

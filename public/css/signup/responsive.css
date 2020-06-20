@@ -24,6 +24,14 @@
         padding-left: 10px;
         font-size: 10px;
     }
+    .ins_form_container #instituteName, .stu_form_container #instituteName{
+        width: 270px;
+        height: 35px;
+        margin-top: 5px;
+        border-radius: 5px;
+        padding-left: 10px;
+        font-size: 10px;
+    }
     .ins_form_container #submit_btn, .stu_form_container #submit_btn{
         width: 160px;
         margin-top: 35px;
@@ -49,6 +57,14 @@
     }
     .ins_form_container input, .stu_form_container input{
         width: 190px;
+        height: 25px;
+        margin-top: 5px;
+        border-radius: 3px;
+        padding-left: 7px;
+        font-size: 7px;
+    }
+    .ins_form_container #instituteName, .stu_form_container #instituteName{
+        width: 195px;
         height: 25px;
         margin-top: 5px;
         border-radius: 3px;

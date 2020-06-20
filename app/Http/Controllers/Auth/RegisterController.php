@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -47,7 +48,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function studentOrStaffValidator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -59,10 +60,13 @@ class RegisterController extends Controller
     protected function instituteValidator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'institute' => ['required', 'string', 'max:255'],
+            'fullname' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:11', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'max:255'],
+            'instituteType' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -82,9 +86,27 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request){
-        $validRequest=$this->validator($request);
-        if($validRequest->fails()){
-            return redirect()->back()->withInput($request->input())->withErrors($validRequest);
+        //dd($request->all());
+        if($request->instituteType != null){            //registration type checking
+            $this->register_as_institute($request);
         }
+        else{
+            $this->register_as_student_or_staff($request);
+        }
+    }
+
+    public function register_as_institute(Request $request){
+        $valid=$this->instituteValidator($request->all());
+        if($valid->fails()){
+            return redirect()->back()->withInput($request->input())->withErrors($valid);
+        }
+    }
+
+    public function register_as_student_or_staff(Request $request){
+        $valid=$this->studentOrStaffValidator($request->all());
+        if($valid->fails()){
+            return redirect()->back()->withInput($request->input())->withErrors($valid);
+        }
+        dd($request->all());
     }
 }
