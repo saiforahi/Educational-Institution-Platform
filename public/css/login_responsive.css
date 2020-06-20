@@ -1,0 +1,573 @@
+@media screen and (max-width : 1580px){
+    .container{
+        width: 1080px;
+        height: 530px;
+    }
+    .logo{
+        top: 20px;
+        left: 30px;
+    }
+    .logo img{
+        width: 178px;
+        height: 56px;
+    }
+    .slider .heading_text{
+        position: absolute;
+        top: 145px;
+        left: 59px;
+        font-size: 20px;
+        font-weight: 300;
+        color: #0E1A14;
+    }
+    .slider .sign_up{
+        width: 170px;
+        height: 50px;
+        top: 293px;
+        left: 59px;
+        line-height: 50px;
+        font-size: 12px;
+    }
+    .slider .s_but_one, .slider .s_but_two, .slider .s_but_three{
+        width: 13px;
+        height: 13px;
+        top: 237px;
+        left: 20px;
+        border-radius: 35px;
+    }
+    .slider .s_but_two, .slider .s_but_three{
+        margin-top: 23px;
+    }
+    .slider .s_but_three{
+        margin-top: 46px;
+    }
+    .slider .slider_image{
+        width: 320px;
+        height: 215px;
+    }
+    .slider .slider_image img{
+        width: 320px;
+        height: 215px;
+    }
+    .form .welcome{
+        width: 300px;
+        font-size: 30px;
+        top: 25px;
+        left: 720px;
+    }
+    .email{
+        top: 80px;
+        left: 720px;
+    }
+    .pass{
+        top: 160px;
+        left: 720px;
+    }
+    .email label, .pass label{
+        font-size: 10px;
+        top: 25px;
+    }
+    .email_con, .pass_con{
+        width: 300px;
+        height: 40px;
+        font-size: 15px;
+    }
+    .email_con:focus ~ .line,
+    .email_con:valid ~ .line,
+    .pass_con:focus ~ .line,
+    .pass_con:valid ~ .line
+    {
+        height: 40px;
+    }
+    .checkbox{
+        width: 250px;
+        height: 40px;
+        position: absolute;
+        top: 240px;
+        left: 720px;
+    }
+    .checkbox label{
+        width: 11px;
+        height: 11px;
+    }
+    .checkbox label .text{
+        font-size: 10px;
+        margin-left: 20px;
+    }
+    .checkbox label .btn{
+        width: 11px;
+        height: 11px;
+    }
+    .checkbox label input{
+        width: 11px;
+        height: 11px;
+    }
+    .checkbox label .btn_circle{
+        display: block;
+        width: 4px;
+        height: 4px;
+        border: 0.5px solid white;
+        top: 3px;
+        left: 3px;
+    }
+    .checkbox label input[type="checkbox"]:checked ~ .btn_circle{
+        border: 0.5px solid var(--formColor);
+    }
+    #inst{
+        top: 20px;
+    }
+    .log_in{
+        width: 300px;
+        height: 50px;
+        top: 320px;
+        left: 720px;
+        line-height: 50px;
+    }
+    .form_footer{
+        width: 300px;
+        height: 50px;
+        top: 400px;
+        left: 720px;
+    }
+    .form_footer span{
+        line-height: 50px;
+        font-size: 8px;
+    }
+    .form_footer a{
+        line-height: 50px;
+        font-size: 8px;
+    }
+    .footer{
+        width: 400px;
+        height: 40px;
+        top: 470px;
+        left: 20px;
+    }
+    .footer .footer_text{
+        font-size: 12px;
+        line-height: 40px;
+    }
+    .playstore, .apple{
+        width: 50px;
+        height: 40px;
+        left: 200px;
+    }
+    #playimg, #appleimg{
+        width: 15px;
+        height: 15px;
+    }
+    .apple{
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width : 1080px){
+    .flex_container{
+        display: none;
+        height: 0;
+    }
+    :root{
+        --color:#6BB392;
+        --formColor:#5ECC66;
+    }
+    .tab_container{
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main_con{
+        width: 780px;
+        height: 100%;
+        background-color: var(--color);
+        clip-path: circle(47% at 50% 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+    }
+    .main_con .logo{
+        width: 178px;
+        height: 56px;
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .main_con h1{
+        position: absolute;
+        top: 11%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+        font-weight: 300;
+    }
+    .main_con .sign_up_btn{
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 21%;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 40px;
+    font-size: 12px;
+    font-weight: 300;
+    text-decoration: none;
+    color: #0E1A14;
+    background-color: #6BB392;
+    border-radius: 35px;
+    box-shadow: -2px -2px 8px rgba(107, 179, 146, 1),
+                -2px -2px 12px rgba(107, 179, 146, 0.5),
+                inset 2px 2px 4px rgba(107, 179, 146, 1),
+                2px 2px 8px rgba(0,0,0, 0.5);
+    }
+    .main_con .sign_up_btn:hover{
+        box-shadow: inset -2px -2px 8px rgba(107, 179, 146, 1),
+                    inset -2px -2px 12px rgba(107, 179, 146, 0.5),
+                    inset 2px 2px 4px rgba(107, 179, 146, 0.1),
+                    inset 2px 2px 8px rgba(0,0,0, 0.5);
+    }
+    .main_con p{
+        position: absolute;
+        top: 28%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 15px;
+        font-weight: 300;
+    }
+    .main_con .icon_container{
+        position: absolute;
+        top: 35%;
+        left: 42%;
+        transform: translateX(-50%);
+    }
+    .main_con .icon_container a{
+        left: 0px;
+    }
+    .form_container{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .form_container .text{
+        width: 300px;
+        text-align: center;
+        font-size: 30px;
+        color: var(--formColor);
+        font-weight: 900;
+    }
+    .form_container .email_container{
+        position: absolute;
+        top: 50px;
+        left: 0;
+    }
+    .form_container .pass_container{
+        position: absolute;
+        top: 120px;
+        left: 0;
+    }
+    .form_container .email_container label, .form_container .pass_container label{
+        color: var(--formColor);
+        font-size: 10px;
+        font-weight: 900;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        transition: 0.5s ease-in-out;
+    }
+    .form_container .email_cont, .form_container .pass_cont{
+        width: 300px;
+        height: 30px;
+        font-size: 10px;
+        padding-left: 5px;
+        border: none;
+        outline: none;
+        color: black;
+        background-color: transparent;
+        z-index: 1;
+    }
+    .form_container .email_cont:focus, .form_container .pass_cont:focus{
+        box-shadow: none;
+        background-color: transparent;
+    }
+    .form_container .email_container .line, .form_container .pass_container .line{
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 2px;
+        background-color: var(--formColor);
+        transition: 0.5s ease-in-out;
+    }
+    .form_container .email_cont:focus + label,
+    .form_container .email_cont:valid + label,
+    .form_container .pass_cont:focus + label,
+    .form_container .pass_cont:valid + label{
+        top:-15px;
+        left:0px;
+    }
+    .form_container .email_cont:focus ~ .line,
+    .form_container .email_cont:valid ~ .line,
+    .form_container .pass_cont:focus ~ .line,
+    .form_container .pass_cont:valid ~ .line{
+        border-radius: 5px;
+        height: 30px;
+        z-index: -1;
+    }
+    .form_container .checkbox_con{
+        position: absolute;
+        top: 180px;
+        left: 0;
+    }
+    .form_container .checkbox_con label{
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    .form_container .checkbox_con label .text{
+        color: var(--formColor);
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: 600;
+        width: 200px;
+    }
+    .form_container .checkbox_con label .btn{
+        display: block;
+        width: 11px;
+        height: 11px;
+        background-color: #1b1b1b;
+        border-radius: 50%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        box-shadow: 0px 3px 4px rgba(0,0,0, 1),
+                    inset 0px -2px 5px rgba(0,0,0, 1),
+                    inset 0px 2px 2px rgba(255,255,255, 0.5);
+    }
+    .form_container .checkbox_con label input{
+        width: 11px;
+        height: 11px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        z-index: 1;
+    }
+    .form_container .checkbox_con label input[type="checkbox"]{
+        -webkit-appearance: none;
+    }
+    .form_container .checkbox_con label .btn_circle{
+        display: block;
+        width: 4px;
+        height: 4px;
+        border: 0.5px solid white;
+        border-radius: 50%;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+    }
+    .form_container .checkbox_con label input[type="checkbox"]:checked{
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+    .form_container .checkbox_con label input[type="checkbox"]:checked{
+        border: 0.5px solid var(--formColor);
+        box-shadow: 0 0 15px var(--formColor),
+                    0 0 30px var(--formColor)
+    }
+    .form_container .checkbox_con label #inst{
+        position: absolute;
+        top: 32px;
+        left: 0px;
+    }
+    .form_container .log_in_btn{
+        width: 300px;
+        height: 50px;
+        position: absolute;
+        top: 240px;
+        left: 0;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        line-height: 50px;
+        color: var(--formColor);
+        font-weight: 900;
+        overflow: hidden;
+        border: 2px solid var(--formColor);
+        border-radius: 40px;
+        transition-delay: 0.2s;
+    }
+    .form_container .log_in_btn:hover{
+        color: #021A0E;
+        border: none;
+    }
+    .form_container .log_in_btn::before{
+        content: '';
+        width:100%;
+        height: 100%;
+        background-image: linear-gradient(to right, #5ECC66,#6BB392);
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 40px;
+        transition: all 0.2s ease-in;
+        transform-origin: left;
+        transform: scaleX(0);
+        z-index: -1;
+    }
+    .form_container .log_in_btn:hover::before{
+        transform: scaleX(1);
+    }
+    .form_container .form_footer_con{
+        width: 300px;
+        height: 50px;
+        position: absolute;
+        top: 300px;
+        left: 0;
+        text-align: center;
+    }
+    .form_container .form_footer_con span{
+        line-height: 50px;
+        color: white;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    .form_container .form_footer_con a{
+        line-height: 50px;
+        color: var(--formColor);
+        font-size: 12px;
+        font-weight: 400;
+        text-decoration: none;
+        margin-left: 5px;
+    }
+    .particle{
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+@media screen and (max-width : 780px){
+    :root{
+        --lightgreen: #5ECC66;
+        --darkgreen: #021A0E;
+        --similargreen: #6BB392;
+    }
+    .tab_container{
+        display: none;
+        height: 0;
+    }
+    #particles-js-mob{
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .mobile_container{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+    }
+    .form_container_mobile{
+        width: 80%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-flow: column;
+        z-index: 1;
+    }
+    .form_container_mobile form{
+        width: 80%;
+        height: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+        position: relative;
+    }
+    .form_container_mobile form input{
+        width: 100%;
+        height: 50px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: var(--darkgreen);
+        padding-left: 10px;
+        font-size: 15px;
+        border-radius: 5px;
+        transition: all 0.5s;
+    }
+    .form_container_mobile form input::placeholder{
+        color: var(--lightgreen);
+    }
+    .form_container_mobile form input:focus{
+        border: none;
+        outline: none;
+        background-color: var(--lightgreen);
+        color: var(--darkgreen);
+    }
+    .form_container_mobile form input:focus::placeholder{
+        color: var(--darkgreen);
+    }
+    .form_container_mobile form input[type="checkbox"]{
+        -webkit-appearance: none;
+        width: 0;
+        height: 0;
+    }
+    .form_container_mobile form input[type="checkbox"]:checked + label{
+        color: var(--lightgreen);
+    }
+    .form_container_mobile form label{
+        position: absolute;
+        top: 70%;
+        left: 0;
+        font-size: 10px;
+        color: white;
+    }
+    .form_container_mobile .student{
+        top: 75%;
+    }
+    .form_container_mobile .chose{
+        top: 65%;
+    }
+    .form_container_mobile .login_for_mobile, .form_container_mobile .signup_for_mobile{
+        text-decoration: none;
+        color: var(--darkgreen);
+        background-color: var(--lightgreen);
+        border-radius: 30px;
+        padding: 10px 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-weight: 900;
+    }
+    .form_container_mobile .form_footer_con_mobile{
+        font-size: 8px;
+        font-weight: 300;
+        color: white;
+    }
+    .form_container_mobile .form_footer_con_mobile a{
+        text-decoration: none;
+        color: var(--lightgreen);
+        margin-left: 5px;
+    } 
+    .margin_for_signup{
+        margin-top: 5px;
+    }
+}
