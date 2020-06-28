@@ -17,6 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
-Route::get('/home','PageController@show_home')->name('home');
+Route::get('/dashboard','PageController@show_home')->name('dashboard'); //for logged in users
 Route::get('/signup','PageController@show_signup')->name('signup');
-Route::get('/home', 'HomeController@index')->name('home');
