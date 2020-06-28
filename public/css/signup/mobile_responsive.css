@@ -39,7 +39,7 @@
     .responsive_for_mobile{
         width: 80%;
         height: 80%;
-        background-color: var(--similargreen);
+        background-color: transparent;
         text-align: center;
         display: flex;
         flex-flow: column;
@@ -49,18 +49,18 @@
         z-index: 1;
     }
     .color{
-        background-color: var(--lightgreen);
+        background-color: transparent;
     }
     .responsive_for_mobile h1{
         margin-bottom: 30px;
-        color: var(--similargreen);
-        text-shadow: -2px -2px 8px rgba(255,255,255, 0.2),
-                     2px 2px 8px rgba(0,0,0, 0.5);
+        text-shadow: 0 0 15px var(--similargreen), 0 0 20px var(--similargreen), 0 0 25px var(--similargreen), 0 0 35px var(--similargreen), 0 0 60px var(--similargreen), 2px 2px 2px rgba(107,179,146,0);
+        color: #FFFFFF;
         font-weight: 900;
         font-size: 30px;
     }
     .color h1{
-        color: var(--lightgreen);
+        color: #FFFFFF;
+        text-shadow: 0 0 15px var(--lightgreen), 0 0 20px var(--lightgreen), 0 0 25px var(--lightgreen), 0 0 35px var(--lightgreen), 0 0 60px var(--lightgreen), 2px 2px 2px rgba(107,179,146,0);
     }
     .responsive_for_mobile input{
         width: 350px;
@@ -74,13 +74,29 @@
         padding-left: 10px;
         font-size: 10px;
     }
+    #showpassMob{
+        position: relative;
+    }
+    #showpassMob span{
+        color: var(--similargreen);
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        cursor: pointer;
+        z-index: 1;
+        font-size: 10px;
+    }
+    .color #showpassMob span{
+        color: var(--lightgreen);
+        right: 22%;
+    }
     .responsive_for_mobile input::placeholder{
         color: var(--similargreen);
     }
     .color input::placeholder{
         color: var(--lightgreen);
     }
-    #instituteName_mobile{
+    #instituteName_mobile, #instituteName_mobileStu , #instituteName_mobileStud{
         width: 360px;
         height: 40px;
         margin-top: 10px;
@@ -92,7 +108,7 @@
         padding-left: 10px;
         font-size: 10px;
     }
-    .color #instituteName_mobile{
+    .color #instituteName_mobileStu , #instituteName_mobileStud{
         color: var(--lightgreen);
     }
     .color input{
@@ -106,13 +122,11 @@
         cursor: pointer;
         background-color: transparent;
         border-radius: 20px;
-        color: var(--darkgreen);
+        color: var(--similargreen);
+        border: 2px solid var(--similargreen);
         margin-top: 35px;
         transition: all 0.2s ease-in-out;
-        box-shadow: -2px -2px 8px rgba(107, 179, 146, 1),
-                    -2px -2px 12px rgba(107, 179, 146, 0.5),
-                    inset 2px 2px 4px rgba(107, 179, 146, 1),
-                    2px 2px 8px rgba(0,0,0, 0.5);
+        padding-left: 0;
         
     }
     .responsive_for_mobile a{
@@ -120,38 +134,32 @@
         cursor: pointer;
         background-color: transparent;
         border-radius: 20px;
-        color: var(--darkgreen);
+        color: var(--similargreen);
+        border: 2px solid var(--similargreen);
         transition: all 0.2s ease-in-out;
-        box-shadow: -2px -2px 8px rgba(107, 179, 146, 1),
-                    -2px -2px 12px rgba(107, 179, 146, 0.5),
-                    inset 2px 2px 4px rgba(107, 179, 146, 1),
-                    2px 2px 8px rgba(0,0,0, 0.5);
         font-size: 12px;
         padding: 10px 15px;
         text-decoration: none;
     }
+    .responsive_for_mobile #pad{
+        padding-left: 15px;
+    }
     .color #submit_btn{
-        box-shadow: -2px -2px 8px rgba(94, 204, 102, 1),
-                -2px -2px 12px rgba(94, 204, 102, 0.5),
-                inset 2px 2px 4px rgba(94, 204, 102, 1),
-                2px 2px 8px rgba(0,0,0, 0.5);
+        color: var(--lightgreen);
+        border: 2px solid var(--lightgreen);
+    }
+    .color a{
+        color: var(--lightgreen);
+        border: 2px solid var(--lightgreen);
     }
     
     .responsive_for_mobile #submit_btn:hover{
         border: none;
         color: var(--darkgreen);
         background-color: var(--similargreen);
-        box-shadow: inset -2px -2px 8px rgba(107, 179, 146, 1),
-                    inset -2px -2px 12px rgba(107, 179, 146, 0.5),
-                    inset 2px 2px 4px rgba(107, 179, 146, 0.1),
-                    inset 2px 2px 8px rgba(0,0,0, 0.5);
     }
     .color #submit_btn:hover{
         background-color: var(--lightgreen);
-        box-shadow: inset -2px -2px 8px rgba(94, 204, 102, 1),
-                inset -2px -2px 12px rgba(94, 204, 102, 0.5),
-                inset 2px 2px 4px rgba(94, 204, 102, 0.1),
-                inset 2px 2px 8px rgba(0,0,0, 0.5);
     }
 }
 @media screen and (max-width: 480px){
@@ -166,6 +174,14 @@
     .responsive_for_mobile input{
         width: 250px;
         height: 30px;
+    }
+    #instituteName_mobileStu , #instituteName_mobileStud{
+        width: 260px;
+        height: 30px;
+    }
+    .color #showpassMob span{
+        color: var(--lightgreen);
+        right: 15%;
     }
     #instituteName_mobile{
         width: 260px;
@@ -186,6 +202,19 @@
         height: 20px;
         padding-left: 8px;
         font-size: 8px;
+    }
+    #instituteName_mobileStu , #instituteName_mobileStud{
+        width: 155px;
+        height: 20px;
+        padding-left: 8px;
+        font-size: 8px;
+    }
+    #showpassMob span{
+        font-size: 8px;
+    }
+    .color #showpassMob span{
+        color: var(--lightgreen);
+        right: 18%;
     }
     #instituteName_mobile{
         width: 155px;

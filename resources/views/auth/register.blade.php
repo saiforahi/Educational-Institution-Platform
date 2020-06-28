@@ -7,19 +7,29 @@
                     <h1>Sign up as an Institute</h1>
                     <form action="{{ route('register') }}" method="POST">
                         @csrf
-                        <input name="institute" type="text" placeholder="Institute Name" required>
-                        <input name="fullname" type="text" placeholder="Full Name" required>
-                        <input name="phone" type="tel" placeholder="Contact Number" required>
-                        <input name="email" type="email" placeholder="E-mail Address" required>
-                        <input class="@error('password') is-invalid @enderror" name="password" type="password" placeholder="Password" required>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <input name="instituteName" type="text" placeholder="Institute Name" required value="{{old('instituteName')}}">
+                        <input name="adminName" id="fullName" type="text" placeholder="Full Name" required value="{{old('adminName')}}">
+                        <input name="adminPhone" id="phone_number" type="tel" class="@error('adminPhone') is-invalid @enderror" placeholder="Contact Number" required value="{{ old('adminPhone') }}">
+                        @error('adminPhone')
+                            <p style="color:#47030d;font-size:10px;"><code>{{ $message }}</code></p>
                         @enderror
-                        <input name="password_confirmation" type="password" placeholder="Confirm Password" required>
-                        <input name="address" type="text" placeholder="Full Address" required>
-                        <input name="instituteType" type="text" placeholder="Institute Type"><br>
+                        <input name="adminEmail" id="email_address" type="email" class="@error('adminEmail') is-invalid @enderror" placeholder="E-mail Address" required value="{{old('adminEmail')}}">
+                        @error('adminEmail')
+                        <p style="color:#47030d;font-size:10px;"><code>{{ $message }}</code></p>
+                        @enderror
+                        <div id="showpass">
+                            <input name="adminPassword" id="passwordMobStu" class="@error('adminPassword') is-invalid @enderror" type="password" placeholder="Password" required>
+                            <span id="passchange" onclick="tooglepass()">Show</span>
+                            @error('adminPassword')
+                            <p style="color:#47030d;font-size:10px;"><code>{{ $message }}</code></p>
+                            @enderror
+                        </div>
+                        <div id="showpass">
+                            <input name="adminPassword_confirmation" type="password" placeholder="Confirm Password" id="confirm_password" required>  
+                            <span id="conf" onclick="con()">Show</span>
+                        </div>
+                        <input name="instituteAddress" type="text" placeholder="Full Address" required value="{{old('address')}}">
+                        <input name="instituteType" type="text" placeholder="Institute Type" value="{{old('instituteType')}}"><br>
                         <input name="submit" type="submit" value="submit" id="submit_btn">
                     </form>
                 </div>
@@ -27,18 +37,41 @@
         <div class="common student_container">
             <div class="stu_form_container">
                 <h1>Sign up as an Student/Parent/Staff</h1>
-                <form action="#">
-                    <input name="name" type="text" placeholder="Full Name" required>
-                    <input name="phone" type="tel" placeholder="Contact Number" required>
-                    <input name="email" type="email" placeholder="E-mail Address" required>
-                    <input name="password" type="password" placeholder="Password" required>
-                    <input name="password_confirmation" type="password" placeholder="Confirm Password" required>
-                    <select name="institute" id="instituteName">
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
+                    <select name="user_type" id="instituteNameStud">
+                        <option value="select" selected>--Select Occupation--</option>
+                        <option value="teacher"> Teacher </option>
+                        <option value="student"> Student </option>
+                        <option value="parent"> Parent </option>
+                        <option value="staff"> Staff </option>
+                    </select><br>
+                    <select name="institute" id="instituteNameStu">
                         <option value="select" selected> --Select-- </option>
-                        <option value="a"> Institute A </option>
-                        <option value="b"> Institute B </option>
-                        <option value="c"> Institute C </option>
-                    </select> <br>
+                        @foreach ($institutes as $institute)
+                        <option value="{{$institute->id}}"> {{$institute->name}} </option>
+                        @endforeach
+                    </select><br>
+                    <input name="userName" id="fullNameStu" type="text" placeholder="Full Name" required>
+                    <input name="userPhone" type="tel" class="@error('userPhone') is-invalid @enderror" placeholder="Contact Number" id="phone_numberStu" required>
+                    @error('userPhone')
+                        <p style="color:#47030d;font-size:10px;"><code>{{ $message }}</code></p>
+                    @enderror
+                    <input name="userEmail" type="email" class="@error('userEmail') is-invalid @enderror" placeholder="E-mail Address" id="email_addressStu" required>
+                    @error('userEmail')
+                        <p style="color:#47030d;font-size:10px;"><code>{{ $message }}</code></p>
+                    @enderror
+                    <div id="showpass">
+                        <input name="userPassword" class="@error('userPassword') is-invalid @enderror" type="password" placeholder="Password" id="passwordStu">
+                        <span id="passchangeStu" onclick="tooglepassStu()">Show</span>
+                        @error('userPassword')
+                        <p style="color:#47030d;font-size:10px;"><code>{{ $message }}</code></p>
+                        @enderror
+                    </div>
+                    <div id="showpass">
+                        <input name="userPassword_confirmation" type="password" placeholder="Confirm Password" id="confirm_passwordStu">
+                        <span id="confStu" onclick="conStu()">Show</span>
+                    </div><br>
                     <input type="submit" value="SIGN UP" id="submit_btn">
                 </form>
             </div>
@@ -65,17 +98,28 @@
 <div class="mobile_center">
     <div class="responsive_for_mobile">
         <h1>Sign up as an Institute</h1>
-        <form action="#">
-            <input type="text" placeholder="Institute Name" required><br>
-            <input type="text" placeholder="Full Name" required><br>
-            <input type="tel" placeholder="Contact Number" required><br>
-            <input type="email" placeholder="E-mail Address" required><br>
-            <input type="password" placeholder="Password" required><br>
-            <input type="password" placeholder="Confirm Password" required><br>
-            <input type="text" placeholder="Full Address" required><br>
-            <input type="text" placeholder="Institute Type"><br>
-            <input type="submit" value="SIGN UP" id="submit_btn"><br><br><br>
-            <a href="pages/index.html" id="submit_btn" class="size">Sign up as a Student/Parent/Staff</a>
+        <form action="{{route('register')}}" method="POST">
+            <select name="institute" id="instituteName_mobile">
+                <option value="select" selected>--Select Institute--</option>
+                <option value="a"> Institute A </option>
+                <option value="b"> Institute B </option>
+                <option value="c"> Institute C </option>
+            </select> <br>
+            <input name="adminName" type="text" placeholder="Admin Name" id="fullNameMob"><br>
+            <input name="adminPhone" type="tel" placeholder="Contact Number" id="phone_numberMob"><br>
+            <input name="adminEmail" type="email" placeholder="E-mail Address" id="email_addressMob"><br>
+            <div id="showpassMob">
+                <input name="adminPassword" type="password" placeholder="Password" id="passwordMob">
+                <span id="passchangeMob" onclick="tooglepassMob()">Show</span>
+            </div>
+            <div id="showpassMob">
+                <input name="adminPassword_confirmation" type="password" placeholder="Confirm Password" id="confirm_passwordMob">
+                <span id="confMob" onclick="conMob()">Show</span>
+            </div>
+            <input name="instituteAddress" type="text" placeholder="Full Address" id="addressMob"><br>
+            <input name="instituteType" type="text" placeholder="Institute Type" value="{{old('instituteType')}}"><br>
+            <input name="submit" type="submit" value="SIGN UP" id="submit_btn"><br><br><br>
+            <a href="{{route('mobile_reg')}}" id="submit_btn pad" class="size">Sign up as a Student/Parent/Staff</a>
         </form>
     </div>
 </div>

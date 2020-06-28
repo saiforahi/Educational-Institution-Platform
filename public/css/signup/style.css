@@ -210,6 +210,7 @@
                 inset 2px 2px 4px rgba(94, 204, 102, 0.1),
                 inset 2px 2px 8px rgba(0,0,0, 0.5);
 }
+
 .ins_form_container input, .stu_form_container input{
     width: 430px;
     height: 50px;
@@ -223,7 +224,7 @@
     font-size: 15px;
     letter-spacing: 1px;
 }
-#instituteName{
+#instituteName , #instituteNameStu , #instituteNameStud{
     padding: 0px 20px;
     width: 450px;
     height: 50px;
@@ -236,10 +237,26 @@
     font-size: 15px;
     letter-spacing: 1px;
 }
-.stu_form_container input{
-    color: var(--lightgreen)
+#instituteNameStu, #instituteNameStud{
+    color: var(--lightgreen);
 }
-.stu_form_container #instituteName{
+#showpass{
+    position: relative;
+}
+#showpass span{
+    color: var(--similargreen);
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    cursor: pointer;
+    z-index: 1;
+    
+}
+.stu_form_container #showpass span{
+    color: var(--lightgreen);
+    right: 4%;
+}
+.stu_form_container input{
     color: var(--lightgreen)
 }
 .ins_form_container input:focus, .stu_form_container input:focus, .ins_form_container #instituteName:focus{

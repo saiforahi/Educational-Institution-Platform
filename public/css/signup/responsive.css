@@ -24,7 +24,15 @@
         padding-left: 10px;
         font-size: 10px;
     }
-    .ins_form_container #instituteName, .stu_form_container #instituteName{
+    #showpass span{
+        font-size: 10px;
+        top: 40%;
+        right: 27%;
+    }
+    .stu_form_container #showpass span{
+        right: 7%;
+    }
+    .ins_form_container #instituteName, .stu_form_container #instituteNameStu , .stu_form_container #instituteNameStud{
         width: 270px;
         height: 35px;
         margin-top: 5px;
@@ -63,7 +71,12 @@
         padding-left: 7px;
         font-size: 7px;
     }
-    .ins_form_container #instituteName, .stu_form_container #instituteName{
+    #showpass span{
+        font-size: 7px;
+        top: 45%;
+        right: 27%;
+    }
+    .ins_form_container #instituteName, .stu_form_container #instituteNameStu, .stu_form_container #instituteNameStud{
         width: 195px;
         height: 25px;
         margin-top: 5px;
