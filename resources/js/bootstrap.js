@@ -20,9 +20,13 @@ try {
  */
 
 window.axios = require('axios');
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+let token = document.head.querySelector('meta[name="csrf-token"]');
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -39,3 +43,22 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+import Echo from 'laravel-echo'
+window.Pusher = require('pusher-js');
+
+if(window.user){
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer '+window.user.api_token;
+    window.Echo = new Echo({
+        broadcaster: 'pusher',
+        key: process.env.MIX_PUSHER_APP_KEY,
+        cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+        forceTLS: true,
+        encrypted: true,
+        auth: {
+            headers: {
+                Authorization: 'Bearer ' + window.user.api_token
+            }
+        }
+    });
+}

@@ -18,7 +18,6 @@ class CreateInstitutesTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('type');
-            $table->foreignId('admin_id')->constrained('admins');
             $table->timestamps();
         });
     }
