@@ -1,4 +1,4 @@
-/*const emeet_body=new Vue({
+const emeet_body=new Vue({
     el: '#bg_one',
     data(){
         return{
@@ -7,10 +7,10 @@
             meetingID:'',
             domain : 'meet.jit.si',
             options : {
-                room: 'newRoom',
+                roomName: 'newRoom',
                 width: 700,
                 height: 700,
-                parentNode: document.getElementById('eer'),
+                parentNode: document.getElementById('meeting'),
                 userInfo: {
                     email: window.user.email,
                     displayName: window.user.name                
@@ -25,9 +25,9 @@
     },
     methods:{
         startMeeting: function(){
-            //console.log(this.options);
+            console.log("wprking");
             document.getElementById('center_div').style.display="none";
-            //this.api=new JitsiMeetExternalAPI(this.domain, this.options);
+            const api=new JitsiMeetExternalAPI(this.domain, this.options);
         }
     }
-});*/
+});

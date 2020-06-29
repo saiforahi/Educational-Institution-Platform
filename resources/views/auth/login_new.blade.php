@@ -3,8 +3,7 @@
 @section('content')
 <div class="flex_container">
     <div class="container">
-        <svg version="1.1" id="shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 1580 780" style="enable-background:new 0 0 1580 780;" xml:space="preserve">
+        <svg version="1.1" id="shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1580 780" style="enable-background:new 0 0 1580 780;" xml:space="preserve">
         <style type="text/css">
             .st0{fill:#6BB392;}
         </style>
@@ -20,11 +19,6 @@
                 <div class="heading_text">
                     Bangladesh's most advanced<br>multipurpose digital communication <br> platform.
                 </div>
-                <!--
-                <div class="subheading_text">
-                    Join Us Now
-                </div>
-                -->
                 <a href="{{route('register')}}" target="_blank" class="sign_up"> <span>SIGN UP</span> </a>
                 <div class="slider_buttons">
                     <div class="s_but_one"></div>
@@ -40,12 +34,12 @@
                 DOWNLOAD OUR FREE APP
             </div>
             <div class="footer_icon">
-                    <a href="#" class="playstore">
-                        <img src="{{asset('img/playstore.svg')}}" alt="" id="playimg">
-                    </a>
-                    <a href="#" class="apple">
-                        <img src="{{asset('img/apple.svg')}}" alt="" id="appleimg">
-                    </a>
+                <a href="#" class="playstore">
+                    <img src="{{asset('img/playstore.svg')}}" alt="" id="playimg">
+                </a>
+                <a href="#" class="apple">
+                    <img src="{{asset('img/apple.svg')}}" alt="" id="appleimg">
+                </a>
             </div>
             </div>
         </div>
@@ -67,21 +61,21 @@
                     <label for="pass">Password</label>
                     <span class="line"></span>
                 </div>
-                <div class="checkbox">
+                <!--div class="checkbox">
                     <label for="">
-                        <input type="checkbox">
+                        <input name="institute" type="checkbox">
                         <span class="btn"></span>
                         <span class="btn_circle"></span>
                         <div class="text">Institute</div>
                     </label>
                     <label id="inst" for="">
-                        <input type="checkbox">
+                        <input name="user" type="checkbox">
                         <span class="btn"></span>
                         <span class="btn_circle"></span>
                         <div class="text">Student / Parent / Staff</div>
                     </label>
-                </div>
-                    <a href="#" onclick="document.getElementById('desk_login_form').submit();" class="log_in">LOG IN</a>
+                </div-->
+                <a href="#" onclick="document.getElementById('desk_login_form').submit();" class="log_in">LOG IN</a>
                 <div class="form_footer">
                     <span>Forget Password?</span><a href="#">Recover Password</a>
                 </div>
@@ -109,7 +103,7 @@
 
     </div>
     <form id="tab_login_form" action="{{route('login')}}" method="POST">
-    @csrf
+        @csrf
         <div class="form_container">
             <div class="text">
                 Welcome
@@ -124,49 +118,49 @@
                 <label for="pass">Password</label>
                 <span class="line"></span>
             </div>
-            <div class="checkbox_con">
+            <!--div class="checkbox_con">
                 <label for="">
-                    <input type="checkbox">
+                    <input name="institute" type="checkbox">
                     <span class="btn"></span>
                     <span class="btn_circle"></span>
                     <div class="text">Institute</div>
                 </label>
                 <label id="inst" for="">
-                    <input type="checkbox">
+                    <input name="user" type="checkbox">
                     <span class="btn"></span>
                     <span class="btn_circle"></span>
                     <div class="text">Student / Parent / Staff</div>
                 </label>
-            </div>
-                <a href="#" onclick="document.getElementById('tab_login_form').submit()" class="log_in_btn">LOG IN</a>
+            </div-->
+            <a href="#" onclick="document.getElementById('tab_login_form').submit()" class="log_in_btn">LOG IN</a>
             <div class="form_footer_con">
                 <span>Forget Password?</span><a href="#">Recover Password</a>
             </div>
         </div>
     </form>
+    
 </div>
 <!--For Mobile Responsive-->
-
-<div class="mobile_container">
-    <div class="form_container_mobile">
+    <div class="mobile_container">
         <form id="mob_login_form" action="{{route('login')}}" method="POST">
             @csrf
-            <input type="email" name="email" placeholder="Enter Your E-mail or Number"><br>
-            <input type="password" name="password" placeholder="Enter Your Password"><br>
-            <label for="" class="chose">Chose you account type below:</label>
-            <input type="checkbox" name="institute" id="institute"><label for="institute">Institute</label><br>
-            <input type="checkbox" name="institute" id="student"><label for="student" class="student">Student/Parent?Staff</label><br>
+            <div class="form_container_mobile">
+                <input type="email" name="email" placeholder="Enter Your E-mail or Number"><br>
+                <input type="password" name="password" placeholder="Enter Your Password"><br>
+                <label for="" class="chose">Chose you account type below:</label>
+                <!--input type="checkbox" name="institute" id="institute"><label for="institute">Institute</label><br>
+                <input type="checkbox" name="user" id="student"><label for="student" class="student">Student/Parent?Staff</label><br-->
+                <a href="#" onclick="document.getElementById('mob_login_form').submit()" class="login_for_mobile">LOG IN</a>
+                <div class="form_footer_con_mobile">
+                    <span>Forget Password?</span><a href="#">Recover Password</a>
+                </div>
+                <div class="form_footer_con_mobile margin_for_signup">
+                    <span>Don't have an account?</span><a href="{{route('register')}}">Sign Up</a>
+                </div>
+            </div>
         </form>
-        <a href="#" onclick="document.getElementById('mob_login_form').submit()" class="login_for_mobile">LOG IN</a>
-        <div class="form_footer_con_mobile">
-            <span>Forget Password?</span><a href="#">Recover Password</a>
-        </div>
-        <div class="form_footer_con_mobile margin_for_signup">
-            <span>Don't have an account?</span><a href="{{route('register')}}">Sign Up</a>
-        </div>
     </div>
-</div>
-<div id="particles-js-mob">
+    <div id="particles-js-mob">
 
-</div>
+    </div>
 @endsection

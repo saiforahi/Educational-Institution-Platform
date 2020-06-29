@@ -11,13 +11,13 @@
 
         <!--Center of body-->
         <div class="center_feed" id="bg_one">
-            <div id="meeting" ></div>
-            <!--div id="center_div" class="emeet_btn_container">
+            
+            <div id="center_div" class="emeet_btn_container">
                 <div class="btn_start_new">
                     <div class="input_start_new">
                         <div>
                             <p>Start a new meeting with this ID</p>
-                            <input v-model="options.room" type="text">
+                            <input  type="text">
                         </div>
                         <div class="action_container">
                             <div>
@@ -25,7 +25,7 @@
                                 <abbr title="Copy"><button id="btn_copy"><i class="far fa-copy"></i></button></abbr>
                             </div>
                             <div>
-                                <button id="btn_start">START NEW</button>
+                                <button id="btn_start" onclick="startMeeting()">START NEW</button>
                             </div>
                         </div>
                     </div>
@@ -33,13 +33,14 @@
                 <div class="btn_join_meet">
                     <div>
                         <p>Join a new meeting enter the new <br> meeting ID below</p>
-                        <input v-model="meetingID" type="text">
+                        <input id="meetingID" type="text">
                     </div>
                     <div>
-                        <button id="btn_join">JOIN MEETING</button>
+                        <button onclick="joinMeeting()" id="btn_join">JOIN MEETING</button>
                     </div>                  
                 </div>
-            </div-->
+            </div>
+            <div id="meeting" ></div>
         </div>
         <!--Center of body-->
 
