@@ -107,6 +107,10 @@
                     
                 }
                 window.api = new JitsiMeetExternalAPI(domain, options);
+                window.api.addEventListener('readyToClose', function(){
+                    window.api.dispose();
+                    document.getElementById('center_div').style.display='block';
+                });
             }
             window.onload = function(){
                 
