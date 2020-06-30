@@ -59,8 +59,7 @@
 <body>
     @yield('content')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="{{asset('js/app.js')}}" defer></script>
-    <script src="{{asset('js/views.js')}}" defer></script>
+    
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <script src="{{asset('js/signup/mobile_part.js')}}"></script>
         <script src="{{asset('js/signup/mobile_part_app.js')}}"></script>
@@ -83,12 +82,19 @@
         <script src="{{asset('js/e_meet/main.js')}}"></script>
         <script src='https://meet.jit.si/external_api.js'></script>
         <script>
-            window.onload = function(){
+            function joinMeeting(){
+                var roomName=document.getElementById('meetingID').value;
+                window.location.href = 'https://meet.jit.si/'+roomName;
+            }
+            function startMeeting(){
+                document.getElementById('center_div').style.display='none';
                 const domain = 'meet.jit.si';
                 const options = {
                     roomName: "trial",
-                    height: document.getElementById("bg_one").getBoundingClientRect().height,
-                    width: document.getElementById("bg_one").getBoundingClientRect().width,
+                    //height: document.getElementById("bg_one").getBoundingClientRect().height,
+                    //width: document.getElementById("bg_one").getBoundingClientRect().width,
+                    height: 400,
+                    width: 700,
                     userInfo: {
                         email: window.user.email,
                         displayName: window.user.name                
@@ -98,9 +104,12 @@
                     videoInput: '<deviceLabel>',
                     parentNode: document.getElementById("meeting"),
                     configOverwrite: { startWithAudioMuted: true },
-                    interfaceConfigOverwrite: { filmStripOnly: true },
+                    
                 }
-                const api = new JitsiMeetExternalAPI(domain, options);
+                window.api = new JitsiMeetExternalAPI(domain, options);
+            }
+            window.onload = function(){
+                
             }
             
             
@@ -118,7 +127,8 @@
     @if(Route::current()->getName()=='rateus')
         <script src="{{asset('js/e_meet/main.js')}}"></script>
     @endif
-    
+    <script src="{{asset('js/app.js')}}" defer></script>
+    <script src="{{asset('js/views.js')}}" defer></script>
     @yield('js-part')
 </body>
 </html>
