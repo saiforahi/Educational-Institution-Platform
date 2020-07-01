@@ -1,0 +1,35 @@
+.institute_pages_center_feed{
+    width: 50%;
+    margin: 20px 0px;
+}
+.ins_container{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    background-color: var(--col_3_medium);
+    transition: all 0.2s linear;
+    margin-bottom: 20px;
+}
+.ins_container:hover{
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.ins_logo_container{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#00FFD4, #0FEF79);
+    font-weight: 600;
+    color: var(--col_3_medium);
+}
+.ins_name_container{
+    margin-left: 20px;
+    color: white;
+    font-weight: 600;
+}

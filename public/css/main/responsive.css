@@ -15,10 +15,18 @@
         width: 30px;
         height: 30px;
     }
+    .profile_img_top{
+        width: 30px;
+        height: 30px;
+    }
     .profile_container a{
         font-size: 12px;
     }
     .left_menu .profile_side img, .left_menu .logout_right img, .left_menu .subscription img{
+        width: 30px;
+        height: 30px;
+    }
+    .profile_side .profile_img_left{
         width: 30px;
         height: 30px;
     }
@@ -86,8 +94,12 @@
     }
     #EnfoMe_Menu{
         display: block;
-        width: 25px;
-        height: 25px;
+        width: 45px;
+        height: 45px;
+    }
+    #EnfoMe_Menu_back{
+        width: 45px;
+        height: 45px;
     }
     .search .searchBox{
         height: 30px;
@@ -113,7 +125,7 @@
     .scale{
         transform: scale(1);
     }
-    .center_feed, .news_center_feed, .institute_center_feed{
+    .center_feed, .news_center_feed, .institute_center_feed, .institute_pages_center_feed{
         margin-left: 20px;
     }
     .input_start_new p, .btn_join_meet p{
@@ -174,6 +186,14 @@
         width: 100%;
         justify-content: space-between;
     }
+    #EnfoMe_Menu{
+        width: 30px;
+        height: 30px;
+    }
+    #EnfoMe_Menu_back{
+        width: 30px;
+        height: 30px;
+    }
     .nav .container ul li{
         font-size: 18px;
     }
@@ -183,9 +203,12 @@
     .left_menu{
         width: 65% !important;
     }
-    .center_feed, .news_center_feed, .institute_center_feed{
+    .center_feed, .news_center_feed, .institute_center_feed, .institute_pages_center_feed{
         width: 100%;
         margin-left: 0px;
+    }
+    .institute_pages_center_feed .ins_container{
+        margin: 0 20px 20px 20px;
     }
     .social_container_for_mobile{
         display: block;

@@ -8,7 +8,6 @@
         <!--Left Side of Body-->
         @include('layouts.body_left')
         <!--Left Side of Body-->
-
         <!--Center of body-->
         <div class="center_feed" id="bg_one">
             
