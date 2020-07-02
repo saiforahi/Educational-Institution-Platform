@@ -87,7 +87,9 @@ class RegisterController extends Controller
             }
             $result=$this->register_as_institute($request->all());
             Auth::login($result['newUser']);
+            $token =Auth::user()->createToken('token');
             //return redirect('/admin_dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
+            session('token',$token->plainTextToken);
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
         }
         else{
@@ -97,6 +99,8 @@ class RegisterController extends Controller
             }
             $result=$this->register_as_student_or_staff($request->all());
             Auth::login($result['newUser']);
+            $token =Auth::user()->createToken('token');
+            session('token',$token->plainTextToken);
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
             //return redirect('/dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
         }
