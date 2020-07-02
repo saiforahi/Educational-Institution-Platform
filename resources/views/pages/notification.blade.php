@@ -12,12 +12,6 @@
         <!--Center of body-->
         <!--Form body-->
         <div class="institute_pages_center_feed" id="bg_one">
-            <a href="./single_institute_page.html">
-            <div class="ins_container">
-                <div class="ins_logo_container"><i class="fas fa-arrow-left"></i></div>
-                <div class="ins_name_container">Back</div>
-            </div>
-            </a>
             <div class="notification_heading">
                 <h1>Notification</h1>
             </div>
