@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --col_1_light: #202924;
+    --col_2: #6BB392;
+    --col_3_medium: #021A0E;
+    --col_4: #5ECC66;
+    --col_5: #7DD0E6;
+    --col_6_dark: #0E1A14;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+}
+.profile_edit_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+.profile_edit_img{
+    width: 200px;
+    height: 200px;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile_edit_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile_edit_main{
+    width: 60%;
+    height: 70%;
+    margin-top: 50px;
+}
+form{
+    width: 100%;
+    height: 100%;
+}
+.edit_name, .edit_email, .edit_number, .edit_password, .update_profile_btn, .edit_profile_btn{
+    width: 100%;
+    height: 7%;
+    margin-bottom: 20px;
+}
+.edit_profile_btn{
+    text-align: center;
+}
+.update_profile_btn{
+    display: none;
+}
+.edit_profile_btn p{
+    width: 50%;
+    height: 45.91px;
+    background-color: var(--col_2);
+    color: var(--col_3_medium);
+    border-radius: 30px;
+    line-height: 45.91px;
+    cursor: pointer;
+    transition: box-shadow 0.3s linear;
+}
+.edit_profile_btn p:hover{
+    color: var(--col_2);
+    background-color: var(--col_3_medium);
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.edit_name input, .edit_email input, .edit_number input, .edit_password input, button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: var(--col_2);
+    color: var(--col_3_medium);
+    font-size: 15px;
+}
+.edit_name input, .edit_email input, .edit_number input, .edit_password input{
+    padding-left: 15px;
+    border-radius: 8px;
+}
+.edit_name input::placeholder, .edit_email input::placeholder, .edit_number input::placeholder, .edit_password input::placeholder{
+    color: var(--col_3_medium);
+}
+.edit_name input:focus::-webkit-input-placeholder, .edit_email input:focus::-webkit-input-placeholder,  .edit_number input:focus::-webkit-input-placeholder, .edit_password input:focus::-webkit-input-placeholder{
+    color: var(--col_2);
+  }
+  .edit_name input:focus, .edit_email input:focus, .edit_number input:focus, .edit_password input:focus{
+    background-color: var(--col_3_medium);
+    color: var(--col_2);
+    border: none;
+    outline: none;
+}
+button{
+    width: 50%;
+    transition: box-shadow 0.3s linear;
+    cursor: pointer;
+    border-radius: 30px;
+}
+button:hover{
+    color: var(--col_2);
+    background-color: var(--col_3_medium);
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+}
+.remove{
+    display: none;
+}
+.visible{
+    display: block;
+}
+@media screen and (max-width:1580px){
+    .profile_edit_img{
+        width: 170px;
+        height: 170px;
+    }
+}
+@media screen and (max-width:1080px){
+    .profile_edit_img{
+        width: 150px;
+        height: 150px;
+    }
+}
+@media screen and (max-width:480px){
+    .profile_edit_img{
+        width: 120px;
+        height: 120px;
+    }
+}

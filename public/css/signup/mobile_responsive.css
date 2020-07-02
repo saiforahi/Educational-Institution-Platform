@@ -1,0 +1,229 @@
+.mobile_center{
+    display: none;
+}
+#mobile_particles-js{
+    display: none;
+}
+@media screen and (max-width: 780px){
+    :root{
+        --lightgreen: #5ECC66;
+        --darkgreen: #021A0E;
+        --similargreen: #6BB392;
+        --borderRad: 100px;
+    }
+    #particles-js{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    #mobile_particles-js{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .mobile_center{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+    }
+    .responsive_for_mobile{
+        width: 80%;
+        height: 80%;
+        background-color: transparent;
+        text-align: center;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        z-index: 1;
+    }
+    .color{
+        background-color: transparent;
+    }
+    .responsive_for_mobile h1{
+        margin-bottom: 30px;
+        text-shadow: 0 0 15px var(--similargreen), 0 0 20px var(--similargreen), 0 0 25px var(--similargreen), 0 0 35px var(--similargreen), 0 0 60px var(--similargreen), 2px 2px 2px rgba(107,179,146,0);
+        color: #FFFFFF;
+        font-weight: 900;
+        font-size: 30px;
+    }
+    .color h1{
+        color: #FFFFFF;
+        text-shadow: 0 0 15px var(--lightgreen), 0 0 20px var(--lightgreen), 0 0 25px var(--lightgreen), 0 0 35px var(--lightgreen), 0 0 60px var(--lightgreen), 2px 2px 2px rgba(107,179,146,0);
+    }
+    .responsive_for_mobile input{
+        width: 350px;
+        height: 40px;
+        margin-top: 10px;
+        background-color: var(--darkgreen);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        color: var(--similargreen);
+        padding-left: 10px;
+        font-size: 10px;
+    }
+    #showpassMob{
+        position: relative;
+    }
+    #showpassMob span{
+        color: var(--similargreen);
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        cursor: pointer;
+        z-index: 1;
+        font-size: 10px;
+    }
+    .color #showpassMob span{
+        color: var(--lightgreen);
+        right: 22%;
+    }
+    .responsive_for_mobile input::placeholder{
+        color: var(--similargreen);
+    }
+    .color input::placeholder{
+        color: var(--lightgreen);
+    }
+    #instituteName_mobile, #instituteName_mobileStu , #instituteName_mobileStud{
+        width: 360px;
+        height: 40px;
+        margin-top: 10px;
+        background-color: var(--darkgreen);
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        color: var(--similargreen);
+        padding-left: 10px;
+        font-size: 10px;
+    }
+    .color #instituteName_mobileStu , #instituteName_mobileStud{
+        color: var(--lightgreen);
+    }
+    .color input{
+        color: var(--lightgreen);
+    }
+    .responsive_for_mobile input:focus{
+        outline: none;
+    }
+    .responsive_for_mobile #submit_btn{
+        width: 100px;
+        cursor: pointer;
+        background-color: transparent;
+        border-radius: 20px;
+        color: var(--similargreen);
+        border: 2px solid var(--similargreen);
+        margin-top: 35px;
+        transition: all 0.2s ease-in-out;
+        padding-left: 0;
+        
+    }
+    .responsive_for_mobile a{
+        width: 300px;
+        cursor: pointer;
+        background-color: transparent;
+        border-radius: 20px;
+        color: var(--similargreen);
+        border: 2px solid var(--similargreen);
+        transition: all 0.2s ease-in-out;
+        font-size: 12px;
+        padding: 10px 15px;
+        text-decoration: none;
+    }
+    .responsive_for_mobile #pad{
+        padding-left: 15px;
+    }
+    .color #submit_btn{
+        color: var(--lightgreen);
+        border: 2px solid var(--lightgreen);
+    }
+    .color a{
+        color: var(--lightgreen);
+        border: 2px solid var(--lightgreen);
+    }
+    
+    .responsive_for_mobile #submit_btn:hover{
+        border: none;
+        color: var(--darkgreen);
+        background-color: var(--similargreen);
+    }
+    .color #submit_btn:hover{
+        background-color: var(--lightgreen);
+    }
+}
+@media screen and (max-width: 480px){
+    .responsive_for_mobile{
+        width: 70%;
+        height: 70%;
+    }
+    .responsive_for_mobile h1{
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .responsive_for_mobile input{
+        width: 250px;
+        height: 30px;
+    }
+    #instituteName_mobileStu , #instituteName_mobileStud{
+        width: 260px;
+        height: 30px;
+    }
+    .color #showpassMob span{
+        color: var(--lightgreen);
+        right: 15%;
+    }
+    #instituteName_mobile{
+        width: 260px;
+        height: 30px;
+    }
+}
+@media screen and (max-width: 380px){
+    .responsive_for_mobile{
+        width: 60%;
+        height: 60%;
+    }
+    .responsive_for_mobile h1{
+        margin-bottom: 10px;
+        font-size: 10px;
+    }
+    .responsive_for_mobile input{
+        width: 150px;
+        height: 20px;
+        padding-left: 8px;
+        font-size: 8px;
+    }
+    #instituteName_mobileStu , #instituteName_mobileStud{
+        width: 155px;
+        height: 20px;
+        padding-left: 8px;
+        font-size: 8px;
+    }
+    #showpassMob span{
+        font-size: 8px;
+    }
+    .color #showpassMob span{
+        color: var(--lightgreen);
+        right: 18%;
+    }
+    #instituteName_mobile{
+        width: 155px;
+        height: 20px;
+        font-size: 8px;
+        padding-left: 8px;
+    }
+    .responsive_for_mobile a{
+        font-size: 8px;
+        width: 150px;
+    }
+}

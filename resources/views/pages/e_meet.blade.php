@@ -44,9 +44,9 @@
         <!--Center of body-->
 
         <!--Right Side of body-->
+        @include('layouts.body_right')
         <!--Right Side of body-->
-        <!--Responsive Tools-->
-         @include('layouts.body_right')
+    
     </div>
     </div>
 @endsection

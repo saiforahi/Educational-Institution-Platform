@@ -39,5 +39,8 @@
             </div>
         </div>
         @include('layouts.body_right')
+        <!--Center of body-->
+
+       
     </div>
 @endsection
