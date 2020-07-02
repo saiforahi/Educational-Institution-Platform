@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script>window.user={!! json_encode(Auth::user()); !!}</script>
+    <script>window.user={!! json_encode(Auth::user()); !!}; //console.log(window.user);</script>
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <link rel="stylesheet" href="{{asset('css/signup/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/signup/responsive.css')}}">
@@ -29,6 +29,7 @@
     @endif
     @if(Route::current()->getName()=='newsfeed')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
+        <script> window.token={!!json_encode(session('token'))!!};console.log(window.token)</script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/newsfeed.css')}}">

@@ -19,7 +19,7 @@ const emeet_body=new Vue({
         }
     },
     mounted(){
-        console.log(window.user);
+        //console.log(window.user);
         //document.getElementById('center_div').style.display="none";
         
     },

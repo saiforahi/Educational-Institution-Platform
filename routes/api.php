@@ -20,3 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('institutes')->group(function(){
     Route::get('fetch_all','InstituteController@fetch_all');
 });
+
+Route::prefix('subscription')->group(function () {
+    Route::post('new', function () {
+        return "working";
+    });
+});
