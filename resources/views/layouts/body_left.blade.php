@@ -1,18 +1,18 @@
+<!--Left Side of Body-->
 <div class="left_menu" id="menu">
     <!--Profile Section-->
     <div class="logo">
         <img src="{{asset('img/e_meet/logo.png')}}" alt="Logo">
     </div>
     <div class="profile_side">
-        <img src="{{asset('img/e_meet/Profile.png')}}" alt="Profile Picture">
-        <a href="#">{{Auth::user()->name}}</a>
+        <div class="profile_img_left">
+            <img src="{{asset('img/e_meet/profile.png')}}" alt="Profile Picture">
+        </div>
+        <a href="#">Md Zahid Ul Islam Saikat</a>
     </div>
     <div class="logout_right">
         <img src="{{asset('img/e_meet/LogOut.png')}}" alt="LogOut">
-        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
+        <a href="#">Logout</a>
         <span></span>
     </div>
     <div class="subscription">
@@ -42,3 +42,4 @@
         <span></span>
     </div>
 </div>
+<!--Left Side of Body-->

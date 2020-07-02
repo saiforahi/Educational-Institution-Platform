@@ -22,3 +22,4 @@ Route::get('/rateus','PageController@show_rateus')->name('rateus')->middleware('
 Route::get('/', function () {return view('home');})->name('home');
 Route::get('/admin_dashboard','PageController@show_admin_dashboard')->name('admin_dashboard')->middleware('auth'); //for logged in admins of institutes
 Route::get('/dashboard','PageController@show_dashboard')->name('dashboard')->middleware('auth'); //for logged in users
+Route::get('/profile','PageController@show_profile')->name('profile')->middleware('auth');

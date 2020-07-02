@@ -35,7 +35,7 @@
             <div class="profile_img_top">
                 <img src="{{asset('img/e_meet/Profile.png')}}" alt="Profile">
             </div>
-            <a href="#">{{Auth::user()->name}}</a>
+            <a href="{{route('profile')}}">{{Auth::user()->name}}</a>
         </div>
         <div class="logout_right">
             <img src="{{asset('img/e_meet/LogOut.png')}}" alt="LogOut">

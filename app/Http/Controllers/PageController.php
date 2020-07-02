@@ -32,4 +32,7 @@ class PageController extends Controller
     public function show_rateus(){
         return view('pages.rateus');
     }
+    public function show_profile(){
+        return view('pages.profile');
+    }
 }
