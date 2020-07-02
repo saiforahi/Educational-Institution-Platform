@@ -34,7 +34,17 @@
     align-items: center;
     justify-content: center;
 }
+.image_container a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .image_container img{
     width: 80%;
     height: 80%;
+}
+@media screen and (max-width:480px){
+    .image_container img{
+        width: 50%;
+    }
 }

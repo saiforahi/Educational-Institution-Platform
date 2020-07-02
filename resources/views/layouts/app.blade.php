@@ -20,39 +20,45 @@
     @endif
     @if(Route::current()->getName()=='e_meet')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/e_meet/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <!--script src="https://meet.jit.si/libs/lib-jitsi-meet.min.js"></script-->
         <title>EnfoMe || E-meet</title>
         
     @endif
     @if(Route::current()->getName()=='newsfeed')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/e_meet/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/newsfeed.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/newsfeed.css')}}">
         <title>EnfoMe || Newsfeed</title>
     @endif
     @if(Route::current()->getName()=='institute')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/e_meet/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/institute.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/institute.css')}}">
         <title>EnfoMe || Institute</title>
     @endif
     @if(Route::current()->getName()=='language')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/e_meet/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/language.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/language.css')}}">
         <title>EnfoMe || Language</title>
     @endif
     @if(Route::current()->getName()=='rateus')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/e_meet/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/e_meet/rateus.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/rateus.css')}}">
         <title>EnfoMe || rate us</title>
+    @endif
+    @if(Route::current()->getName()=='profile')
+        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/profile.css')}}">
+        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
 
 </head>
@@ -120,16 +126,20 @@
         </script>
     @endif
     @if(Route::current()->getName()=='newsfeed')
-        <script src="{{asset('js/e_meet/main.js')}}"></script>
+        <script src="{{asset('js/main/main.js')}}"></script>
     @endif
     @if(Route::current()->getName()=='institute')
-        <script src="{{asset('js/e_meet/main.js')}}"></script>
+        <script src="{{asset('js/main/main.js')}}"></script>
     @endif
     @if(Route::current()->getName()=='language')
-        <script src="{{asset('js/e_meet/main.js')}}"></script>
+        <script src="{{asset('js/main/main.js')}}"></script>
     @endif
     @if(Route::current()->getName()=='rateus')
-        <script src="{{asset('js/e_meet/main.js')}}"></script>
+        <script src="{{asset('js/main/main.js')}}"></script>
+    @endif
+    @if(Route::current()->getName()=='profile')
+    <script src="{{asset('js/main/main.js')}}"></script>
+    <script src="{{asset('js/main/function.js')}}"></script>
     @endif
     <script src="{{asset('js/app.js')}}" defer></script>
     <script src="{{asset('js/views.js')}}" defer></script>

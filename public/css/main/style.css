@@ -138,13 +138,24 @@ body{
     display: flex;
     align-items: center;
 }
-.profile_container img{
+.profile_img_top{
     margin: 0px 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile_container img{
+    width: 40px;
+    height: 40px;
 }
 .profile_container a{
     color: #ffffff;
     font-size: 15px;
     font-weight: 500;
+}
+.profile_container .logout_right img{
+    margin: 0px 20px;
 }
 .profile_container .logout_right a{
     margin-right: 20px;
@@ -171,6 +182,16 @@ body{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+}
+.profile_side .profile_img_left{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile_side .profile_img_left img{
+    width: 40px;
+    height: 40px;
 }
 .logout_right{
     position: relative;
@@ -240,10 +261,14 @@ body{
     font-size: 20px;
     font-weight: 600;
     cursor: pointer;
+    transition: box-shadow 0.3s linear;
 }
 #see_more_button:hover{
     color: var(--col_2);
     background-color: var(--col_1_light);
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
 }
 #see_more_button:active{
     transform: scale(0.95);
@@ -277,6 +302,9 @@ body{
     font-size: 20px;
     color: var(--col_2);
     border-bottom: 1px solid var(--col_2);
+}
+.input_start_new input::placeholder{
+    color: var(--col_2);
 }
 .input_start_new .action_container{
     margin-top: 20px;
@@ -328,10 +356,14 @@ body{
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    transition: box-shadow 0.3s linear;
 }
 .input_start_new .action_container #btn_start:hover{
     color: var(--col_2);
     background-color: var(--col_3_medium);
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .input_start_new .action_container #btn_start:active{
     transform: scale(0.95);
@@ -356,10 +388,14 @@ body{
     font-weight: 600;
     cursor: pointer;
     margin-top: 20px;
+    transition: box-shadow 0.3s linear;
 }
 .btn_join_meet #btn_join:hover{
     color: var(--col_2);
     background-color: var(--col_3_medium);
+    -webkit-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 26px 0px rgba(0,0,0,0.75);
 }
 .btn_join_meet #btn_join:active{
     transform: scale(0.95);
