@@ -14,11 +14,10 @@
         <div class="institute_pages_center_feed" id="bg_one">
             <a href="{{route('single_institute')}}">
             <div class="ins_container">
-                <div class="ins_logo_container"><i class="fas fa-arrow-left"></i></div>
-                <div class="ins_name_container">Back</div>
+                <div class="ins_logo_container">A</div>
+                <div class="ins_name_container">AUST</div>
             </div>
             </a>
-            
         </div>
         @include('layouts.body_right')
 
