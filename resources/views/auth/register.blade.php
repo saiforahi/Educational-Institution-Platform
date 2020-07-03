@@ -82,13 +82,13 @@
                     <h1>Welcome</h1><br><br>
                     <h1>If you are from an Institute <br>Sign Up here on the right side.</h1> <br><br>
                     <h1>Or Sign Up as a Student/Parent/Staff <br> by clicking below button</h1>
-                    <button id="insitute">Student/Parent/Staff</button>
+                    <button id="insitute">Institute</button>
                 </div>
                 <div class="panel stu_text_container">
                     <h1>Welcome</h1><br><br>
                     <h1>If you are a Student/Parent/Staff<br>Sign Up here on the left side.</h1> <br><br>
                     <h1>Or if you are from an Institute <br> Sign Up by clicking below button</h1>
-                    <button id="student">Institute</button>
+                    <button id="student">Student/Parent/Staff</button>
                 </div>
             </div>
         </div>

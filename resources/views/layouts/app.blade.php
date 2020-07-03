@@ -11,13 +11,13 @@
         <link rel="stylesheet" href="{{asset('css/signup/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/signup/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/signup/mobile_responsive.css')}}">
-        <title>EnfoMe || Registration</title>
+        <title>{{config('app.name', 'Laravel')}} || Registration</title>
     @endif
     @if(Route::current()->getName()=='login')
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="{{asset('css/login/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/login/responsive.css')}}">
-        <title>EnfoMe || Login</title>
+        <title>{{config('app.name', 'Laravel')}} || Login</title>
     @endif
     @if(Route::current()->getName()=='e_meet')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
