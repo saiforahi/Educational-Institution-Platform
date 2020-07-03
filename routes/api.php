@@ -22,7 +22,7 @@ Route::prefix('institutes')->group(function(){
 });
 
 Route::prefix('subscription')->group(function () {
-    Route::post('new', function () {
+    Route::post('update', function () {
         return "working";
     });
 });
