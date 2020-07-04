@@ -19,10 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::prefix('institutes')->group(function(){
     Route::get('fetch_all','InstituteController@fetch_all');
+    Route::get('notificantion/get_details/{notificationID}','InstituteController@get_notification');
 });
 
 Route::prefix('subscription')->group(function () {
-    Route::post('update', function () {
-        return "working";
-    });
+    Route::post('update', 'SubscriptionController@_subscription');
 });
