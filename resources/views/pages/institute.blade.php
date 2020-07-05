@@ -13,7 +13,7 @@
         <div class="institute_center_feed" id="bg_one">
             <div class="main_icon_container">
                 <div class="image_container">
-                    <a href="{{route('university')}}"> <img src="{{asset('img/e_meet/UNIVERSITY.png')}}" alt="University"> </a>
+                    <a href="{{route('show_universities')}}"> <img src="{{asset('img/e_meet/UNIVERSITY.png')}}" alt="University"> </a>
                 </div>
                 <div class="image_container">
                     <a href="{{route('college')}}"> <img src="{{asset('img/e_meet/COLLEGE.png')}}" alt="College"> </a>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
@@ -25,7 +24,6 @@
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <!--script src="https://meet.jit.si/libs/lib-jitsi-meet.min.js"></script-->
         <title>EnfoMe || E-meet</title>
-        
     @endif
     @if(Route::current()->getName()=='newsfeed')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
@@ -117,7 +115,7 @@
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
     @endif
-    @if(Route::current()->getName()=='single_institute')
+    @if(Route::current()->getName()=='show_university_details')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
@@ -132,7 +130,10 @@
         <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/single_news_page.css')}}">
     @endif
-
+    <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
 </head>
 <body>
     @yield('content')
@@ -249,6 +250,7 @@
     @endif
     <script src="{{asset('js/app.js')}}" defer></script>
     <script src="{{asset('js/views.js')}}" defer></script>
+    <script src="{{asset('js/main/main.js')}}"></script>
     @yield('js-part')
 </body>
 </html>

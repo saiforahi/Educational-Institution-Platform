@@ -14,11 +14,11 @@
         <div class="institute_pages_center_feed" id="bg_one">
             <div class="ins_detail_container">
                 <div class="ins_profile_img_con">
-                    A
+                    {{$details->name[0]}}
                 </div>
                 <div class="ins_name_con">
                     <div class="ins_full_name">
-                        <h1>AUST</h1>
+                        <h1>{{$details->name}}</h1>
                     </div>
                     <div class="subscribe_btn">
                         <button>Subscribe</button>
@@ -35,7 +35,6 @@
                 </div>
             </div>
             </a>
-            
         </div>
         @include('layouts.body_right')
 
