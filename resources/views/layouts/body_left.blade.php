@@ -1,18 +1,18 @@
-<!--Left Side of Body-->
 <div class="left_menu" id="menu">
     <!--Profile Section-->
     <div class="logo">
-        <img src="{{asset('img/e_meet/logo.png')}}" alt="Logo">
+        <a href="{{route('home')}}"><img src="{{asset('img/e_meet/logo.png')}}" alt="Logo"></a>
     </div>
     <div class="profile_side">
         <div class="profile_img_left">
-            <img src="{{asset('img/e_meet/profile.png')}}" alt="Profile Picture">
+            <img src="{{asset('img/e_meet/Profile.png')}}" alt="Profile Picture">
         </div>
-        <a href="#">Md Zahid Ul Islam Saikat</a>
+        <a href="{{route('profile')}}">{{Auth::user()->name}}</a>
     </div>
     <div class="logout_right">
         <img src="{{asset('img/e_meet/LogOut.png')}}" alt="LogOut">
-        <a href="#">Logout</a>
+        <form id="side_logout" action="{{route('logout')}}" method="POST">@csrf</form>
+        <a href="#" onclick="document.getElementById('side_logout').submit()">Logout</a>
         <span></span>
     </div>
     <div class="subscription">
@@ -22,7 +22,7 @@
     <!--Subscribe Section-->
     <div class="sub_instNames">
         <div class="sub_profile_img">E</div>
-        <a href="#"><p class="insName_line_one"> E-meet </p> <p class="insName_line_two"></p></a>
+        <a href="{{route('e_meet')}}"><p class="insName_line_one"> E-meet </p> <p class="insName_line_two"></p></a>
     </div>
     <div class="sub_instNames">
         <div class="sub_profile_img">D</div>
@@ -42,4 +42,3 @@
         <span></span>
     </div>
 </div>
-<!--Left Side of Body-->

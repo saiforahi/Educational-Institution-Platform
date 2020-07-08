@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Institute;
+use App\InsNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -22,7 +25,13 @@ class PageController extends Controller
         return view('pages.e_meet');
     }
     public function show_newsfeed(){
-        return view('pages.newsfeed');
+        $news=DB::table('news')->orderby('updated_at','asc')->get();
+        //Storage::put('news_image/test.txt','working');
+        $images=array();
+        foreach($news as $singleNews){
+            $images[$singleNews->image]=Storage::get('public/news_image/'.$singleNews->image);
+        }
+        return view('pages.newsfeed')->with('news',$news);
     }
     public function show_institute(){
         return view('pages.institute');
@@ -36,36 +45,20 @@ class PageController extends Controller
     public function show_profile(){
         return view('pages.profile');
     }
-     public function show_college(){
-        return view('pages.college');
+    public function update_profile(Request $request){
+        $request->validate(['email'=>'required|email|unique:users','name'=>'required|max:255','phone'=>'required|max:11|min:11|unique:users']);
+        $user=Auth::user();
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        $user->save();
+        return redirect()->back();
     }
-    public function show_corporate(){
-        return view('pages.corporate');
+    
+    public function show_notification_details($notification_id){
+        return view('pages.notification')->with('details',InsNotification::find($notification_id));
     }
-    public function show_diploma(){
-        return view('pages.diploma');
-    }
-    public function show_govt(){
-        return view('pages.govt');
-    }
-    public function show_national(){
-        return view('pages.national');
-    }
-    public function show_private(){
-        return view('pages.private');
-    }
-    public function show_school(){
-        return view('pages.school');
-    }
-    public function show_university(){
-        return view('pages.university');
-    }
-    public function show_notification(){
-        return view('pages.notification');
-    }
-    public function show_single_institute(){
-        return view('pages.single_institute');
-    }
+    
     public function show_single_news(){
         return view('pages.single_news');
     }

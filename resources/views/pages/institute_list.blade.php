@@ -12,10 +12,13 @@
         <!--Center of body-->
         <!--Form body-->
         <div class="institute_pages_center_feed" id="bg_one">
+            @if(count($institutes)<=0)
+                <p>No institutes</p>
+            @endif
             @foreach ($institutes as $institute)
-            <a href="{{ url('institutes/university/details/'.$institute->id)}}">
+            <a href="{{ url('institute/details/'.$institute->id)}}">
                 <div class="ins_container">
-                    <div class="ins_logo_container">A</div>
+                    <div class="ins_logo_container">{{$institute->name[0]}}</div>
                     <div class="ins_name_container">{{$institute->name}}</div>
                 </div>
             </a>

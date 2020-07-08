@@ -60,62 +60,20 @@
         <link rel="stylesheet" href="{{asset('css/main/profile.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
-    @if(Route::current()->getName()=='college')
+    @if(Route::current()->getName()=='show_institutes')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
-    @if(Route::current()->getName()=='corporate')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='diploma')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='govt')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='national')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='private')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='school')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='university')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='notification')
+    @if(Route::current()->getName()=='notification_details')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
     @endif
-    @if(Route::current()->getName()=='show_university_details')
+    @if(Route::current()->getName()=='institute_details')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
@@ -130,10 +88,18 @@
         <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/single_news_page.css')}}">
     @endif
+    @if(Route::current()->getName()=='verification.notice')
+        <title>EnfoMe || Verify</title>
+        <link rel="stylesheet" href="{{asset('css/main/verify1_style.css')}}">
+    @endif
+    @if(Route::current()->getName()=='verification.resend')
+        <title>EnfoMe || Verify</title>
+        <link rel="stylesheet" href="{{asset('css/main/verify2_style.css')}}">
+    @endif
     <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
     <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
+    <link rel="icon" href="{{asset('img/enfologo.png')}}">
 </head>
 <body>
     @yield('content')
@@ -170,7 +136,7 @@
                 document.getElementById('center_div').style.display='none';
                 const domain = 'meet.jit.si';
                 const options = {
-                    roomName: "trial",
+                    roomName: document.getElementById("roomName").value,
                     //height: document.getElementById("bg_one").getBoundingClientRect().height,
                     //width: document.getElementById("bg_one").getBoundingClientRect().width,
                     height: 400,
@@ -191,12 +157,12 @@
                     window.api.dispose();
                     document.getElementById('center_div').style.display='block';
                 });
+                //var div=document.getElementsByClassName('watermark leftwatermark');
+                //div[0].style.background-image='none';
             }
             window.onload = function(){
                 
             }
-            
-       
         </script>
     @endif
     @if(Route::current()->getName()=='newsfeed')
@@ -214,30 +180,6 @@
     @if(Route::current()->getName()=='profile')
     <script src="{{asset('js/main/main.js')}}"></script>
     <script src="{{asset('js/main/function.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='college')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='corporate')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='diploma')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='govt')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='national')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='private')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='school')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='university')
-        <script src="{{asset('js/main/main.js')}}"></script>
     @endif
     @if(Route::current()->getName()=='notification')
         <script src="{{asset('js/main/main.js')}}"></script>

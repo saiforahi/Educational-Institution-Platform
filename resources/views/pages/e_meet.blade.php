@@ -16,7 +16,7 @@
                     <div class="input_start_new">
                         <div>
                             <p>Start a new meeting with this ID</p>
-                            <input  type="text">
+                            <input id="roomName" value="{{Auth::user()->name.'room'}}" type="text">
                         </div>
                         <div class="action_container">
                             <div>

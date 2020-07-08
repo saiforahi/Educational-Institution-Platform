@@ -117,7 +117,7 @@ class RegisterController extends Controller
             'api_token' => Hash::make(Str::random(80))
         ]);
         $result['newInstitute']=Institute::create([
-            'name' => ucfirst(trans($data['instituteName'])),
+            'name' => strtoupper(trans($data['instituteName'])),
             'address'=> $data['instituteAddress'],
             'type' => $data['instituteType'],
         ]);
