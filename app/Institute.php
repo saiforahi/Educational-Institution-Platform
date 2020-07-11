@@ -14,7 +14,7 @@ class Institute extends Model
     protected $fillable =[
         'name', 'address', 'type'
     ];
-    public function comments()
+    public function notifications()
     {
         return $this->hasMany('App\InsNotification','institute_id','id');
     }

@@ -18,7 +18,7 @@ class CreateInsNotificationsTable extends Migration
             $table->foreignId('institute_id')->constrained('institutes');
             $table->string('title');
             $table->text('image')->nullable();
-            $table->string('body');
+            $table->longText('body');
             $table->timestamps();
         });
     }
