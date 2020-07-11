@@ -62,6 +62,7 @@
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     @if(Route::current()->getName()=='college')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
@@ -108,6 +109,9 @@
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
     @if(Route::current()->getName()=='university')
+=======
+    @if(Route::current()->getName()=='show_institutes' || Route::current()->getName()=='subscribed_institutes')
+>>>>>>> Stashed changes
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">

@@ -52,4 +52,7 @@ Route::middleware('auth')->prefix('notification')->group(function(){
     Route::get('details/{notification_id}','PageController@show_notification_details')->name('notification_details');
 });
 Route::get('landingSlider',function(){return view('layouts.slider');})->name('landing_slider');
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
