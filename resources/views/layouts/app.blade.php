@@ -61,6 +61,7 @@
         <link rel="stylesheet" href="{{asset('css/main/profile.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
+<<<<<<< Updated upstream
     @if(Route::current()->getName()=='college')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
@@ -80,6 +81,9 @@
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
     @if(Route::current()->getName()=='govt')
+=======
+    @if(Route::current()->getName()=='show_institutes' || Route::current()->getName()=='subscribed_institutes')
+>>>>>>> Stashed changes
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
@@ -137,7 +141,7 @@
     @yield('content')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    
+
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <script src="{{asset('js/signup/mobile_part.js')}}"></script>
         <script src="{{asset('js/signup/mobile_part_app.js')}}"></script>
@@ -175,14 +179,14 @@
                     width: 700,
                     userInfo: {
                         email: window.user.email,
-                        displayName: window.user.name                
+                        displayName: window.user.name
                     },
                     audioInput: '<deviceLabel>',
                     audioOutput: '<deviceLabel>',
                     videoInput: '<deviceLabel>',
                     parentNode: document.getElementById("meeting"),
                     configOverwrite: { startWithAudioMuted: true },
-                    
+
                 }
                 window.api = new JitsiMeetExternalAPI(domain, options);
                 window.api.addEventListener('readyToClose', function(){
@@ -191,7 +195,7 @@
                 });
             }
             window.onload = function(){
-                
+
             }
             
        

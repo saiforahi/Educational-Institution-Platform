@@ -38,3 +38,18 @@ Route::get('/admin_dashboard','PageController@show_admin_dashboard')->name('admi
 Route::get('/dashboard','PageController@show_dashboard')->name('dashboard')->middleware('auth'); //for logged in users
 Route::get('/profile','PageController@show_profile')->name('profile')->middleware('auth');
 
+<<<<<<< Updated upstream
+=======
+Route::middleware('auth')->prefix('institute')->group(function () {
+    Route::get('list/{type}', 'InstituteController@get_institute_list')->name('show_institutes');
+    Route::get('details/{id}','InstituteController@get_details')->name('institute_details');
+});
+Route::middleware('auth')->prefix('subscription')->group(function () {
+    Route::post('update', 'SubscriptionController@web_subscription')->name('update_subscription');
+    Route::get('list', 'SubscriptionController@web_subscription_list')->name('subscribed_institutes');
+});
+Route::middleware('auth')->prefix('notification')->group(function(){
+    Route::get('details/{notification_id}','PageController@show_notification_details')->name('notification_details');
+});
+Route::get('landingSlider',function(){return view('layouts.slider');})->name('landing_slider');
+>>>>>>> Stashed changes

@@ -17,7 +17,7 @@
     </div>
     <div class="subscription">
         <img src="{{asset('img/e_meet/Subscribe.png')}}" alt="Subscribe">
-        <a href="#">Your Subscription</a>
+        <a href="{{route('subscribed_institutes')}}">Your Subscription</a>
     </div>
     <!--Subscribe Section-->
     <div class="sub_instNames">
@@ -42,4 +42,7 @@
         <span></span>
     </div>
 </div>
+<<<<<<< Updated upstream
 <!--Left Side of Body-->
+=======
+>>>>>>> Stashed changes
