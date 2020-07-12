@@ -7,6 +7,7 @@ use App\Subscriber;
 use Auth;
 use DB;
 
+
 class SubscriptionController extends Controller
 {
     //
@@ -34,13 +35,11 @@ class SubscriptionController extends Controller
         $newSubscriber->save();
         return redirect()->back();
     }
-<<<<<<< Updated upstream
 
-=======
     public function web_subscription_list(){
       $data=DB::table('subscribers')->where('user_id',Auth::user()->id)->join('institutes','subscribers.institute_id','=','institutes.id')->select('institutes.id','institutes.name','institutes.type','institutes.address')->get();
         return view('pages.institute_list')->with('institutes',$data);
 
     }
->>>>>>> Stashed changes
+
 }

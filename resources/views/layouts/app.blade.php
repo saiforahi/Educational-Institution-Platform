@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script>window.user={!! json_encode(Auth::user()); !!}</script>
+    <script>window.user={!! json_encode(Auth::user()); !!}; //console.log(window.user);</script>
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <link rel="stylesheet" href="{{asset('css/signup/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/signup/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/signup/mobile_responsive.css')}}">
-        <title>EnfoMe || Registration</title>
+        <title>{{config('app.name', 'Laravel')}} || Registration</title>
     @endif
     @if(Route::current()->getName()=='login')
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="{{asset('css/login/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/login/responsive.css')}}">
-        <title>EnfoMe || Login</title>
+        <title>{{config('app.name', 'Laravel')}} || Login</title>
     @endif
     @if(Route::current()->getName()=='e_meet')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
@@ -25,10 +24,10 @@
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <!--script src="https://meet.jit.si/libs/lib-jitsi-meet.min.js"></script-->
         <title>EnfoMe || E-meet</title>
-        
     @endif
     @if(Route::current()->getName()=='newsfeed')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
+        <script> window.token={!!json_encode(session('token'))!!};console.log(window.token)</script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/newsfeed.css')}}">
@@ -61,70 +60,20 @@
         <link rel="stylesheet" href="{{asset('css/main/profile.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    @if(Route::current()->getName()=='college')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='corporate')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='diploma')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='govt')
-=======
     @if(Route::current()->getName()=='show_institutes' || Route::current()->getName()=='subscribed_institutes')
->>>>>>> Stashed changes
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
-    @if(Route::current()->getName()=='national')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='private')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='school')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='university')
-=======
-    @if(Route::current()->getName()=='show_institutes' || Route::current()->getName()=='subscribed_institutes')
->>>>>>> Stashed changes
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='notification')
+    @if(Route::current()->getName()=='notification_details')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
     @endif
-    @if(Route::current()->getName()=='single_institute')
+    @if(Route::current()->getName()=='institute_details')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
@@ -139,13 +88,24 @@
         <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/single_news_page.css')}}">
     @endif
-
+    @if(Route::current()->getName()=='verification.notice')
+        <title>EnfoMe || Verify</title>
+        <link rel="stylesheet" href="{{asset('css/main/verify1_style.css')}}">
+    @endif
+    @if(Route::current()->getName()=='verification.resend')
+        <title>EnfoMe || Verify</title>
+        <link rel="stylesheet" href="{{asset('css/main/verify2_style.css')}}">
+    @endif
+    <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
+    <link rel="icon" href="{{asset('img/enfologo.png')}}">
 </head>
 <body>
     @yield('content')
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
+    
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <script src="{{asset('js/signup/mobile_part.js')}}"></script>
         <script src="{{asset('js/signup/mobile_part_app.js')}}"></script>
@@ -176,33 +136,33 @@
                 document.getElementById('center_div').style.display='none';
                 const domain = 'meet.jit.si';
                 const options = {
-                    roomName: "trial",
+                    roomName: document.getElementById("roomName").value,
                     //height: document.getElementById("bg_one").getBoundingClientRect().height,
                     //width: document.getElementById("bg_one").getBoundingClientRect().width,
                     height: 400,
                     width: 700,
                     userInfo: {
                         email: window.user.email,
-                        displayName: window.user.name
+                        displayName: window.user.name                
                     },
                     audioInput: '<deviceLabel>',
                     audioOutput: '<deviceLabel>',
                     videoInput: '<deviceLabel>',
                     parentNode: document.getElementById("meeting"),
                     configOverwrite: { startWithAudioMuted: true },
-
+                    
                 }
                 window.api = new JitsiMeetExternalAPI(domain, options);
                 window.api.addEventListener('readyToClose', function(){
                     window.api.dispose();
                     document.getElementById('center_div').style.display='block';
                 });
+                //var div=document.getElementsByClassName('watermark leftwatermark');
+                //div[0].style.background-image='none';
             }
             window.onload = function(){
-
+                
             }
-            
-       
         </script>
     @endif
     @if(Route::current()->getName()=='newsfeed')
@@ -221,30 +181,6 @@
     <script src="{{asset('js/main/main.js')}}"></script>
     <script src="{{asset('js/main/function.js')}}"></script>
     @endif
-    @if(Route::current()->getName()=='college')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='corporate')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='diploma')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='govt')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='national')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='private')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='school')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='university')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
     @if(Route::current()->getName()=='notification')
         <script src="{{asset('js/main/main.js')}}"></script>
     @endif
@@ -256,11 +192,7 @@
     @endif
     <script src="{{asset('js/app.js')}}" defer></script>
     <script src="{{asset('js/views.js')}}" defer></script>
+    <script src="{{asset('js/main/main.js')}}"></script>
     @yield('js-part')
-
-    <script src="{{asset('js/app.js')}}" defer></script>
-    <script src="{{asset('js/views.js')}}" defer></script>
-    @yield('js-part')
-
 </body>
 </html>

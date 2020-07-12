@@ -11,76 +11,18 @@
 
         <!--Center of body-->
         <div class="news_center_feed" id="bg_one">
-            <!--News-->
+            @foreach ($news as $singleNews) 
             <div class="news_container">
                 <div class="flex_container">
                     <div class="img_container">
-                        <a href="#"><img src="{{asset('img/e_meet/NewsThumb.png')}}" alt="NewsThumb"></a>
+                        <a href="#"><img src="{{ url('storage/news_image/'.$singleNews->image) }}" data-toggle="modal" data-target="#exampleModalLong" alt="NewsThumb"></a>
                     </div>
                     <div class="text_container">
                         <div class="header_text">
-                            <a href="#"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </a>
+                            <a href="#" >{{$singleNews->title}}</a>
                         </div>
-                        <div class="headline_text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
-                        </div>
-                        <div class="news_date">
-                            2020/02/25
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--News-->
-            <div class="news_container">
-                <div class="flex_container">
-                    <div class="img_container">
-                        <a href="#"><img src="{{asset('img/e_meet/NewsThumb.png')}}" alt="NewsThumb"></a>
-                    </div>
-                    <div class="text_container">
-                        <div class="header_text">
-                            <a href="#"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </a>
-                        </div>
-                        <div class="headline_text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
-                        </div>
-                        <div class="news_date">
-                            2020/02/25
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--News-->
-            <div class="news_container">
-                <div class="flex_container">
-                    <div class="img_container">
-                        <a href="#"><img src="{{asset('img/e_meet/NewsThumb.png')}}" alt="NewsThumb"></a>
-                    </div>
-                    <div class="text_container">
-                        <div class="header_text">
-                            <a href="#"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </a>
-                        </div>
-                        <div class="headline_text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
-                        </div>
-                        <div class="news_date">
-                            2020/02/25
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--News-->
-            <!--Sponsored-->
-            <div class="news_container">
-                <div class="flex_container">
-                    <div class="img_container">
-                        <a href="#"><img src="{{asset('img/e_meet/ad_img.png')}}" alt="NewsThumb"></a>
-                    </div>
-                    <div class="text_container">
-                        <div class="header_text">
-                            <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</a> 
-                        </div>
-                        <div class="headline_text">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
+                        <div id="newsContent" class="headline_text">
+                        <p>{{substr($singleNews->body,0,500)}}</p><a href="#newsModalBlade">[Read more...]</a>
                         </div>
                         <div class="news_date">
                             <a href="#">www.website.com</a>
@@ -88,85 +30,7 @@
                     </div>
                 </div>
             </div>
-        <!--Sponsored-->
-        <!--News-->
-        <div class="news_container">
-            <div class="flex_container">
-                <div class="img_container">
-                    <a href="#"><img src="{{asset('img/e_meet/NewsThumb.png')}}" alt="NewsThumb"></a>
-                </div>
-                <div class="text_container">
-                    <div class="header_text">
-                        <a href="#"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </a>
-                    </div>
-                    <div class="headline_text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
-                    </div>
-                    <div class="news_date">
-                        2020/02/25
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--News-->
-        <div class="news_container">
-            <div class="flex_container">
-                <div class="img_container">
-                    <a href="#"><img src="{{asset('img/e_meet/NewsThumb.png')}}" alt="NewsThumb"></a>
-                </div>
-                <div class="text_container">
-                    <div class="header_text">
-                        <a href="#"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </a>
-                    </div>
-                    <div class="headline_text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
-                    </div>
-                    <div class="news_date">
-                        2020/02/25
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--News-->
-        <div class="news_container">
-            <div class="flex_container">
-                <div class="img_container">
-                    <a href="#"><img src="{{asset('img/e_meet/NewsThumb.png')}}" alt="NewsThumb"></a>
-                </div>
-                <div class="text_container">
-                    <div class="header_text">
-                        <a href="#"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text. </a>
-                    </div>
-                    <div class="headline_text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
-                    </div>
-                    <div class="news_date">
-                        2020/02/25
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--News-->
-        <!--Sponsored-->
-        <div class="news_container">
-            <div class="flex_container">
-                <div class="img_container">
-                    <a href="#"><img src="{{asset('img/e_meet/ad_img.png')}}" alt="NewsThumb"></a>
-                </div>
-                <div class="text_container">
-                    <div class="header_text">
-                        <a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</a>
-                    </div>
-                    <div class="headline_text">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <a href="#">[Read more...]</a>
-                    </div>
-                    <div class="news_date">
-                        <a href="#">www.website.com</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!--Sponsored-->
+            @endforeach
         </div>
         <!--Center of body-->
 

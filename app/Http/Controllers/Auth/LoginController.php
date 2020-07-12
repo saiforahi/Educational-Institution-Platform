@@ -52,13 +52,16 @@ class LoginController extends Controller
         Auth::user()->forceFill([
             'api_token' => $new_token,
         ])->save();
+        $token =Auth::user()->createToken('token');
         if(Auth::user()->user_details->type!='admin'){
             //return redirect()->intended('/dashboard');
-            return redirect()->intended('/newsfeed');
+            session('token',$token->plainTextToken);
+            return redirect()->intended('/newsfeed')->with(['token'=>$token->plainTextToken]);
         }
         else if(Auth::user()->user_details->type=='admin'){
             //return redirect()->intended('/admin_dashboard');
-            return redirect()->intended('/newsfeed');
+            session('token',$token->plainTextToken);
+            return redirect()->intended('/newsfeed')->with(['token'=>$token->plainTextToken]);
         }
         return redirect()->back();
     }
