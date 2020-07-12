@@ -40,6 +40,7 @@ Route::middleware('auth')->prefix('institute')->group(function () {
 });
 Route::middleware('auth')->prefix('subscription')->group(function () {
     Route::post('update', 'SubscriptionController@web_subscription')->name('update_subscription');
+    Route::get('list','SubscriptionController@web_list')->name('subscribed_institutes');
 });
 Route::middleware('auth')->prefix('notification')->group(function(){
     Route::get('details/{notification_id}','PageController@show_notification_details')->name('notification_details');
