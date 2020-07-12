@@ -20,11 +20,15 @@
         <a href="{{route('subscribed_institutes')}}">Your Subscription</a>
     </div>
     <!--Subscribe Section-->
-    <div class="sub_instNames">
+   <div class="sub_instNames">
         <div class="sub_profile_img">E</div>
         <a href="{{route('e_meet')}}"><p class="insName_line_one"> E-meet </p> <p class="insName_line_two"></p></a>
     </div>
     <div class="sub_instNames">
+        <div class="sub_profile_img">S</div>
+        <a href="#"> <p class="insName_line_one"> Survey </p><p class="insName_line_two"></p></a>
+    </div>
+    <!-- <div class="sub_instNames">
         <div class="sub_profile_img">D</div>
         <a href="#"> <p class="insName_line_one"> Dhaka University </p><p class="insName_line_two"></p></a>
     </div>
@@ -36,9 +40,12 @@
         <div class="sub_profile_img">H</div>
         <a href="#"> <p class="insName_line_one">Holy Cross Girls High School</p>
             <p class="insName_line_two"> and college </p></a>
-    </div>
+    </div> -->
     <div class="sm_btn_cnt">
         <button id="see_more_button">See More</button>
         <span></span>
     </div>
+</div>
+<!--Left Side of Body-->
+
 </div>

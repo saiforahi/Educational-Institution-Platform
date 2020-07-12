@@ -117,7 +117,7 @@
                 </ul>
             </div>
             <!--Social-->
-        </div> 
+        </div>
         <!--Right Side of body-->
         <!--Responsive Tools-->
         <div class="social_container_for_mobile" id="res_mob">
