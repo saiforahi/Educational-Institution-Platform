@@ -25,13 +25,13 @@ class PageController extends Controller
         return view('pages.e_meet');
     }
     public function show_newsfeed(){
-        $news=DB::table('news')->orderby('updated_at','asc')->get();
+        $news=DB::table('news')->orderby('created_at','asc')->get();
         //Storage::put('news_image/test.txt','working');
         $images=array();
         foreach($news as $singleNews){
             $images[$singleNews->image]=Storage::get('public/news_image/'.$singleNews->image);
         }
-        return view('pages.newsfeed')->with('news',$news);
+        return view('pages.new_newsfeed')->with('news',$news);
     }
     public function show_institute(){
         return view('pages.institute');

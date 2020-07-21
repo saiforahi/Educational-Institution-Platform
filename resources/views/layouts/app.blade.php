@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script>window.user={!! json_encode(Auth::user()); !!}; //console.log(window.user);</script>
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <link rel="stylesheet" href="{{asset('css/signup/style.css')}}">
@@ -13,7 +14,6 @@
         <title>{{config('app.name', 'Laravel')}} || Registration</title>
     @endif
     @if(Route::current()->getName()=='login')
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="{{asset('css/login/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/login/responsive.css')}}">
         <title>{{config('app.name', 'Laravel')}} || Login</title>
@@ -34,7 +34,6 @@
         <title>EnfoMe || Newsfeed</title>
     @endif
     @if(Route::current()->getName()=='institute')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institute.css')}}">
@@ -60,7 +59,7 @@
         <link rel="stylesheet" href="{{asset('css/main/profile.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     @endif
-    @if(Route::current()->getName()=='show_institutes' || Route::current()->getName()=='subscribed_institutes')
+    @if(Route::current()->getName()=='show_institutes')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
@@ -100,6 +99,7 @@
     <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     <link rel="icon" href="{{asset('img/enfologo.png')}}">
+    
 </head>
 <body>
     @yield('content')
@@ -165,9 +165,7 @@
             }
         </script>
     @endif
-    @if(Route::current()->getName()=='newsfeed')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
+    
     @if(Route::current()->getName()=='institute')
         <script src="{{asset('js/main/main.js')}}"></script>
     @endif

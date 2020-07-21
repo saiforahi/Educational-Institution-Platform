@@ -42,4 +42,9 @@ class SubscriptionController extends Controller
 
     }
 
+    public function _list(){
+        $data=DB::table('subscribers')->where('user_id',Auth::user()->id)->join('institutes','subscribers.institute_id','=','institutes.id')->select('institutes.id','institutes.name','institutes.type','institutes.address')->get();
+        return response()->json(['institutes'=>$data]);
+    }
+
 }

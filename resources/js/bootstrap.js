@@ -49,7 +49,7 @@ import Echo from 'laravel-echo'
 window.Pusher = require('pusher-js');
 
 if(window.user){
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer '+window.user.api_token;
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer '+window.token;
     window.Echo = new Echo({
         broadcaster: 'pusher',
         key: process.env.MIX_PUSHER_APP_KEY,
@@ -58,7 +58,7 @@ if(window.user){
         encrypted: true,
         auth: {
             headers: {
-                Authorization: 'Bearer ' + window.user.api_token
+                Authorization: 'Bearer ' + window.token
             }
         }
     });
