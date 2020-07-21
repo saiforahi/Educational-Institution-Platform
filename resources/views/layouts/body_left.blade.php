@@ -1,51 +1,88 @@
-<div class="left_menu" id="menu">
-    <!--Profile Section-->
-    <div class="logo">
-        <a href="{{route('home')}}"><img src="{{asset('img/e_meet/logo.png')}}" alt="Logo"></a>
+<!--Body Left Side-->
+<div class="n_left_body">
+    <div class="m_logo_container">
+        <a href="{{route('home')}}"><img src="{{asset('img/logo.png')}}" alt="Logo"></a>
     </div>
-    <div class="profile_side">
-        <div class="profile_img_left">
-            <img src="{{asset('img/e_meet/Profile.png')}}" alt="Profile Picture">
-        </div>
-        <a href="{{route('profile')}}">{{Auth::user()->name}}</a>
-    </div>
-    <div class="logout_right">
-        <img src="{{asset('img/e_meet/LogOut.png')}}" alt="LogOut">
-        <form id="side_logout" action="{{route('logout')}}" method="POST">@csrf</form>
-        <a href="#" onclick="document.getElementById('side_logout').submit()">Logout</a>
-        <span></span>
-    </div>
-    <div class="subscription">
-        <img src="{{asset('img/e_meet/Subscribe.png')}}" alt="Subscribe">
-        <a href="{{route('subscribed_institutes')}}">Your Subscription</a>
-    </div>
-    <!--Subscribe Section-->
-   <div class="sub_instNames">
-        <div class="sub_profile_img">E</div>
-        <a href="{{route('e_meet')}}"><p class="insName_line_one"> E-meet </p> <p class="insName_line_two"></p></a>
-    </div>
-    <div class="sub_instNames">
-        <div class="sub_profile_img">S</div>
-        <a href="#"> <p class="insName_line_one"> Survey </p><p class="insName_line_two"></p></a>
-    </div>
-    <!-- <div class="sub_instNames">
-        <div class="sub_profile_img">D</div>
-        <a href="#"> <p class="insName_line_one"> Dhaka University </p><p class="insName_line_two"></p></a>
-    </div>
-    <div class="sub_instNames">
-        <div class="sub_profile_img">R</div>
-        <a href="#"> <p class="insName_line_one"> Relight Research </p><p class="insName_line_two"></p></a>
-    </div>
-    <div class="sub_instNames">
-        <div class="sub_profile_img">H</div>
-        <a href="#"> <p class="insName_line_one">Holy Cross Girls High School</p>
-            <p class="insName_line_two"> and college </p></a>
-    </div> -->
-    <div class="sm_btn_cnt">
-        <button id="see_more_button">See More</button>
-        <span></span>
-    </div>
-</div>
-<!--Left Side of Body-->
 
+    <div class="m_left_menu_container">
+        <div class="m_item_container">
+            <div class="m_item_icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="m_item_text">
+                <p>{{Auth::user()->name}}</p>
+            </div>
+        </div>
+        <div class="m_item_container">
+            <div class="m_item_icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="m_item_text" onclick="document.getElementById('logoutform').submit()">
+                <p>Logout</p>
+            </div>
+            <form id="logoutform" action="{{route('logout')}}" method="POST">@csrf</form>
+        </div>
+        <div class="m_item_container">
+            <div class="m_item_icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="m_item_text">
+                <p>Rate Us</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="devider"><span></span></div>
+
+    <div class="m_left_menu_container">
+        <div class="m_item_container" id="subToggle">
+            <div class="m_item_icon">
+                <i class="fas fa-tv"></i>
+            </div>
+            <a href="{{route('subscribed_institutes')}}">
+                <div class="m_item_text">
+                    <p>Your Subscribtion</p>
+                </div>
+            </a>
+        </div>
+        <div class="sub_institute">
+            <div class="m_item_container">
+                <div class="m_item_icon">
+                    <h3>A</h3>
+                </div>
+                <div class="m_item_text">
+                    <p>Abc</p>
+                </div>
+            </div>
+            <div class="m_item_container">
+                <div class="m_item_icon">
+                    <h3>E</h3>
+                </div>
+                <div class="m_item_text">
+                    <p>EnfoMe</p>
+                </div>
+            </div>
+            <div class="m_item_container">
+                <div class="m_item_icon">
+                    <h3>R</h3>
+                </div>
+                <div class="m_item_text">
+                    <p>Relight</p>
+                </div>
+            </div>
+        </div>
+        <div class="m_item_container" id="notification_left">
+            <div class="m_item_icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="m_item_text">
+                <p>Notification</p>
+            </div>
+        </div>
+
+        <div class="devider"><span></span></div>
+
+    </div>
 </div>
+
+<!--Body Left Side-->

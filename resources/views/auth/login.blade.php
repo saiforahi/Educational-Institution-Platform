@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('auth.auth_layout')
 @section('content')
 <div class="flex_container">
     <div class="container">
@@ -106,7 +105,6 @@
             </div>
     </div>
     <div class="particle" id="particles-js-tab">
-
     </div>
     <form id="tab_login_form" action="{{route('login')}}" method="POST">
     @csrf

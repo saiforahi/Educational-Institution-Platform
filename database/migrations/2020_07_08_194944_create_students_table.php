@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->string('student_id')->unique();
             $table->foreignId('institute_id')->constrained('institutes');
-            
+            $table->string('sex')->nullable();
             $table->timestamps();
         });
     }

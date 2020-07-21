@@ -19,6 +19,7 @@ class CreateNewsTable extends Migration
             $table->longText('body');
             $table->string('image')->nullable();
             $table->string('link')->nullable();
+            $table->foreignId('institute_id')->constrained('institutes')->nullable();
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ class CreateNoticesTable extends Migration
             $table->string('image')->nullable();
             $table->longText('body')->nullable();
             $table->string('type')->nullable();
+            $table->foreignId('institute_id')->constrained('institutes');
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.temp')
 @section('content')
     @include('layouts.header')
     <!--Body-->
@@ -39,10 +39,8 @@
                 </div>
             </div>
         </div>
-        @include('layouts.body_right')
         <!--Center of body-->
-
-       
+        @include('layouts.body_right')
     </div>
 @endsection
 @section('js-part')
