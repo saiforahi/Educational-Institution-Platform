@@ -42,6 +42,6 @@ Route::middleware('auth')->prefix('notification')->group(function(){
 Route::get('landingSlider',function(){return view('layouts.slider');})->name('landing_slider');
 
 Route::prefix('survey')->group(function(){
-    Route::get('ques','SurveyController@show_survey_page')->name('show_survey');
+    Route::get('ques','PageController@show_survey')->name('show_survey');
     Route::post('save','SurveyController@save_answers')->name('save_survey');
 });
