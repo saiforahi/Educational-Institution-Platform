@@ -12,4 +12,7 @@ class Subscriber extends Model
     protected $fillable=[
         'user_id','institute_id'
     ];
+    public function institutes(){
+        return $this->belongsToMany('App\Institute','id','institute_id');
+    }
 }

@@ -9,6 +9,8 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 window.Vue = require('vue');
 window.axios = require('axios');
+window.$ = require('jquery');
+window.JQuery = require('jquery');
 Vue.use(VueAxios, axios)
 /**
  * The following block of code may be used to automatically register your
@@ -23,6 +25,9 @@ Vue.use(VueAxios, axios)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('create-news-component', require('./components/newsfeed_components/CreateNews.vue').default);
+Vue.component('show-news-component', require('./components/newsfeed_components/ShowNews.vue').default);
+Vue.component('notification-phone', require('./components/notification/Phone.vue').default);
+Vue.component('notification-desktop', require('./components/notification/Desktop.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

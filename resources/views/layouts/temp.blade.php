@@ -6,11 +6,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-    <script>window.user={!! json_encode(Auth::user()); !!}; //console.log(window.user);</script>
+    <script>window.user={!! json_encode(Auth::user()); !!};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script src="{{asset('js/app.js')}}" defer></script>
     <script src="{{asset('js/views.js')}}" defer></script>
     @if(Route::current()->getName()=='newsfeed')
-        <script>window.token={!! json_encode(session('token')); !!}; //console.log(window.user);</script>
+        <script>window.token={!! json_encode(session('token')); !!};</script>
         <link rel="stylesheet" href="{{asset('css/main/new_style.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('css/main/newsfeed.css')}}">
@@ -108,7 +109,6 @@
                     videoInput: '<deviceLabel>',
                     parentNode: document.getElementById("meeting"),
                     configOverwrite: { startWithAudioMuted: true },
-                    
                 }
                 window.api = new JitsiMeetExternalAPI(domain, options);
                 window.api.addEventListener('readyToClose', function(){
@@ -124,8 +124,8 @@
     @if(Route::current()->getName()=='profile')
         <script src="{{asset('js/main/function.js')}}"></script>
     @endif
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script src="{{asset('js/main/main.js')}}"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script-->
+    
     <script src="{{asset('js/main/script.js')}}"></script>
     @yield('js-part')
 </body>

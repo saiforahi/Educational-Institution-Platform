@@ -18,4 +18,10 @@ class Institute extends Model
     {
         return $this->hasMany('App\InsNotification','institute_id','id');
     }
+    public function admin(){
+        return $this->hasOne('App\Admin','id','institute_id');
+    }
+    public function subscribers(){
+        return $this->hasMany('App\Subscriber','institute_id','id');
+    }
 }

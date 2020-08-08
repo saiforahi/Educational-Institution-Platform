@@ -1,6 +1,6 @@
 @extends('auth.auth_layout')
 @section('content')
-<div class="flex_container">
+<div class="flex_container" id="login_blade">
     <div class="container">
         <svg version="1.1" id="shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 1580 780" style="enable-background:new 0 0 1580 780;" xml:space="preserve">
@@ -35,17 +35,17 @@
             </div>
             </div>
             <div class="footer">
-            <div class="footer_text">
-                DOWNLOAD OUR FREE APP
-            </div>
-            <div class="footer_icon">
-                    <a href="#" class="playstore">
+                <div class="footer_text">
+                    DOWNLOAD OUR FREE APP
+                </div>
+                <div class="footer_icon">
+                    <a target="_blank" href="https://play.google.com/store/apps/details?id=info.enfome.enfome&hl=en" class="playstore">
                         <img src="{{asset('img/playstore.svg')}}" alt="" id="playimg">
                     </a>
                     <a href="#" class="apple">
                         <img src="{{asset('img/apple.svg')}}" alt="" id="appleimg">
                     </a>
-            </div>
+                </div>
             </div>
         </div>
         <div class="form_partical_container" id="particles-js">
@@ -53,6 +53,15 @@
         <form id="desk_login_form" action="{{route('login')}}" method="POST">
             @csrf
             <div class="form">
+                @if ($errors->any())
+                    <div class="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="welcome">
                     Welcome
                 </div>
@@ -66,21 +75,7 @@
                     <label for="pass">Password</label>
                     <span class="line"></span>
                 </div>
-                <div class="checkbox">
-                    <label for="">
-                        <input type="checkbox">
-                        <span class="btn"></span>
-                        <span class="btn_circle"></span>
-                        <div class="text">Institute</div>
-                    </label>
-                    <label id="inst" for="">
-                        <input type="checkbox">
-                        <span class="btn"></span>
-                        <span class="btn_circle"></span>
-                        <div class="text">Student / Parent / Staff</div>
-                    </label>
-                </div>
-                    <a href="#" onclick="document.getElementById('desk_login_form').submit();" class="log_in">LOG IN</a>
+                <a href="#" onclick="document.getElementById('desk_login_form').submit();" class="log_in">LOG IN</a>
                 <div class="form_footer">
                     <span>Forget Password?</span><a href="#">Recover Password</a>
                 </div>
@@ -96,7 +91,7 @@
             <a href="{{route('register')}}" target="_blank" class="sign_up_btn">SIGN UP</a>
             <p>DOWNLOAD OUR FREE APP</p>
             <div class="icon_container">
-                <a href="#" class="playstore">
+                <a target="_blank" href="https://play.google.com/store/apps/details?id=info.enfome.enfome&hl=en" class="playstore">
                     <img src="{{asset('img/playstore.svg')}}" alt="" id="playimg">
                 </a>
                 <a href="#" class="apple">
@@ -122,20 +117,6 @@
                 <label for="pass">Password</label>
                 <span class="line"></span>
             </div>
-            <div class="checkbox_con">
-                <label for="">
-                    <input type="checkbox">
-                    <span class="btn"></span>
-                    <span class="btn_circle"></span>
-                    <div class="text">Institute</div>
-                </label>
-                <label id="inst" for="">
-                    <input type="checkbox">
-                    <span class="btn"></span>
-                    <span class="btn_circle"></span>
-                    <div class="text">Student / Parent / Staff</div>
-                </label>
-            </div>
                 <a href="#" onclick="document.getElementById('tab_login_form').submit()" class="log_in_btn">LOG IN</a>
             <div class="form_footer_con">
                 <span>Forget Password?</span><a href="#">Recover Password</a>
@@ -151,9 +132,6 @@
             @csrf
             <input type="email" name="email" placeholder="Enter Your E-mail or Number"><br>
             <input type="password" name="password" placeholder="Enter Your Password"><br>
-            <label for="" class="chose">Chose you account type below:</label>
-            <input type="checkbox" name="institute" id="institute"><label for="institute">Institute</label><br>
-            <input type="checkbox" name="institute" id="student"><label for="student" class="student">Student/Parent?Staff</label><br>
         </form>
         <a href="#" onclick="document.getElementById('mob_login_form').submit()" class="login_for_mobile">LOG IN</a>
         <div class="form_footer_con_mobile">

@@ -38,6 +38,12 @@ Route::middleware('auth:sanctum')->prefix('notices')->group(function(){
     Route::get('fetch','NoticeController@_notices');
 });
 Route::middleware('auth:sanctum')->prefix('news')->group(function(){
-    Route::get('create','NewsController@_create_news');
+    Route::post('create','NewsController@_create_news');
+    Route::get('fetchall','NewsController@_get_all_news');
+    Route::get('{id},NewsController@_get');
+});
+Route::middleware('auth:sanctum')->prefix('notifications')->group(function(){
+    Route::get('{id}','NotificationController@_get');
+    Route::get('grouped/get','NotificationController@_grouped_notifications');
 });
 
