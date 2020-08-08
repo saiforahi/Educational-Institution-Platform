@@ -55,12 +55,20 @@ class PageController extends Controller
         $user->save();
         return redirect()->back();
     }
-    
+
     public function show_notification_details($notification_id){
         return view('pages.notification')->with('details',InsNotification::find($notification_id));
     }
-    
+
     public function show_single_news(){
         return view('pages.single_news');
+    }
+    public function show_survey(){
+        return view('pages.survey');
+    }
+
+    public function save_answers(Request $request){
+        //$newSurvey= new Survey;
+        dd($request->all());
     }
 }
