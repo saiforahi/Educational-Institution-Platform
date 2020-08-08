@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NoticeUploaded' => [
             'App\Listeners\SendNewNoticeNotification',
         ],
+        'App\Events\NewsCreated' => [
+            'App\Listeners\SendNewNewsNotification',
+        ],
     ];
 
     /**

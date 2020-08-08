@@ -12,4 +12,7 @@ class Admin extends Model
     protected $fillable =[
         'user_id','institute_id'
     ];
+    public function institute(){
+        return $this->belongsTo('App\Institute','institute_id','id');
+    }
 }

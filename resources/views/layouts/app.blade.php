@@ -6,7 +6,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <script>window.user={!! json_encode(Auth::user()); !!}; //console.log(window.user);</script>
+    <script src="{{asset('js/app.js')}}" defer></script>
+    <script src="{{asset('js/views.js')}}" defer></script>
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <link rel="stylesheet" href="{{asset('css/signup/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/signup/responsive.css')}}">
@@ -17,67 +20,6 @@
         <link rel="stylesheet" href="{{asset('css/login/style.css')}}">
         <link rel="stylesheet" href="{{asset('css/login/responsive.css')}}">
         <title>{{config('app.name', 'Laravel')}} || Login</title>
-    @endif
-    @if(Route::current()->getName()=='e_meet')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-        <!--script src="https://meet.jit.si/libs/lib-jitsi-meet.min.js"></script-->
-        <title>EnfoMe || E-meet</title>
-    @endif
-    @if(Route::current()->getName()=='newsfeed')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <script> window.token={!!json_encode(session('token'))!!};console.log(window.token)</script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/newsfeed.css')}}">
-        <title>EnfoMe || Newsfeed</title>
-    @endif
-    @if(Route::current()->getName()=='institute')
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institute.css')}}">
-        <title>EnfoMe || Institute</title>
-    @endif
-    @if(Route::current()->getName()=='language')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/language.css')}}">
-        <title>EnfoMe || Language</title>
-    @endif
-    @if(Route::current()->getName()=='rateus')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/rateus.css')}}">
-        <title>EnfoMe || rate us</title>
-    @endif
-    @if(Route::current()->getName()=='profile')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/profile.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='show_institutes')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-    @endif
-    @if(Route::current()->getName()=='notification_details')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
-    @endif
-    @if(Route::current()->getName()=='institute_details')
-        <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institutepages.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/main/institute_single_page.css')}}">
     @endif
     @if(Route::current()->getName()=='single_news')
         <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
@@ -165,20 +107,6 @@
             }
         </script>
     @endif
-    
-    @if(Route::current()->getName()=='institute')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='language')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='rateus')
-        <script src="{{asset('js/main/main.js')}}"></script>
-    @endif
-    @if(Route::current()->getName()=='profile')
-    <script src="{{asset('js/main/main.js')}}"></script>
-    <script src="{{asset('js/main/function.js')}}"></script>
-    @endif
     @if(Route::current()->getName()=='notification')
         <script src="{{asset('js/main/main.js')}}"></script>
     @endif
@@ -188,8 +116,7 @@
     @if(Route::current()->getName()=='single_news')
         <script src="{{asset('js/main/main.js')}}"></script>
     @endif
-    <script src="{{asset('js/app.js')}}" defer></script>
-    <script src="{{asset('js/views.js')}}" defer></script>
+    
     <script src="{{asset('js/main/main.js')}}"></script>
     @yield('js-part')
 </body>

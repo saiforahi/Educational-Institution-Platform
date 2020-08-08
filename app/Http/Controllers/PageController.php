@@ -26,11 +26,12 @@ class PageController extends Controller
     }
     public function show_newsfeed(){
         $news=DB::table('news')->orderby('created_at','asc')->get();
-        //Storage::put('news_image/test.txt','working');
+        /*Storage::put('news_image/test.txt','working');
         $images=array();
         foreach($news as $singleNews){
-            $images[$singleNews->image]=Storage::get('public/news_image/'.$singleNews->image);
-        }
+            $name=Institute::find($singleNews->institute_id)->name;
+            $images[$singleNews->image]=Storage::get('news_image/'.$name.'/'.$singleNews->image);
+        }*/
         return view('pages.new_newsfeed')->with('news',$news);
     }
     public function show_institute(){
