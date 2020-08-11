@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/main/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/main/responsive.css')}}">
     <link rel="icon" href="{{asset('img/enfologo.png')}}">
-    
+
 </head>
 <body>
     @yield('content')
@@ -41,14 +41,14 @@
                     width: 700,
                     userInfo: {
                         email: window.user.email,
-                        displayName: window.user.name                
+                        displayName: window.user.name
                     },
                     audioInput: '<deviceLabel>',
                     audioOutput: '<deviceLabel>',
                     videoInput: '<deviceLabel>',
                     parentNode: document.getElementById("meeting"),
                     configOverwrite: { startWithAudioMuted: true },
-                    
+
                 }
                 window.api = new JitsiMeetExternalAPI(domain, options);
                 window.api.addEventListener('readyToClose', function(){
@@ -59,7 +59,7 @@
                 //div[0].style.background-image='none';
             }
             window.onload = function(){
-                
+
             }
         </script>
     @endif
