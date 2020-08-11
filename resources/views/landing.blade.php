@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:image" content="{{asset('img/male-user.svg')}}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>window.user={!! json_encode(Auth::user()); !!};</script>
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
     <title>EnfoMe</title>
@@ -21,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('css/frontend/download.css')}}">
     <link rel="stylesheet" href="{{asset('css/frontend/team.css')}}">
     <link rel="stylesheet" href="{{asset('css/frontend/contact.css')}}">
+    
 </head>
 <body>
     <!--Desktop Menu-->
@@ -694,10 +697,13 @@
       <p>© Copyright 2020 || EnfoMe </p>
     </div>
     <!--Footer-->
-    <script src="{{asset('js/frontend/JQuery3.3.1.js')}}"></script>
+    
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/views.js')}}" defer></script>
     <script src="{{asset('js/frontend/lightslider.js')}}"></script>
     <script  src="{{asset('js/frontend/team.js')}}"></script>
     <script src="{{asset('js/frontend/news.js')}}"></script>
     <script src="{{asset('js/frontend/script.js')}}"></script>
+    
 </body>
 </html>

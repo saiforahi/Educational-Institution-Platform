@@ -16,7 +16,7 @@ class NewsController extends Controller
     //
     public function _create_news(Request $request){
         $request->validate(['title'=>'required|string','body'=>'required|string','image'=>'sometimes|nullable|mimes:jpeg,jpg']);
-        $path=$request->image->store('public/news_image/'.Auth::user()->admin->institute->name);
+        $path=$request->image->store('news_image/'.Auth::user()->admin->institute->name);
         //Storage::put('public/news_image/'.Auth::user()->admin->institute->name.'/'.$image_name , $image_name);
         $new_news=News::create([
             'title' => $request->title,

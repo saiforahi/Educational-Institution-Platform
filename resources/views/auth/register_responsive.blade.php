@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth_layout')
 @section('content')
 <div class="mobile_center">
     <div class="responsive_for_mobile color">

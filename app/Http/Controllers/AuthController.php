@@ -54,8 +54,8 @@ class AuthController extends Controller
             $result=$this->register_as_institute($request->all());
             Auth::login($result['newUser']);
             //return redirect('/admin_dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
-            $tokenResult = Auth::user()->createToken('token')->plainTextToken;
-            return response()->json(['token'=>$tokenResult]);
+            //$tokenResult = Auth::user()->createToken('token')->plainTextToken;
+            return response()->json(['token'=>Auth::user()->api_token]);
         }
         else{
             $valid=$this->studentOrStaffValidator($request->all());
@@ -64,8 +64,8 @@ class AuthController extends Controller
             }
             $result=$this->register_as_student_or_staff($request->all());
             Auth::login($result['newUser']);
-            $tokenResult = Auth::user()->createToken('token')->plainTextToken;
-            return response()->json(['token'=>$tokenResult]);
+            //$tokenResult = Auth::user()->createToken('token')->plainTextToken;
+            return response()->json(['token'=>Auth::user()->api_token]);
         }
         return redirect()->back();
     }
@@ -135,9 +135,13 @@ class AuthController extends Controller
             return response()->json(['error'=>'wrong password']);
         }
         $tokenResult = $user->createToken('token')->plainTextToken;
+        $new_token = Hash::make(Str::random(80));
+        $user->forceFill([
+            'api_token' => $new_token,
+        ])->save();
         return response()->json([
         'status_code' => 200,
-        'access_token' => $tokenResult,
+        'access_token' => $user->api_token,
         'token_type' => 'Bearer',
         ]);
     } catch (Exception $error) {

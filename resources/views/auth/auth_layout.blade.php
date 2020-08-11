@@ -42,7 +42,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     @endif
     <script src="{{asset('js/app.js')}}" defer></script>
-    <script src="{{asset('js/views.js')}}" defer></script>
     <script src="{{asset('js/main/main.js')}}"></script>
     @yield('js-part')
 </body>

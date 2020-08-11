@@ -1,3 +1,4 @@
+console.log('views.js executing..')
 const app = new Vue({
     el: '#newsfeed_body',
     data(){
@@ -18,14 +19,16 @@ const app = new Vue({
         })
     },
     created(){
-        Echo.private('App.User.'+window.user.id)
-        .notification((notification) => {
-            axios.get('/api/news/fetchall').then(response=>{
-                this.newsData=response.data.news;
-            }).catch(error=>{
-    
-            })
-        });
+        if(window.user!=null){
+            Echo.private('App.User.'+window.user.id)
+            .notification((notification) => {
+                axios.get('/api/news/fetchall').then(response=>{
+                    this.newsData=response.data.news;
+                }).catch(error=>{
+        
+                })
+            });
+        }
     }
 });
 
@@ -35,4 +38,5 @@ const nav_desktop= new Vue({
 const nav_mobile= new Vue({
     el: '#navbar_mobile_vue',
 })
+
 

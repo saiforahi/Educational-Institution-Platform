@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Artisan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::group(['prefix' => 'command'], function () {
+    Route::get('/migrate', function () {
+        Artisan::call('migrate');
+        dd('done');
+    });
+
+    Route::get('/seed', function () {
+        Artisan::call('db:seed');
+        dd('done');
+    });
+    Route::get('/storage', function () {
+        Artisan::call('storage:link');
+        dd('done');
+    });
+    Route::get('/clear', function () {
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+    });
+});
 Auth::routes(['verify' => true]);
 Route::get('/', function () {return view('landing');})->name('home');
 Route::get('/profile','PageController@show_profile')->name('profile')->middleware('auth');
