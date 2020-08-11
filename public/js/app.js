@@ -2100,18 +2100,26 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
-    Echo["private"]('App.User.' + window.user.id).notification(function (notification) {
-      axios.get('/api/notifications/' + notification.id).then(function (response) {
-        for (var key in _this2.notification_list) {
-          if (key == response.data.notification.data.institute_name) {
-            _this2.notification_list[key].unshift(response.data.notification);
-          }
+    if (window.user != null) {
+      Echo["private"]('App.User.' + window.user.id).notification(function (notification) {
+        if (_this2.notification_list.length > 0) {
+          axios.get('/api/notifications/' + notification.id).then(function (response) {
+            for (var key in _this2.notification_list) {
+              if (key == response.data.notification.data.institute_name) {
+                _this2.notification_list[key].unshift(response.data.notification);
+              }
+            }
+          })["catch"](function (error) {//console.log(error);
+          });
+        } else {
+          axios.get('/api/notifications/grouped/get').then(function (response) {
+            _this2.notification_list = response.data.notifications;
+          })["catch"](function (error) {});
         }
 
         new Audio('http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3').play();
-      })["catch"](function (error) {//console.log(error);
       });
-    });
+    }
   }
 });
 
@@ -2165,14 +2173,26 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this2 = this;
 
-    Echo["private"]('App.User.' + window.user.id).notification(function (notification) {
-      axios.get('/api/notifications/' + notification.id).then(function (response) {
-        _this2.notification_list.unshift(response.data.notification);
+    if (window.user != null) {
+      Echo["private"]('App.User.' + window.user.id).notification(function (notification) {
+        if (_this2.notification_list.length > 0) {
+          axios.get('/api/notifications/' + notification.id).then(function (response) {
+            for (var key in _this2.notification_list) {
+              if (key == response.data.notification.data.institute_name) {
+                _this2.notification_list[key].unshift(response.data.notification);
+              }
+            }
+          })["catch"](function (error) {//console.log(error);
+          });
+        } else {
+          axios.get('/api/notifications/grouped/get').then(function (response) {
+            _this2.notification_list = response.data.notifications;
+          })["catch"](function (error) {});
+        }
 
         new Audio('http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3').play();
-      })["catch"](function (error) {//console.log(error);
       });
-    });
+    }
   }
 });
 
@@ -43875,7 +43895,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "create_news" }, [
-    _c("form", { attrs: { action: "#", method: "get" } }, [
+    _c("form", [
       _c("div", { staticClass: "textarea" }, [
         _c("input", {
           directives: [
@@ -43936,7 +43956,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "up_btn", on: { click: _vm.create_news } }, [
-          _c("button", [_vm._v("Post")])
+          _c("button", { attrs: { type: "button" } }, [_vm._v("Post")])
         ])
       ])
     ])
@@ -56346,6 +56366,8 @@ __webpack_require__.r(__webpack_exports__);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+console.log('app.js executing..');
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -56353,7 +56375,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.$ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-window.JQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTED_MODULE_0___default.a);
 /**
  * The following block of code may be used to automatically register your
@@ -56390,7 +56412,13 @@ Vue.component('notification-desktop', __webpack_require__(/*! ./components/notif
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+console.log('bootstrap.js executing..');
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+
+
+window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -56410,6 +56438,7 @@ try {
  */
 
 
+window.Vue = vue__WEBPACK_IMPORTED_MODULE_1___default.a;
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.withCredentials = true;
@@ -56420,6 +56449,8 @@ if (token) {
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+
+window.Vue.prototype.$http = axios;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -56434,12 +56465,10 @@ if (token) {
 //     forceTLS: true
 // });
 
-
-
-window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
-
 if (window.user) {
-  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.token;
+  console.log('bootstrap.js executing (Echo n axios)..');
+  console.log("User: " + window.user.api_token);
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + window.user.api_token;
   window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
     broadcaster: 'pusher',
     key: "ca4ccc0f95f4bbc89a27",
@@ -56448,7 +56477,7 @@ if (window.user) {
     encrypted: true,
     auth: {
       headers: {
-        Authorization: 'Bearer ' + window.token
+        Authorization: 'Bearer ' + window.user.api_token
       }
     }
   });

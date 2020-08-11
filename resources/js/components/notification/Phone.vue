@@ -38,17 +38,32 @@ export default {
         
     },
     created(){
-        Echo.private('App.User.'+window.user.id)
-        .notification((notification) => {
-            axios.get('/api/notifications/'+notification.id).then(response=>{
-                this.notification_list.unshift(response.data.notification);
+        if(window.user!=null){
+            Echo.private('App.User.'+window.user.id)
+            .notification((notification) => {
+                if(this.notification_list.length>0){
+                    axios.get('/api/notifications/'+notification.id).then(response=>{
+                        for(let key in this.notification_list){
+                            if(key==response.data.notification.data.institute_name){
+                                this.notification_list[key].unshift(response.data.notification);
+                            }
+                        }
+                    })
+                    .catch(function (error) {
+                    //console.log(error);
+                    });
+                }
+                else{
+                    axios.get('/api/notifications/grouped/get').then(response=>{
+                        this.notification_list=response.data.notifications;
+                    }).catch(error=>{
+
+                    })
+                }
                 new Audio('http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3').play();
-            })
-            .catch(function (error) {
-            //console.log(error);
             });
-            
-        });
+        }
+        
     }
 }
 </script>

@@ -3,14 +3,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+console.log('app.js executing..')
 require('./bootstrap');
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 window.Vue = require('vue');
 window.axios = require('axios');
 window.$ = require('jquery');
-window.JQuery = require('jquery');
+window.jQuery = require('jquery');
 Vue.use(VueAxios, axios)
 /**
  * The following block of code may be used to automatically register your

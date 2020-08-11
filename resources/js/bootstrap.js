@@ -1,5 +1,8 @@
+console.log('bootstrap.js executing..')
 window._ = require('lodash');
-
+import Echo from 'laravel-echo'
+import Vue from "vue";
+window.Pusher = require('pusher-js');
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -17,7 +20,7 @@ try {
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
-
+window.Vue = Vue;
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.withCredentials = true;
@@ -27,6 +30,7 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+window.Vue.prototype.$http = axios;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -44,11 +48,10 @@ if (token) {
 //     forceTLS: true
 // });
 
-import Echo from 'laravel-echo'
-window.Pusher = require('pusher-js');
-
 if(window.user){
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer '+window.token;
+    console.log('bootstrap.js executing (Echo n axios)..')
+    console.log("User: "+window.user.api_token)
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer '+window.user.api_token;
     window.Echo = new Echo({
         broadcaster: 'pusher',
         key: process.env.MIX_PUSHER_APP_KEY,
@@ -57,7 +60,7 @@ if(window.user){
         encrypted: true,
         auth: {
             headers: {
-                Authorization: 'Bearer ' + window.token
+                Authorization: 'Bearer ' + window.user.api_token
             }
         }
     });

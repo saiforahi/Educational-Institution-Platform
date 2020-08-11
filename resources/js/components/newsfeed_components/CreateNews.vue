@@ -1,6 +1,6 @@
 <template>
 <div class="create_news">
-    <form action="#" method="get">
+    <form>
         <div class="textarea">
             <input v-model="title" type="text" required placeholder="Title">
             <input v-model="body" type="text" required placeholder="Type your news">
@@ -11,7 +11,7 @@
                 <input ref="file" v-on:change="handleFileUpload" type="file" id="up" accept="image/png, image/jpg, image/jpeg">
             </div>
             <div v-on:click="create_news" class="up_btn">
-                <button>Post</button>
+                <button type="button">Post</button>
             </div>
         </div>
     </form>
