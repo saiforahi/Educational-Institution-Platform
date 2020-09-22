@@ -117,39 +117,39 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-    try {
-        $request->validate([
-        'email' => 'email|required',
-        'password' => 'required'
-        ]);
-        $credentials = request(['email', 'password']);
-        if (!Auth::attempt($credentials)) {
-        return response()->json([
+        try {
+            $request->validate([
+                'email' => 'email|required',
+                'password' => 'required'
+            ]);
+            $credentials = request(['email', 'password']);
+            if (!Auth::attempt($credentials)) {
+            return response()->json([
+                'status_code' => 500,
+                'message' => 'Unauthorized'
+            ]);
+            }
+            $user = User::where('email', $request->email)->first();
+            //if ( $request->password == $user->password) {
+            if ( ! Hash::check($request->password, $user->password, [])) {
+                return response()->json(['error'=>'wrong password']);
+            }
+            $tokenResult = $user->createToken('token')->plainTextToken;
+            $new_token = Hash::make(Str::random(80));
+            $user->forceFill([
+                'api_token' => $new_token,
+            ])->save();
+            return response()->json([
+            'status_code' => 200,
+            'access_token' => $user->api_token,
+            'token_type' => 'Bearer',
+            ]);
+        } catch (Exception $error) {
+            return response()->json([
             'status_code' => 500,
-            'message' => 'Unauthorized'
-        ]);
+            'message' => 'Error in Login',
+            'error' => $error,
+            ]);
         }
-        $user = User::where('email', $request->email)->first();
-        //if ( $request->password == $user->password) {
-        if ( ! Hash::check($request->password, $user->password, [])) {
-            return response()->json(['error'=>'wrong password']);
-        }
-        $tokenResult = $user->createToken('token')->plainTextToken;
-        $new_token = Hash::make(Str::random(80));
-        $user->forceFill([
-            'api_token' => $new_token,
-        ])->save();
-        return response()->json([
-        'status_code' => 200,
-        'access_token' => $user->api_token,
-        'token_type' => 'Bearer',
-        ]);
-    } catch (Exception $error) {
-        return response()->json([
-        'status_code' => 500,
-        'message' => 'Error in Login',
-        'error' => $error,
-        ]);
-    }
     }
 }

@@ -68,19 +68,48 @@ class RegisterController extends Controller
     protected function instituteValidator(array $data)
     {
         return Validator::make($data, [
-            'instituteName' => ['required', 'string', 'max:255'],
-            'adminName' => ['required', 'string', 'max:255'],
-            'adminPhone' => ['required', 'string', 'max:11', 'unique:users,phone'],
-            'adminEmail' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'adminPassword' => ['required', 'string', 'min:8', 'confirmed'],
-            'instituteAddress' => ['required', 'string', 'max:255'],
-            'instituteType' => ['required', 'string', 'max:255'],
+            'ins_reg_no' => 'required|string|max:255',
+            'ins_name' => ['required','string','max:255'],
+            'ins_selection'=> ['required', 'string', 'max:255'],
+            'dis_selection' => 'required|string|max:255',
+            'uni_selection' => ['required', 'string', 'max:255'],
         ]);
     }
-
-    public function register(Request $request){
+    public function validate_user(array $data){
+        $rules=[
+            'firstName' => ['required','string','max:255'],
+            'lastName' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'cell' => 'required|string|max:11|min:11|unique:users,phone',
+            'password' => 'required|string|min:6|confirmed'
+        ];
         
-        if($request->instituteType != null){            //registration type checking
+        return Validator::make($data,$rules);
+    }
+    public function register(Request $request){
+        $valid=$this->validate_user($request->all());
+        if($valid->fails()){
+            return redirect()->back()->withInput()->withErrors($valid);
+        }
+        if($request->cb1==true){
+            $valid_institute=$this->instituteValidator($request->all());
+            if($valid_institute->fails()){
+                return redirect()->back()->withErrors($valid_institute)->withInput();
+            }
+            $result=$this->register_as_institute($request->all());
+            Auth::login($result['newUser']);
+            $token =Auth::user()->createToken('token');
+            //return redirect('/admin_dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
+            session('token',$token->plainTextToken);
+            return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
+        }
+        elseif($request->cb2==true){
+
+        }
+        elseif($request->cb3==true){
+
+        }
+        /*if($request->instituteType != null){            //registration type checking
             $valid=$this->instituteValidator($request->all());
             if($valid->fails()){
                 return redirect()->back()->withErrors($valid)->withInput();
@@ -103,23 +132,24 @@ class RegisterController extends Controller
             session('token',$token->plainTextToken);
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
             //return redirect('/dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
-        }
-        return redirect()->back();
+        }*/
+        //return redirect()->back();
     }
 
     public function register_as_institute(array $data){
         $result['newUser']=User::create([
-            'name' => ucfirst(trans($data['adminName'])),
-            'username'=> $data['adminEmail'],
-            'email' => $data['adminEmail'],
-            'phone' => $data['adminPhone'],
-            'password' => Hash::make($data['adminPassword']),
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
             'api_token' => Hash::make(Str::random(80))
         ]);
         $result['newInstitute']=Institute::create([
-            'name' => strtoupper(trans($data['instituteName'])),
-            'address'=> $data['instituteAddress'],
-            'type' => $data['instituteType'],
+            'name' => strtoupper(trans($data['ins_name'])),
+            'address'=> json_encode(array('district'=>$data['dis_selection'],'subdistrict'=>$data['uni_selection'])),
+            'type' => $data['ins_selection'],
         ]);
         $result['newAdmin']=Admin::create([
             'user_id' => $result['newUser']->id,
@@ -127,7 +157,6 @@ class RegisterController extends Controller
         ]);
         $result['user_details']=UserDetails::create([
             'user_id' => $result['newUser']->id,
-            'first_name'=> ucfirst(trans($data['adminName'])),
             'type' => "admin",
             'institution_id' => $result['newInstitute']->id
         ]);
