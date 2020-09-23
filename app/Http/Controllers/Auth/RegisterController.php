@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Student;
+use App\Guardian;
+use App\Teacher;
 use App\Institute;
 use App\Admin;
 use App\UserDetails;
@@ -54,15 +57,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function studentOrStaffValidator(array $data)
+    protected function guardianValidator(array $data)
     {
         return Validator::make($data, [
-            'userName' => ['required', 'string', 'max:255'],
-            'userEmail' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'userPhone' => ['required', 'string', 'max:11', 'unique:users,phone'],
-            'userPassword' => ['required', 'string', 'min:8', 'confirmed'],
-            'user_type' => ['required', 'string', 'max:255'],
-            'institute' => ['required', 'string', 'max:255']
+            'student_id'=>'required|exists:students,student_id'
+        ]);
+    }
+    protected function studentValidator(array $data)
+    {
+        return Validator::make($data, [
+            'institute' => 'required|exists:institutes,id'
         ]);
     }
     protected function instituteValidator(array $data)
@@ -104,36 +108,30 @@ class RegisterController extends Controller
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
         }
         elseif($request->cb2==true){
-
-        }
-        elseif($request->cb3==true){
-
-        }
-        /*if($request->instituteType != null){            //registration type checking
-            $valid=$this->instituteValidator($request->all());
-            if($valid->fails()){
-                return redirect()->back()->withErrors($valid)->withInput();
+            $valid_student=$this->studentValidator($request->all());
+            if($valid_student->fails()){
+                return redirect()->back()->withErrors($valid_student)->withInput();
             }
-            $result=$this->register_as_institute($request->all());
+            $result=$this->register_as_student($request->all());
             Auth::login($result['newUser']);
             $token =Auth::user()->createToken('token');
             //return redirect('/admin_dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
             session('token',$token->plainTextToken);
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
         }
-        else{
-            $valid=$this->studentOrStaffValidator($request->all());
-            if($valid->fails()){
-                return redirect()->back()->withErrors($valid)->withInput();
+        elseif($request->cb3==true){
+            $valid_guardian=$this->guardianValidator($request->only('student_id'));
+            if($valid_guardian->fails()){
+                return redirect()->back()->withErrors($valid_student)->withInput();
             }
-            $result=$this->register_as_student_or_staff($request->all());
+            $result=$this->register_as_guardian($request->all());
             Auth::login($result['newUser']);
             $token =Auth::user()->createToken('token');
+            //return redirect('/admin_dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
             session('token',$token->plainTextToken);
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
-            //return redirect('/dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
-        }*/
-        //return redirect()->back();
+        }
+        
     }
 
     public function register_as_institute(array $data){
@@ -163,25 +161,47 @@ class RegisterController extends Controller
         return $result;
     }
 
-    public function register_as_student_or_staff(array $data){
+    public function register_as_student(array $data){
         $result['newUser']=User::create([
-            'name' => ucfirst(trans($data['userName'])),
-            'username'=> $data['userEmail'],
-            'email' => $data['userEmail'],
-            'phone' => $data['userPhone'],
-            'password' => Hash::make($data['userPassword']),
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
+            'api_token' => Hash::make(Str::random(80)),
+        ]);
+        $result['newStudent']=Student::create([
+            'user_id'=>$result['newUser']->id,
+            'institution_id'=> $data['institute']
+        ]);
+        $result['user_details']=UserDetails::create([
+            'user_id' => $result['newUser']->id,
+            'first_name'=> ucfirst(trans($data['userName'])),
+            'type' => 'student',
+            'institution_id' => $data['institute']
+        ]);
+        return $result;
+    }
+    public function register_as_guardian(array $data){
+        $result['newUser']=User::create([
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
             'api_token' => Hash::make(Str::random(80)),
         ]);
         
         $result['user_details']=UserDetails::create([
             'user_id' => $result['newUser']->id,
             'first_name'=> ucfirst(trans($data['userName'])),
-            'type' => $data['user_type'],
+            'type' => 'student',
             'institution_id' => $data['institute']
         ]);
         return $result;
     }
-
     public function showRegistrationForm(){
         $institutes=Institute::all();
         return view('auth.register')->with('institutes',$institutes);

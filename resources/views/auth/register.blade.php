@@ -56,6 +56,15 @@
                     </label>
                     <p>Institute</p>
                 </div>
+                <div class="cb3_con">
+                    <input type="checkbox" name="cb3" id="cb3">
+                    <label for="cb3" class="recheck tick_con3">
+                        <div class="tick_con">
+                            <div class="tick cb3"></div>
+                        </div>
+                    </label>
+                    <p>Teacher</p>
+                </div>
                 <div class="cb2_con">
                     <input type="checkbox" name="cb2" id="cb2">
                     <label for="cb2" class="recheck tick_con2">
@@ -64,15 +73,6 @@
                         </div>
                     </label>
                     <p>Student/Staff</p>
-                </div>
-                <div class="cb3_con">
-                    <input type="checkbox" name="cb3" id="cb3">
-                    <label for="cb3" class="recheck tick_con3">
-                        <div class="tick_con">
-                            <div class="tick cb3"></div>
-                        </div>
-                    </label>
-                    <p>Gurdian</p>
                 </div>
             </div>
             <small id="errorCb">ERRR</small>
@@ -109,24 +109,13 @@
             </div>
 
             <div class="stu_reg">
-                <div>
-                    <input name="stu_ins_name" type="text" placeholder="Enter Institute Name" id="stu_ins_name">
-                    <small id="errorSn">ERRR</small>
-                </div>
                 <div class="address">
-                    <label for="dis_selection_stu">Address</label>
-                    <select name="dis_selection_stu" id="dis_selection_stu">
-                        <option value="select" selected>--Select District--</option>
-                        <option>A</option>
-                        <option>B</option>
-                    </select>
-                    <select name="uni_selection" id="uni_selection_stu">
-                        <option value="select" selected>--Select Union--</option>
+                    <select name="institute" id="uni_selection">
+                        <option value="select" selected>--Select your institute--</option>
                         <option>A</option>
                         <option>B</option>
                     </select>
                 </div>
-                <small id="errorSd">ERRR</small>
             </div>
 
             <div class="gur_reg">
