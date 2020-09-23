@@ -10,7 +10,7 @@
                 <i class="fas fa-user"></i>
             </div>
             <div class="m_item_text">
-                <p>{{Auth::user()->name}}</p>
+                <p>{{Auth::user()->firstName}}</p>
             </div>
         </div>
         <div class="m_item_container">

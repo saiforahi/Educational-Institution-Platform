@@ -6,10 +6,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
         <link rel="stylesheet" href="{{asset('css/signup/style.css')}}">
-        <link rel="stylesheet" href="{{asset('css/signup/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('css/signup/mobile_responsive.css')}}">
         <title>{{config('app.name', 'Laravel')}} || Registration</title>
     @endif
     @if(Route::current()->getName()=='login')
@@ -24,12 +23,7 @@
     @yield('content')
     
     @if(Route::current()->getName()=='register' || Route::current()->getName()=='mobile_reg')
-        <script src="{{asset('js/signup/mobile_part.js')}}"></script>
-        <script src="{{asset('js/signup/mobile_part_app.js')}}"></script>
-        <script src="{{asset('js/signup/particles.min.js')}}"></script>
-        <script src="{{asset('js/signup/app.js')}}"></script>
-        <script src="{{asset('js/signup/main.js')}}"></script>
-        <script src="{{asset('js/signup/validationForStudent.js')}}"></script>
+        <script src="{{asset('js/signup/script.js')}}"></script>
     @endif
     @if(Route::current()->getName()=='login')
         <script src="{{asset('js/login/particles.min.js')}}"></script>
@@ -42,7 +36,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     @endif
     <script src="{{asset('js/app.js')}}" defer></script>
-    <script src="{{asset('js/main/main.js')}}"></script>
+    
     @yield('js-part')
 </body>
 </html>

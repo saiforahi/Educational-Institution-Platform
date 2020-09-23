@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="item_text_con">
-                        <p>{{Auth::user()->name}}</p>
+                        <p>{{Auth::user()->firstName}}</p>
                     </div>
                 </a>
                 <div class="dropdown_profile_mobile">
@@ -170,7 +170,7 @@
                     </div>
                 </div>
                     <div class="profile_name_con" id="pn">
-                        <p>{{Auth::user()->name}}</p>
+                        <p>{{Auth::user()->firstName}}</p>
                     </div>
                 <div class="notification" id="notification_desktop">
                     <div class="noti_icon_con">

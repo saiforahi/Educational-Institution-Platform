@@ -8,6 +8,6 @@ class UserDetails extends Model
 {
     //
     protected $fillable= [
-        'user_id','first_name','last_name','type','institution_id'
+        'user_id','type','institution_id'
     ];
 }
