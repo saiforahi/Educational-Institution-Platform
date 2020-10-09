@@ -16,8 +16,9 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('teacher_id')->unique();
-            $table->foreignId('institute_id')->constrained('institutes');
+            $table->string('teacher_id')->unique()->nullable();
+            $table->foreignId('institute_id')->constrained('institutes')->onDelete('cascade');
+            $table->json('classes')->nullable();
             $table->timestamps();
         });
     }

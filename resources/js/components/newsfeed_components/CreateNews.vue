@@ -18,7 +18,8 @@
 </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import swal from 'sweetalert';
 export default {
     data(){
         return{
@@ -43,8 +44,12 @@ export default {
                         'Content-Type': 'multipart/form-data'
                 }
             }).then(response=>{
-                console.log(response.data)
-                this.$emit('news_created',response.data.new_news)
+                console.log(response.data);
+                this.$emit('news_created',response.data.new_news);
+                this.title="";
+                this.body="";
+                this.image_file="";
+                swal("Post Created!", "Your Post created and published successfully!", "success");
             }).catch(error=>{
                 console.log(error)
             })

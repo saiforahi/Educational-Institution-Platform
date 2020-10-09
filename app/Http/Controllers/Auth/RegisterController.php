@@ -63,10 +63,16 @@ class RegisterController extends Controller
             'student_id'=>'required|exists:students,student_id'
         ]);
     }
+    protected function teacherValidator(array $data)
+    {
+        return Validator::make($data, [
+            'tea_institute'=>'required|exists:institutes,id'
+        ]);
+    }
     protected function studentValidator(array $data)
     {
         return Validator::make($data, [
-            'institute' => 'required|exists:institutes,id'
+            'stu_institute' => 'required|exists:institutes,id'
         ]);
     }
     protected function instituteValidator(array $data)
@@ -108,7 +114,7 @@ class RegisterController extends Controller
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
         }
         elseif($request->cb2==true){
-            $valid_student=$this->studentValidator($request->all());
+            $valid_student=$this->studentValidator($request->only('stu_institute'));
             if($valid_student->fails()){
                 return redirect()->back()->withErrors($valid_student)->withInput();
             }
@@ -120,11 +126,11 @@ class RegisterController extends Controller
             return redirect('/newsfeed')->with(['AccountCreatedMessage'=>' Account Created!']);
         }
         elseif($request->cb3==true){
-            $valid_guardian=$this->guardianValidator($request->only('student_id'));
-            if($valid_guardian->fails()){
+            $valid_teacher=$this->teacherValidator($request->only('tea_institute'));
+            if($valid_teacher->fails()){
                 return redirect()->back()->withErrors($valid_student)->withInput();
             }
-            $result=$this->register_as_guardian($request->all());
+            $result=$this->register_as_teacher($request->all());
             Auth::login($result['newUser']);
             $token =Auth::user()->createToken('token');
             //return redirect('/admin_dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
@@ -171,15 +177,35 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'api_token' => Hash::make(Str::random(80)),
         ]);
+        $result['user_details']=UserDetails::create([
+            'user_id' => $result['newUser']->id,
+            'type' => 'student',
+            'institution_id' => $data['stu_institute']
+        ]);
         $result['newStudent']=Student::create([
             'user_id'=>$result['newUser']->id,
-            'institution_id'=> $data['institute']
+            'institute_id'=> $data['stu_institute']
+        ]);
+        return $result;
+    }
+    public function register_as_teacher(array $data){
+        $result['newUser']=User::create([
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
+            'api_token' => Hash::make(Str::random(80)),
         ]);
         $result['user_details']=UserDetails::create([
             'user_id' => $result['newUser']->id,
-            'first_name'=> ucfirst(trans($data['userName'])),
-            'type' => 'student',
-            'institution_id' => $data['institute']
+            'type' => 'teacher',
+            'institution_id' => $data['tea_institute']
+        ]);
+        $result['newTeacher']=Teacher::create([
+            'user_id' => $result['newUser']->id,
+            'institute_id' => $data['tea_institute']
         ]);
         return $result;
     }
@@ -196,7 +222,6 @@ class RegisterController extends Controller
         
         $result['user_details']=UserDetails::create([
             'user_id' => $result['newUser']->id,
-            'first_name'=> ucfirst(trans($data['userName'])),
             'type' => 'student',
             'institution_id' => $data['institute']
         ]);

@@ -16,7 +16,7 @@ class CreateInstitutesTable extends Migration
         Schema::create('institutes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->json('address');
+            $table->json('address')->nullable();
             $table->string('type');
             $table->timestamps();
         });

@@ -71,4 +71,8 @@ class PageController extends Controller
         //$newSurvey= new Survey;
         dd($request->all());
     }
+
+    public function show_boiler(){
+        return view('sections.newsfeed');
+    }
 }

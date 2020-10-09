@@ -15,8 +15,8 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('user_id')->constrained('users')->nullable();
-            $table->foreignId('institute_id')->constrained('institutes');
+            $table->foreignId('user_id')->constrained('users')->nullable()->onDelete('cascade');
+            $table->foreignId('institute_id')->constrained('institutes')->onDelete('cascade');
             $table->timestamps();
         });
     }

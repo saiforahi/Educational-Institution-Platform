@@ -65,3 +65,5 @@ Route::prefix('survey')->group(function(){
     Route::get('ques','PageController@show_survey')->name('show_survey');
     Route::post('save','SurveyController@save_answers')->name('save_survey');
 });
+
+Route::get('/test','PageController@show_boiler');
