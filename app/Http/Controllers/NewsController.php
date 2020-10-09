@@ -22,7 +22,7 @@ class NewsController extends Controller
             'title' => $request->title,
             'body' => $request->body,
             'image' => $path,
-            'link' => Storage::url($path),
+            'link' => '/storage/app/'.$path,
             'institute_id' => Auth::user()->admin->institute->id
         ]);
         event(new NewsCreated($new_news));

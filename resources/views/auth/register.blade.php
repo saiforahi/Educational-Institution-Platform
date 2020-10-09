@@ -4,7 +4,7 @@
     <div class="flex_container">
         <div class="header">
             <div class="logo_con">
-                <img src="{{asset('img/EnfoMeLogo.png')}}" alt="EnfoMe Logo">
+                <a href="{{route('home')}}"><img src="{{asset('img/EnfoMeLogo.png')}}" alt="EnfoMe Logo"></a>
             </div>
         </div>
         <div class="form">
@@ -72,7 +72,7 @@
                             <div class="tick cb2"></div>
                         </div>
                     </label>
-                    <p>Student/Staff</p>
+                    <p>Student</p>
                 </div>
             </div>
             <small id="errorCb">ERRR</small>
@@ -88,8 +88,8 @@
                 </div>
                 <select name="ins_selection" id="ins_selection">
                     <option value="select" selected>--Select Institute Type--</option>
-                    <option>A</option>
-                    <option>B</option>
+                    <option value="school">school</option>
+                    <option value="college">college</option>
                 </select>
                 <small id="errorIs">ERRR</small>
                 <div class="address">
@@ -110,18 +110,23 @@
 
             <div class="stu_reg">
                 <div class="address">
-                    <select name="institute" id="uni_selection">
+                    <select name="stu_institute" id="uni_selection">
                         <option value="select" selected>--Select your institute--</option>
-                        <option>A</option>
-                        <option>B</option>
+                        @foreach ($institutes as $institute)
+                            <option value="{{$institute->id}}">{{$institute->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
 
             <div class="gur_reg">
-                <div>
-                    <input name="stu_id" type="tel" placeholder="Enter Student Id" id="stu_id">
-                    <small id="errorG">ERRR</small>
+                <div class="address">
+                    <select name="tea_institute" id="uni_selection">
+                        <option value="select" selected>--Select your institute--</option>
+                        @foreach ($institutes as $institute)
+                            <option value="{{$institute->id}}">{{$institute->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <button type="submit">Sign Up</button>
