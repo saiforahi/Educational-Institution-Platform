@@ -2,6 +2,16 @@
     <div class="l_r_s_m_container">
         <nav>
             <ul>
+                <li>
+                    <div class="mobile_profile">
+                        <p>Profile</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile_notification">
+                        <p>Notification</p>
+                    </div>
+                </li>
                 <li><a href="#">Demo Menu Item</a></li>
                 <li><a href="#">Demo Menu Item</a></li>
                 <li><a href="#">Demo Menu Item</a></li>

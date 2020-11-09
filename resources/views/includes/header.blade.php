@@ -3,17 +3,11 @@
     <section class="left_menu">
         <nav>
             <ul>
-                <li><a href="#"><img src="{{asset('img/IconLogo.png')}}" alt="Logo"></a></li>
-                <li><div class="search-wrapper">
-                    <div class="input-holder">
-                      <form action="#">
-                        <input type="text" class="search-input" placeholder="Type to search" />
-                        <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
-                      </form>
-                    </div>
-                    <span class="close" onclick="searchToggle(this, event);"></span>
-                    </div>
-                </li>
+                <li><a href="#"><img src="./img/IconLogo.png" alt="Logo"></a></li>
+                <li><form action="#">
+                    <input type="text" placeholder="Search Here">
+                    <button><i class="fas fa-search"></i></button>
+                </form></li>
             </ul>
         </nav>
         <div class="responsive_right_menu">
@@ -40,24 +34,17 @@
     </section>
     <!----------------------------------Center Menu---------------------------------->
     <section class="main_menu">
-        <nav>
-            <ul id="center-menu">
-                <li> <abbr title="test"> <a href="#"><i class="fas fa-air-freshener"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fas fa-air-freshener"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fab fa-affiliatetheme"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fab fa-affiliatetheme"></i></a> </abbr> </li>
-                <!--Add them to see the scrolling-->
-                <li> <abbr title="test"> <a href="#"><i class="fas fa-adjust"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fab fa-affiliatetheme"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fas fa-address-book"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fab fa-affiliatetheme"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fas fa-ambulance"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fab fa-affiliatetheme"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fas fa-address-book"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fas fa-ambulance"></i></a> </abbr> </li>
-                <li> <abbr title="test"> <a href="#"><i class="fab fa-affiliatetheme"></i></a> </abbr> </li>
-            </ul>
-        </nav>
+        <ul>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+            <li><a href="#">Demo Nav Item</a></li>
+        </ul>
     </section>
     <!----------------------------------Right Menu---------------------------------->
     <section class="right_menu">
@@ -79,7 +66,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#">
+            <a href="#" onclick="document.getElementById('logoutform').submit()">
                 <div class="p_s_con">
                     <div class="p_s_icon">
                         <span><i class="fas fa-lock"></i></span>
@@ -88,6 +75,7 @@
                         <p>Log Out</p>
                     </div>
                 </div>
+                <form id="logoutform" action="{{route('logout')}}" method="POST">@csrf</form>
             </a>
             <a href="#">
                 <div class="p_s_con">

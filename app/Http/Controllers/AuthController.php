@@ -20,69 +20,107 @@ class AuthController extends Controller
         $user->tokens()->delete();
         return response()->json(['success'=>'logged out']);
     }
-    protected function studentOrStaffValidator(array $data)
+    protected function guardianValidator(array $data)
     {
         return Validator::make($data, [
-            'userName' => ['required', 'string', 'max:255'],
-            'userEmail' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'userPhone' => ['required', 'string', 'max:11', 'unique:users,phone'],
-            'userPassword' => ['required', 'string', 'min:8', 'confirmed'],
-            'user_type' => ['required', 'string', 'max:255'],
-            'institute' => ['required', 'string', 'max:255']
+            'student_id'=>'required|exists:students,student_id'
+        ]);
+    }
+    protected function teacherValidator(array $data)
+    {
+        return Validator::make($data, [
+            'tea_institute'=>'required|exists:institutes,id'
+        ]);
+    }
+    protected function studentValidator(array $data)
+    {
+        return Validator::make($data, [
+            'stu_institute' => 'required|exists:institutes,id'
         ]);
     }
     protected function instituteValidator(array $data)
     {
         return Validator::make($data, [
-            'instituteName' => ['required', 'string', 'max:255'],
-            'adminName' => ['required', 'string', 'max:255'],
-            'adminPhone' => ['required', 'string', 'max:11', 'unique:users,phone'],
-            'adminEmail' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'adminPassword' => ['required', 'string', 'min:8', 'confirmed'],
-            'instituteAddress' => ['required', 'string', 'max:255'],
-            'instituteType' => ['required', 'string', 'max:255'],
+            'ins_reg_no' => 'required|string|max:255',
+            'ins_name' => ['required','string','max:255'],
+            'ins_type'=> ['required', 'string', 'max:255'],
+            'dis_selection' => 'required|max:255',
+            'uni_selection' => ['required',  'max:255'],
         ]);
     }
-
-    public function register(Request $request){
+    public function validate_user(array $data){
+        $rules=[
+            'firstName' => ['required','string','max:255'],
+            'lastName' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'cell' => 'required|string|max:11|min:11|unique:users,phone',
+            'password' => 'required|string|min:6'
+        ];
         
-        if($request->instituteType != null){            //registration type checking
-            $valid=$this->instituteValidator($request->all());
-            if($valid->fails()){
-                return response()->json(['errors'=>$valid->errors()]);
+        return Validator::make($data,$rules);
+    }
+    public function register(Request $request){
+        $valid=$this->validate_user($request->all());
+        if($valid->fails()){
+            $messages=array();
+            foreach($valid->errors() as $error){
+                array_push($messages,$error);
+            }
+            return response()->json(["status"=>false,"message"=>$valid->errors()]);
+        }
+        if($request->type=='institute'){
+            $valid_institute=$this->instituteValidator($request->all());
+            if($valid_institute->fails()){
+                return response()->json(["status"=>false,"message"=>$valid_institute->errors()]);
             }
             $result=$this->register_as_institute($request->all());
             Auth::login($result['newUser']);
-            //return redirect('/admin_dashboard')->with(['AccountCreatedMessage'=>' Account Created!']);
-            //$tokenResult = Auth::user()->createToken('token')->plainTextToken;
-            return response()->json(['token'=>Auth::user()->api_token]);
+            $token =Auth::user()->createToken('token');
+            Auth::user()->sendEmailVerificationNotification();
+            //session('token',$token->plainTextToken);
+            return response()->json(['status'=>true,'access_token'=>Auth::user()->api_token]);
         }
-        else{
-            $valid=$this->studentOrStaffValidator($request->all());
-            if($valid->fails()){
-                return response()->json(['errors'=>$valid->errors()]);
+        elseif($request->type=='student'){
+            $valid_student=$this->studentValidator($request->only('stu_institute'));
+            if($valid_student->fails()){
+                return response()->json(["status"=>false,"message"=>$valid_student->errors()]);
             }
-            $result=$this->register_as_student_or_staff($request->all());
+            $result=$this->register_as_student($request->all());
             Auth::login($result['newUser']);
-            //$tokenResult = Auth::user()->createToken('token')->plainTextToken;
-            return response()->json(['token'=>Auth::user()->api_token]);
+            $token =Auth::user()->createToken('token');
+            Auth::user()->sendEmailVerificationNotification();
+            //session('token',$token->plainTextToken);
+            return response()->json(['status'=>true,'access_token'=>Auth::user()->api_token]);
         }
-        return redirect()->back();
+        elseif($request->type=='teacher'){
+            $valid_teacher=$this->teacherValidator($request->only('tea_institute'));
+            if($valid_teacher->fails()){
+                return response()->json(["status"=>false,"message"=>$valid_teacher->errors()]);
+            }
+            $result=$this->register_as_teacher($request->all());
+            Auth::login($result['newUser']);
+            $token =Auth::user()->createToken('token');
+            Auth::user()->sendEmailVerificationNotification();
+            //session('token',$token->plainTextToken);
+            return response()->json(['status'=>true,'access_token'=>Auth::user()->api_token]);
+        }
+        
     }
 
     public function register_as_institute(array $data){
         $result['newUser']=User::create([
-            'name' => ucfirst(trans($data['adminName'])),
-            'username'=> $data['adminEmail'],
-            'email' => $data['adminEmail'],
-            'phone' => $data['adminPhone'],
-            'password' => Hash::make($data['adminPassword']),
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
             'api_token' => Hash::make(Str::random(80))
         ]);
         $result['newInstitute']=Institute::create([
-            'name' => strtoupper(trans($data['instituteName'])),
-            'address'=> $data['instituteAddress'],
-            'type' => $data['instituteType'],
+            'name' => strtoupper(trans($data['ins_name'])),
+            'address'=> json_encode(array('district'=>$data['dis_selection'],'subdistrict'=>$data['uni_selection'])),
+            'type' => $data['ins_type'],
         ]);
         $result['newAdmin']=Admin::create([
             'user_id' => $result['newUser']->id,
@@ -90,27 +128,68 @@ class AuthController extends Controller
         ]);
         $result['user_details']=UserDetails::create([
             'user_id' => $result['newUser']->id,
-            'first_name'=> ucfirst(trans($data['adminName'])),
             'type' => "admin",
             'institution_id' => $result['newInstitute']->id
         ]);
         return $result;
     }
 
-    public function register_as_student_or_staff(array $data){
+    public function register_as_student(array $data){
         $result['newUser']=User::create([
-            'name' => ucfirst(trans($data['userName'])),
-            'username'=> $data['userEmail'],
-            'email' => $data['userEmail'],
-            'phone' => $data['userPhone'],
-            'password' => Hash::make($data['userPassword']),
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
+            'api_token' => Hash::make(Str::random(80)),
+        ]);
+        $result['user_details']=UserDetails::create([
+            'user_id' => $result['newUser']->id,
+            'type' => 'student',
+            'institution_id' => $data['stu_institute']
+        ]);
+        $result['newStudent']=Student::create([
+            'user_id'=>$result['newUser']->id,
+            'institute_id'=> $data['stu_institute']
+        ]);
+        return $result;
+    }
+    public function register_as_teacher(array $data){
+        $result['newUser']=User::create([
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
+            'api_token' => Hash::make(Str::random(80)),
+        ]);
+        $result['user_details']=UserDetails::create([
+            'user_id' => $result['newUser']->id,
+            'type' => 'teacher',
+            'institution_id' => $data['tea_institute']
+        ]);
+        $result['newTeacher']=Teacher::create([
+            'user_id' => $result['newUser']->id,
+            'institute_id' => $data['tea_institute']
+        ]);
+        return $result;
+    }
+    public function register_as_guardian(array $data){
+        $result['newUser']=User::create([
+            'firstName' => ucfirst(trans($data['firstName'])),
+            'lastName' => ucfirst(trans($data['lastName'])),
+            'username'=> $data['email'],
+            'email' => $data['email'],
+            'phone' => $data['cell'],
+            'password' => Hash::make($data['password']),
             'api_token' => Hash::make(Str::random(80)),
         ]);
         
         $result['user_details']=UserDetails::create([
             'user_id' => $result['newUser']->id,
-            'first_name'=> ucfirst(trans($data['userName'])),
-            'type' => $data['user_type'],
+            'type' => 'student',
             'institution_id' => $data['institute']
         ]);
         return $result;
@@ -151,5 +230,18 @@ class AuthController extends Controller
             'error' => $error,
             ]);
         }
+    }
+
+    public function get_user_details(){
+        $data=Auth::user();
+        if(Admin::where('user_id',$data->id)->exists()){
+            $data["role"]="admin";
+            $data["institute"]=Admin::where('user_id',$data->id)->first()->join("institutes","institutes.id","=","admins.institute_id")->select("institutes.id","institutes.name")->get();
+        }
+        else{
+            //$type=Auth::user()->user_details;
+            $data["role"]=Auth::user()->user_details->type;
+        }
+        return $data;
     }
 }

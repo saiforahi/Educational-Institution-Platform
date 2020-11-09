@@ -1,57 +1,26 @@
-@extends('auth.auth_layout')
-@section('content')
-<div class="flex_container" id="login_blade">
-    <div class="container">
-        <svg version="1.1" id="shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-             viewBox="0 0 1580 780" style="enable-background:new 0 0 1580 780;" xml:space="preserve">
-        <style type="text/css">
-            .st0{fill:#6BB392;}
-        </style>
-        <path class="st0" d="M0,0c0,260,0,520,0,780c272.06,0,544.13,0,816.19,0c-202.96-117.21-248.8-198.5-240.51-255.04
-            c14.57-99.39,198.24-134.63,194.55-238.98c-2.03-57.29-58.46-77.29-65.87-160.85C699.63,71.77,717.94,26.94,731.94,0
-            C487.96,0,243.98,0,0,0z"/>
-        </svg>
-        <div class="slider_container">
-            <div class="logo">
-                <img src="{{asset('img/logo.png')}}" alt="">
-            </div>
-            <div class="slider">
-                <div class="heading_text">
-                    Bangladesh's most advanced<br>multipurpose digital communication <br> platform.
-                </div>
-                <!--
-                <div class="subheading_text">
-                    Join Us Now
-                </div>
-                -->
-                <a href="{{route('register')}}" target="_blank" class="sign_up"> <span>SIGN UP</span> </a>
-                <div class="slider_buttons">
-                    <div class="s_but_one"></div>
-                    <div class="s_but_two"></div>
-                    <div class="s_but_three"></div>
-                </div>
-            <div class="slider_image">
-                <img src="{{asset('img/iso.png')}}" alt="">
-            </div>
-            </div>
-            <div class="footer">
-                <div class="footer_text">
-                    DOWNLOAD OUR FREE APP
-                </div>
-                <div class="footer_icon">
-                    <a target="_blank" href="https://play.google.com/store/apps/details?id=info.enfome.enfome&hl=en" class="playstore">
-                        <img src="{{asset('img/playstore.svg')}}" alt="" id="playimg">
-                    </a>
-                    <a href="#" class="apple">
-                        <img src="{{asset('img/apple.svg')}}" alt="" id="appleimg">
-                    </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="icon" href="./img/enfologo.png"> -->
+    @if(Route::current()->getName()=='login')
+        <link rel="stylesheet" href="{{asset('css/login/style.css')}}">
+        <title>{{config('app.name', 'Laravel')}} || Login</title>
+    @endif
+</head>
+<body>
+    <div class="main_container">
+        <div class="flex_container">
+            <div class="header">
+                <div class="logo_con">
+                    <img src="{{asset('img/EnfoMeLogo.png')}}" alt="EnfoMe Logo">
                 </div>
             </div>
-        </div>
-        <div class="form_partical_container" id="particles-js">
-        </div>
-        <form id="desk_login_form" action="{{route('login')}}" method="POST">
-            @csrf
+            <div class="svg">
+                <div class="head"></div>
+                <div class="body"></div>
+            </div>
             <div class="form">
                 @if ($errors->any())
                     <div class="alert">
@@ -62,87 +31,45 @@
                         </ul>
                     </div>
                 @endif
-                <div class="welcome">
-                    Welcome
-                </div>
-                <div class="email">
-                    <input type="email" name="email" id="email" class="email_con" required>
-                    <label for="email">E-mail</label>
-                    <span class="line"></span>
-                </div>
-                <div class="pass">
-                    <input type="password" name="password" id="pass" class="pass_con" required>
-                    <label for="pass">Password</label>
-                    <span class="line"></span>
-                </div>
-                <a href="#" onclick="document.getElementById('desk_login_form').submit();" class="log_in">LOG IN</a>
-                <div class="form_footer">
-                    <span>Forget Password?</span><a href="#">Recover Password</a>
-                </div>
+                <form action="{{route('login')}}" method="POST" id="form">
+                    @csrf
+                    <input type="email" name="email" id="email" placeholder="E-mail" class="linput">
+                    <small id="errorE">Err</small>
+                    <input type="password" name="password" id="pass" placeholder="Password" class="linput">
+                    <small id="errorP">Err</small>
+    
+                    <div class="rem_me_res">
+                        <input type="checkbox" id="cb5">
+                        <label for="cb5" class="recheck">
+                            <div class="tick_con tick_con5">
+                                <div class="tick"></div>
+                            </div>
+                        </label>
+                        <p>Remember me</p>
+                    </div>
+    
+                    <div class="cb1_con cbx_con">
+                        <div class="rem_me">
+                            <input type="checkbox" id="cb4">
+                            <label for="cb4" class="recheck">
+                                <div class="tick_con tick_con4">
+                                    <div class="tick"></div>
+                                </div>
+                            </label>
+                            <p>Remember me</p>
+                        </div>
+                    </div>
+                    <small id="errorC">Err</small>
+                    <button type="submit">Log In</button>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-<!--For tablet responsive-->
-<div class="tab_container">
-    <div class="main_con">
-            <img src="{{asset('img/logo.png')}}" alt="Logo" class="logo">
-            <h1>Bangladesh's most advanced<br>multipurpose digital communication <br> platform.</h1>
-            <a href="{{route('register')}}" target="_blank" class="sign_up_btn">SIGN UP</a>
-            <p>DOWNLOAD OUR FREE APP</p>
-            <div class="icon_container">
-                <a target="_blank" href="https://play.google.com/store/apps/details?id=info.enfome.enfome&hl=en" class="playstore">
-                    <img src="{{asset('img/playstore.svg')}}" alt="" id="playimg">
-                </a>
-                <a href="#" class="apple">
-                    <img src="{{asset('img/apple.svg')}}" alt="" id="appleimg">
-                </a>
-            </div>
-    </div>
-    <div class="particle" id="particles-js-tab">
-    </div>
-    <form id="tab_login_form" action="{{route('login')}}" method="POST">
-    @csrf
-        <div class="form_container">
-            <div class="text">
-                Welcome
-            </div>
-            <div class="email_container">
-                <input type="email" name="email" id="email" class="email_cont" required>
-                <label for="email">E-mail</label>
-                <span class="line"></span>
-            </div>
-            <div class="pass_container">
-                <input type="password" name="password" id="pass" class="pass_cont" required>
-                <label for="pass">Password</label>
-                <span class="line"></span>
-            </div>
-                <a href="#" onclick="document.getElementById('tab_login_form').submit()" class="log_in_btn">LOG IN</a>
-            <div class="form_footer_con">
-                <span>Forget Password?</span><a href="#">Recover Password</a>
+            <div class="form_footer">
+                <p>Forget password ? <a href="#">Recover password</a></p>
+                <p>Don't have an account ? <a href="{{route('register')}}">Sign Up</a></p>
             </div>
         </div>
-    </form>
-</div>
-<!--For Mobile Responsive-->
+    </div>
 
-<div class="mobile_container">
-    <div class="form_container_mobile">
-        <form id="mob_login_form" action="{{route('login')}}" method="POST">
-            @csrf
-            <input type="email" name="email" placeholder="Enter Your E-mail or Number"><br>
-            <input type="password" name="password" placeholder="Enter Your Password"><br>
-        </form>
-        <a href="#" onclick="document.getElementById('mob_login_form').submit()" class="login_for_mobile">LOG IN</a>
-        <div class="form_footer_con_mobile">
-            <span>Forget Password?</span><a href="#">Recover Password</a>
-        </div>
-        <div class="form_footer_con_mobile margin_for_signup">
-            <span>Don't have an account?</span><a href="{{route('register')}}">Sign Up</a>
-        </div>
-    </div>
-</div>
-<div id="particles-js-mob">
-
-</div>
-@endsection
+    <script src="{{asset('js/login/scrpt.js')}}"></script>
+</body>
+</html>

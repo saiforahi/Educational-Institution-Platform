@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --col_1_light: #202924;
+    --col_2: #6BB392;
+    --col_3_medium: #021A0E;
+    --col_4: #5ECC66;
+    --col_5: #7DD0E6;
+    --col_6_dark: #0E1A14;
+    --col_7: #eeeeee;
+    --col_gradient_1: linear-gradient(147deg, #54ffb1, #40d7ff); 
+    --col_gradient_2: linear-gradient(33deg, #54ffb1, #40d7ff); 
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+}

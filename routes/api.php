@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::middleware('auth:api')->get('/user','AuthController@get_user_details');
 Route::post('login','AuthController@login')->name('api_login');
-Route::get('logout','AuthController@logout')->name('api_logout')->middleware('auth:api');
+Route::post('logout','AuthController@logout')->name('api_logout')->middleware('auth:api');
 Route::post('register','AuthController@register')->name('api_register');
 
 Route::middleware('auth:api')->prefix('subscription')->group(function () {
@@ -42,8 +43,13 @@ Route::middleware('auth:api')->prefix('news')->group(function(){
     Route::get('fetchall','NewsController@_get_all_news');
     Route::get('{id},NewsController@_get');
 });
-Route::middleware('auth:api')->prefix('notifications')->group(function(){
+Route::middleware('auth:api','verified')->prefix('notifications')->group(function(){
     Route::get('{id}','NotificationController@_get');
     Route::get('grouped/get','NotificationController@_grouped_notifications');
 });
+//Route::get('email/verify/{id}', 'VerificationController@verify')->middleware('auth:api');
+Route::get('email/resend', 'VerificationController@resend')->middleware('auth:api');
 
+Route::get('districts','PageController@_getDistricts');
+Route::get('{district_id}/sub_districts','PageController@_getSubDistricts');
+Route::get('all_institutes','InstituteController@fetch_all');

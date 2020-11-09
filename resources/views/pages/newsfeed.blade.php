@@ -1,36 +1,254 @@
-@extends('layouts.temp')
+@extends('layouts.main')
 @section('content')
-    @include('layouts.header')
-    <!--Body-->
-    <div class="body_container">
-        <!--Responsive Tools-->
-        <div id="body_container"></div>
-        @include('layouts.body_left')
-        <!--Center of body-->
-        <div class="news_center_feed" id="bg_one">
-            @foreach ($news as $singleNews) 
-            <div class="news_container">
-                <div class="flex_container">
-                    <div class="img_container">
-                        <a href="#"><img src="{{ url('storage/news_image/'.$singleNews->image) }}" alt="NewsThumb"></a>
+    <!--------------------------------------------------------------------
+----------------------------------------------------------------------
+-----Start:- Main NewsFeed Container
+----------------------------------------------------------------------
+--------------------------------------------------------------------->
+<div class="newsfeed_container">
+    <div class="center_newsfeed">
+
+        <!--------------------------------------------------------------------
+        ----------------------------------------------------------------------
+        -----Start:- News Upload form
+        ----------------------------------------------------------------------
+        --------------------------------------------------------------------->
+        <div class="post_form_container">
+            <form action="#">
+                <input type="text" placeholder="Enter Post Title" class="input">
+                <input type="text" placeholder="Enter Post Description" class="input">
+                <div class="file-select">
+                    <label for="chooseFile">Choose File</label>
+                    <input type="file" name="chooseFile" id="chooseFile" required alt="Post" accept="image/jpeg, image/png">
+                </div>
+                <button>Post</button>
+            </form>
+        </div>
+        <!--------------------------------------------------------------------
+        ----------------------------------------------------------------------
+        -----End:- News Upload form
+        ----------------------------------------------------------------------
+        --------------------------------------------------------------------->
+
+        <!--------------------------------------------------------------------
+        ----------------------------------------------------------------------
+        -----Start:- Single News Container
+        ----------------------------------------------------------------------
+        --------------------------------------------------------------------->
+        <div class="post_container">
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Header
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_header">
+                <a href="#">
+                    <div class="post_institute_logo">
+                        <h1>A</h1>
                     </div>
-                    <div class="text_container">
-                        <div class="header_text">
-                            <a href="#" >{{$singleNews->title}}</a>
+                </a>
+                <div class="post_institute_name">
+                    <h1>AUID</h1>
+                </div>
+            </div>
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Description
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_description">
+                <div class="post_des_title">
+                    <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3>
+                </div>
+                <div class="post_des">
+                    <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.when an unknown remaining es.</p>
+                </div>
+            </div>
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Image
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_image">
+                <img src="https://cdn.pixabay.com/photo/2020/10/28/11/08/castle-5693094__340.jpg" alt="">
+            </div>
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Footer Comment and share section
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_footer">
+                <div class="comment_button">
+                    <h1>Add a comment</h1>
+                </div>
+                <div class="comment_box">
+                    <div class="comment">
+                        <a href="#">
+                            <div class="comment_institute_logo">
+                                <h1>A</h1>
+                            </div>
+                        </a>
+                        <div class="comment_description">
+                            <div class="comment_des_institute_name">
+                                <h1>AUID</h1>
+                            </div>
+                            <div class="comment_body">
+                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.</p>
+                            </div>
                         </div>
-                        <div id="newsContent" class="headline_text">
-                        <p id="{{'newsBody'.$singleNews->id}}">{{substr($singleNews->body,0,500)}}</p><a onclick="document.getElementById({{'newsBody'.$singleNews->id}}).innerHTML='{{$singleNews->body}};'" href="#">[Read more...]</a>
+                    </div>
+                    <div class="comment">
+                        <a href="#">
+                            <div class="comment_institute_logo">
+                                <h1>N</h1>
+                            </div>
+                        </a>
+                        <div class="comment_description">
+                            <div class="comment_des_institute_name">
+                                <h1>NSU</h1>
+                            </div>
+                            <div class="comment_body">
+                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.</p>
+                            </div>
                         </div>
-                        <div class="news_date">
-                            <a href="#">www.website.com</a>
-                        </div>
+                    </div>
+                    <div class="comment_form">
+                        <form action="#">
+                            <a href="#">
+                                <div class="comment_form_inst_logo">
+                                    <h1>A</h1>
+                                </div>
+                            </a>
+                            <input type="text" placeholder="Write your comment here...">
+                            <button>Comment</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            @endforeach
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----End:- Post Footer Comment and share section
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
         </div>
-        <!--Center of body-->
+        <!--------------------------------------------------------------------
+        ----------------------------------------------------------------------
+        -----End:- Single News Container
+        ----------------------------------------------------------------------
+        --------------------------------------------------------------------->
 
-        @include('layouts.body_right')
+        <!--------------------------------------------------------------------
+        ----------------------------------------------------------------------
+        -----Start:- Single News Container
+        ----------------------------------------------------------------------
+        --------------------------------------------------------------------->
+        <div class="post_container">
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Header
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_header">
+                <a href="#">
+                    <div class="post_institute_logo">
+                        <h1>A</h1>
+                    </div>
+                </a>
+                <div class="post_institute_name">
+                    <h1>AUID</h1>
+                </div>
+            </div>
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Description
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_description">
+                <div class="post_des_title">
+                    <h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h3>
+                </div>
+                <div class="post_des">
+                    <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.when an unknown remaining es.</p>
+                </div>
+            </div>
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Image
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_image">
+                <img src="https://cdn.pixabay.com/photo/2020/10/27/09/44/macarons-5690175__340.jpg" alt="">
+            </div>
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----Start:- Post Footer Comment and share section
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+            <div class="post_footer">
+                <div class="comment_button">
+                    <h1>Add a comment</h1>
+                </div>
+                <div class="comment_box">
+                    <div class="comment">
+                        <a href="#">
+                            <div class="comment_institute_logo">
+                                <h1>A</h1>
+                            </div>
+                        </a>
+                        <div class="comment_description">
+                            <div class="comment_des_institute_name">
+                                <h1>AUID</h1>
+                            </div>
+                            <div class="comment_body">
+                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <a href="#">
+                            <div class="comment_institute_logo">
+                                <h1>N</h1>
+                            </div>
+                        </a>
+                        <div class="comment_description">
+                            <div class="comment_des_institute_name">
+                                <h1>NSU</h1>
+                            </div>
+                            <div class="comment_body">
+                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment_form">
+                        <form action="#">
+                            <a href="#">
+                                <div class="comment_form_inst_logo">
+                                    <h1>A</h1>
+                                </div>
+                            </a>
+                            <input type="text" placeholder="Write your comment here...">
+                            <button>Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------------------------
+            ----------------------------------------------------------------------
+            -----End:- Post Footer Comment and share section
+            ----------------------------------------------------------------------
+            --------------------------------------------------------------------->
+        </div>
+        <!--------------------------------------------------------------------
+        ----------------------------------------------------------------------
+        -----End:- Single News Container
+        ----------------------------------------------------------------------
+        --------------------------------------------------------------------->
+
     </div>
+</div>
+<!--------------------------------------------------------------------
+----------------------------------------------------------------------
+-----End:- Main NewsFeed Container
+----------------------------------------------------------------------
+--------------------------------------------------------------------->
 @endsection

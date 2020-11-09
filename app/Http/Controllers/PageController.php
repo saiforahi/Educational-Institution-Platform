@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Institute;
+use App\District;
+use App\SubDistrict;
 use App\InsNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +34,7 @@ class PageController extends Controller
             $name=Institute::find($singleNews->institute_id)->name;
             $images[$singleNews->image]=Storage::get('news_image/'.$name.'/'.$singleNews->image);
         }*/
-        return view('pages.new_newsfeed')->with('news',$news);
+        return view('pages.newsfeed')->with('news',$news);
     }
     public function show_institute(){
         return view('pages.institute');
@@ -74,5 +76,16 @@ class PageController extends Controller
 
     public function show_boiler(){
         return view('sections.newsfeed');
+    }
+
+    public function _getDistricts()
+    {
+        $districts=District::all();
+        return response()->json(['districts'=>$districts]);
+    }
+    public function _getSubDistricts($district_id)
+    {
+        $subdistricts=SubDistrict::where('district_id',$district_id)->get();
+        return response()->json(['subdistricts'=>$subdistricts]);
     }
 }
