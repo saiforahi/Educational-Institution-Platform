@@ -35,8 +35,8 @@
     <!----------------------------------Center Menu---------------------------------->
     <section class="main_menu">
         <ul>
-            <li><a href="#">Demo Nav Item</a></li>
-            <li><a href="#">Demo Nav Item</a></li>
+            <li><a class="{{ Route::current()->getName()=='newsfeed' ? 'nav_active_item' : ''  }}" href="{{route('newsfeed')}}">Newsfeed</a></li>
+            <li><a class="{{ Route::current()->getName()=='institute' ? 'nav_active_item' : ''  }}" href="{{route('institute')}}">Institutes</a></li>
             <li><a href="#">Demo Nav Item</a></li>
             <li><a href="#">Demo Nav Item</a></li>
             <li><a href="#">Demo Nav Item</a></li>

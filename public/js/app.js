@@ -1958,12 +1958,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2018,6 +2012,50 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43955,84 +43993,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "create_news" }, [
+  return _c("div", { staticClass: "post_form_container" }, [
     _c("form", [
-      _c("div", { staticClass: "textarea" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.title,
-              expression: "title"
-            }
-          ],
-          attrs: { type: "text", required: "", placeholder: "Title" },
-          domProps: { value: _vm.title },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.title = $event.target.value
-            }
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.title,
+            expression: "title"
           }
-        }),
+        ],
+        staticClass: "input",
+        attrs: { type: "text", placeholder: "Enter Post Title" },
+        domProps: { value: _vm.title },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.title = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.body,
+            expression: "body"
+          }
+        ],
+        staticClass: "input",
+        attrs: { type: "text", placeholder: "Enter Post Description" },
+        domProps: { value: _vm.body },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.body = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "file-select" }, [
+        _c("label", { attrs: { for: "chooseFile" } }, [_vm._v("Choose File")]),
         _vm._v(" "),
         _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.body,
-              expression: "body"
-            }
-          ],
-          attrs: { type: "text", required: "", placeholder: "Type your news" },
-          domProps: { value: _vm.body },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.body = $event.target.value
-            }
-          }
+          ref: "file",
+          attrs: {
+            type: "file",
+            name: "chooseFile",
+            id: "chooseFile",
+            required: "",
+            alt: "Post",
+            accept: "image/jpg, image/jpeg, image/png"
+          },
+          on: { change: _vm.handleFileUpload }
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "actions" }, [
-        _c("div", { staticClass: "upload_file" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("input", {
-            ref: "file",
-            attrs: {
-              type: "file",
-              id: "up",
-              accept: "image/png, image/jpg, image/jpeg"
-            },
-            on: { change: _vm.handleFileUpload }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "up_btn", on: { click: _vm.create_news } }, [
-          _c("button", { attrs: { type: "button" } }, [_vm._v("Post")])
-        ])
-      ])
+      _c(
+        "button",
+        { attrs: { type: "button" }, on: { click: _vm.create_news } },
+        [_vm._v("Post")]
+      )
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "up" } }, [
-      _c("i", { staticClass: "fas fa-image" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44056,28 +44088,25 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "n_news_container" },
     _vm._l(_vm.news_list, function(item) {
-      return _c("div", { key: item.id }, [
+      return _c("div", { key: item.id, staticClass: "post_container" }, [
         _vm._m(0, true),
         _vm._v(" "),
-        _c("div", { staticClass: "n_headline_con" }, [
-          _c("p", [
-            _vm._v(_vm._s(item.title)),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("[Read more]")])
+        _c("div", { staticClass: "post_description" }, [
+          _c("div", { staticClass: "post_des_title" }, [
+            _c("h3", [_vm._v(_vm._s(item.title))])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "post_des" }, [
+            _c("p", [_vm._v(_vm._s(item.body))])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "n_image_con" }, [
-          _c("a", [_c("img", { attrs: { src: item.link } })])
+        _c("div", { staticClass: "post_image" }, [
+          _c("img", { attrs: { src: item.link } })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "n_newsline_con" }, [
-          _c("p", [
-            _vm._v(_vm._s(item.body)),
-            _c("a", { attrs: { href: "#" } }, [_vm._v("[Read More]")])
-          ])
-        ])
+        _vm._m(1, true)
       ])
     }),
     0
@@ -44088,12 +44117,86 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "n_header" }, [
-      _c("div", { staticClass: "institute_name_con" }, [
-        _c("div", { staticClass: "institute_icon" }, [_c("h3", [_vm._v("E")])]),
+    return _c("div", { staticClass: "post_header" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _c("div", { staticClass: "post_institute_logo" }, [
+          _c("h1", [_vm._v("A")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "post_institute_name" }, [
+        _c("h1", [_vm._v("AUID")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "post_footer" }, [
+      _c("div", { staticClass: "comment_button" }, [
+        _c("h1", [_vm._v("Add a comment")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "comment_box" }, [
+        _c("div", { staticClass: "comment" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("div", { staticClass: "comment_institute_logo" }, [
+              _c("h1", [_vm._v("A")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "comment_description" }, [
+            _c("div", { staticClass: "comment_des_institute_name" }, [
+              _c("h1", [_vm._v("AUID")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "comment_body" }, [
+              _c("p", [
+                _vm._v(
+                  "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into."
+                )
+              ])
+            ])
+          ])
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "institute_name" }, [
-          _c("p", [_vm._v("EnfoMe")])
+        _c("div", { staticClass: "comment" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("div", { staticClass: "comment_institute_logo" }, [
+              _c("h1", [_vm._v("N")])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "comment_description" }, [
+            _c("div", { staticClass: "comment_des_institute_name" }, [
+              _c("h1", [_vm._v("NSU")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "comment_body" }, [
+              _c("p", [
+                _vm._v(
+                  "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into."
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "comment_form" }, [
+          _c("form", { attrs: { action: "#" } }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _c("div", { staticClass: "comment_form_inst_logo" }, [
+                _c("h1", [_vm._v("A")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "text", placeholder: "Write your comment here..." }
+            }),
+            _vm._v(" "),
+            _c("button", [_vm._v("Comment")])
+          ])
         ])
       ])
     ])

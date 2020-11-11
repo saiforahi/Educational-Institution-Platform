@@ -1,43 +1,55 @@
-@extends('layouts.temp')
+@extends('layouts.main')
 @section('content')
-    @include('layouts.header')
-    <!--Body-->
-    <div class="body_container">
-        <!--Responsive Tools-->
-        <div id="body_container"></div>
-        <!--Left Side of Body-->
-        @include('layouts.body_left')
-        <!--Left Side of Body-->
-
-        <!--Center of body-->
-        <div class="institute_center_feed" id="bg_one">
-            <div class="main_icon_container">
-                <div class="image_container">
-                    <a href="{{url('institute/list/university')}}"> <img src="{{asset('img/UNIVERSITY.png')}}" alt="University"> </a>
-                </div>
-                <div class="image_container">
-                    <a href="{{url('institute/list/college')}}"> <img src="{{asset('img/COLLEGE.png')}}" alt="College"> </a>
-                </div>
-                <div class="image_container">
-                    <a href="{{url('institute/list/school')}}"> <img src="{{asset('img/SCHOOL.png')}}" alt="School"> </a>
-                </div>
-                <div class="image_container">
-                    <a href="{{url('institute/list/private')}}"> <img src="{{asset('img/PRIVATE.png')}}" alt="Private"> </a>
-                </div>
-                <div class="image_container">
-                    <a href="{{url('institute/list/diploma')}}"> <img src="{{asset('img/DIPLOMA.png')}}" alt="Diploma"> </a>
-                </div>
-                <div class="image_container">
-                    <a href="{{url('institute/list/national')}}"> <img src="{{asset('img/NATIONAL.png')}}" alt="National"> </a>
-                </div>
-                <div class="image_container">
-                    <a href="{{url('institute/list/govt')}}"> <img src="{{asset('img/GOVT.png')}}" alt="GOVT"> </a>
-                </div>
-                <div class="image_container">
-                    <a href="{{url('institute/list/corporate')}}"> <img src="{{asset('img/CORP.png')}}" alt="CORP"> </a>
-                </div>
+    <div class="institute_list_container">
+        <div class="center_institute_list">
+            <div class="institute_list_column">
+                <a href="{{url('institute/list/university')}}">
+                    <div class="institute_list_row">
+                        <h1>Univercity</h1>
+                    </div>
+                </a>
+                <a href="{{url('institute/list/school')}}">
+                    <div class="institute_list_row">
+                        <h1>School</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="institute_list_column">
+                <a href="{{url('institute/list/college')}}">
+                    <div class="institute_list_row">
+                        <h1>College</h1>
+                    </div>
+                </a>
+                <a href="{{url('institute/list/private')}}">
+                    <div class="institute_list_row">
+                        <h1>Private Institute</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="institute_list_column">
+                <a href="{{url('institute/list/diploma')}}">
+                    <div class="institute_list_row">
+                        <h1>Diploma</h1>
+                    </div>
+                </a>
+                <a href="{{url('institute/list/national')}}">
+                    <div class="institute_list_row">
+                        <h1>National Univercity</h1>
+                    </div>
+                </a>
+            </div>
+            <div class="institute_list_column">
+                <a href="{{url('institute/list/govt')}}">
+                    <div class="institute_list_row">
+                        <h1>Government Office</h1>
+                    </div>
+                </a>
+                <a href="{{url('institute/list/corporate')}}">
+                    <div class="institute_list_row">
+                        <h1>Corporate Office</h1>
+                    </div>
+                </a>
             </div>
         </div>
-        @include('layouts.body_right')
     </div>
 @endsection

@@ -1,4 +1,3 @@
-console.log('views.js executing..')
 const app = new Vue({
     el: '#newsfeed_body',
     data(){
@@ -32,11 +31,11 @@ const app = new Vue({
     }
 });
 
-const nav_desktop= new Vue({
-    el: '#navbar_desktop_vue',
-})
-const nav_mobile= new Vue({
-    el: '#navbar_mobile_vue',
-})
+// const nav_desktop= new Vue({
+//     el: '#navbar_desktop_vue',
+// })
+// const nav_mobile= new Vue({
+//     el: '#navbar_mobile_vue',
+// })
 
 
