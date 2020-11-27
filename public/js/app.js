@@ -2094,7 +2094,9 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   props: ['news_list'],
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    console.log("show news rendered");
+  },
   methods: {}
 });
 
@@ -2129,6 +2131,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2138,6 +2160,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
+    console.log("working");
     axios.get('/api/notifications/grouped/get').then(function (response) {
       _this.notification_list = response.data.notifications;
     })["catch"](function (error) {});
@@ -44223,52 +44246,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "desktop_dropdown_notification" },
-    _vm._l(_vm.notification_list, function(institute, index) {
-      return _c(
-        "div",
-        { key: index, staticClass: "institute_notification_con" },
-        [
-          _c("div", { staticClass: "header" }, [
-            _c("p", [_vm._v(_vm._s(index))])
-          ]),
-          _vm._v(" "),
-          _vm._l(institute, function(notification) {
-            return _c(
-              "div",
-              { key: notification.id, staticClass: "noti_con" },
-              [
-                _c("div", { staticClass: "notification" }, [
-                  _c("p", [
-                    _vm._v(
-                      _vm._s(notification.data.news_title) +
-                        "\n                "
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "notification_date" }, [
-                  _c("p", [
-                    _vm._v(
-                      _vm._s(
-                        new Date(notification.created_at).toLocaleDateString()
-                      )
-                    )
-                  ])
-                ])
-              ]
-            )
-          })
-        ],
-        2
-      )
-    }),
-    0
-  )
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "notification_section" }, [
+      _c("div", { staticClass: "n_s_con" }, [
+        _c("a", { attrs: { href: "#" } }, [
+          _c("div", { staticClass: "institute_name" }, [
+            _c("p", [_vm._v("Institute Name")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" } }, [
+          _c("div", { staticClass: "notification" }, [
+            _c("p", [
+              _vm._v(
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk"
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "notification_date" }, [
+          _c("p", [_vm._v("Date: 20/02/2020")])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

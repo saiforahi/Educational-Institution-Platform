@@ -37,7 +37,7 @@ class PageController extends Controller
         return view('pages.newsfeed')->with('news',$news);
     }
     public function show_institute(){
-        return view('pages.institute');
+        return view('pages.institutes.institute');
     }
     public function show_language(){
         return view('pages.language');

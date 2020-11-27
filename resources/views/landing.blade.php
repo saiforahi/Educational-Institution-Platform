@@ -542,7 +542,7 @@
                 </div>
               </div>
             </li>
-            <li class="item-a">
+            {{-- <li class="item-a">
               <div class="team_card">
                 <div class="team_image">
                   <img src="{{asset('img/frontend/sunny.jpg')}}" alt="Saikat">
@@ -571,7 +571,7 @@
                   </div>
                 </div>
               </div>
-            </li>
+            </li> --}}
             <li class="item-a">
               <div class="team_card">
                 <div class="team_image">

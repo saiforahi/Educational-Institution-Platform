@@ -84,7 +84,7 @@ export default {
     },
     props:['news_list'],
     mounted(){
-        
+        console.log("show news rendered")
         
     },
     methods:{

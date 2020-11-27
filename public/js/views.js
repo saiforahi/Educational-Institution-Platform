@@ -1,4 +1,7 @@
-const app = new Vue({
+// const app=new Vue({
+//     el: '#app'
+// })
+const newsfeed_body = new Vue({
     el: '#newsfeed_body',
     data(){
         return{

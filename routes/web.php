@@ -48,6 +48,7 @@ Route::get('/notification','PageController@show_notification')->name('notificati
 Route::get('/single_news','PageController@show_single_news')->name('single_news')->middleware('auth');
 Route::get('/attendance',function(){return view('pages.attendance');})->name('attendance')->middleware('auth');
 Route::get('/dashboard',function(){return view('pages.dashboard');})->name('dashboard')->middleware('auth');
+
 Route::middleware('auth')->prefix('institute')->group(function () {
     Route::get('list/{type}', 'InstituteController@get_institute_list')->name('show_institutes');
     Route::get('details/{id}','InstituteController@get_details')->name('institute_details');
@@ -65,5 +66,4 @@ Route::prefix('survey')->group(function(){
     Route::get('ques','PageController@show_survey')->name('show_survey');
     Route::post('save','SurveyController@save_answers')->name('save_survey');
 });
-
 Route::get('/test','PageController@show_boiler');

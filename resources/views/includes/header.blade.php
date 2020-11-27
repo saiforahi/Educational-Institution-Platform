@@ -3,7 +3,7 @@
     <section class="left_menu">
         <nav>
             <ul>
-                <li><a href="#"><img src="./img/IconLogo.png" alt="Logo"></a></li>
+                <li><a href="#"><img src="{{asset('img/IconLogo.png')}}" alt="Logo"></a></li>
                 <li><form action="#">
                     <input type="text" placeholder="Search Here">
                     <button><i class="fas fa-search"></i></button>
@@ -36,8 +36,9 @@
     <section class="main_menu">
         <ul>
             <li><a class="{{ Route::current()->getName()=='newsfeed' ? 'nav_active_item' : ''  }}" href="{{route('newsfeed')}}">Newsfeed</a></li>
-            <li><a class="{{ Route::current()->getName()=='institute' ? 'nav_active_item' : ''  }}" href="{{route('institute')}}">Institutes</a></li>
-            <li><a href="#">Demo Nav Item</a></li>
+            {{-- <li><a class="{{ (Route::current()->getName()=='institute' ? 'nav_active_item' : '') ||  (Route::current()->getName()=='institute_details' ? 'nav_active_item' : '') || (Route::current()->getName()=='show_institutes' ? 'nav_active_item' : '')}}" href="{{route('institute')}}">Institutes</a></li> --}}
+            <li><a href="{{route('institute')}}" class="{{(Route::current()->getName()=='institute'|| Route::current()->getName()=='institute_details'||Route::current()->getName()=='show_institutes')?'nav_active_item':""}}">Institutes</a></li>
+            <li><a href="#">E-Meet</a></li>
             <li><a href="#">Demo Nav Item</a></li>
             <li><a href="#">Demo Nav Item</a></li>
             <li><a href="#">Demo Nav Item</a></li>
@@ -62,7 +63,7 @@
                         <span><i class="fas fa-user"></i></span>
                     </div>
                     <div class="p_s_text">
-                        <p>Md Zahid Ul Islam Saikat</p>
+                        <p>{{Auth::user()->firstName}}</p>
                     </div>
                 </div>
             </a>
@@ -88,192 +89,6 @@
                 </div>
             </a>
         </div>
-        <!----------------------------------Notification Section---------------------------------->
-        <div class="notification_section">
-            <!------------------Single Institute------------------>
-            <div class="n_s_con">
-                <a href="#">
-                <div class="institute_name">
-                    <p>Institute Name</p>
-                </div>
-                </a>
-                <!------------Notification Body------------>
-                <a href="#">
-                <div class="notification">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                </div>
-                </a>
-                <div class="notification_date">
-                    <p>Date: 20/02/2020</p>
-                </div>
-                <!------------Notification Body------------>
-                <!------------Notification Body------------>
-                <a href="#">
-                    <div class="notification">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                    </div>
-                    </a>
-                    <div class="notification_date">
-                        <p>Date: 20/02/2020</p>
-                    </div>
-                    <!------------Notification Body------------>
-                <!------------Notification Body------------>
-                <a href="#">
-                    <div class="notification">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                    </div>
-                    </a>
-                    <div class="notification_date">
-                        <p>Date: 20/02/2020</p>
-                    </div>
-                    <!------------Notification Body------------>
-                <!------------Notification Body------------>
-                <a href="#">
-                    <div class="notification">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                    </div>
-                    </a>
-                    <div class="notification_date">
-                        <p>Date: 20/02/2020</p>
-                    </div>
-                    <!------------Notification Body------------>
-            </div>
-            <!------------------End of Single Institute------------------>
-            <!------------------Single Institute------------------>
-            <div class="n_s_con">
-                <a href="#">
-                <div class="institute_name">
-                    <p>Institute Name</p>
-                </div>
-                </a>
-                <!------------Notification Body------------>
-                <a href="#">
-                <div class="notification">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                </div>
-                </a>
-                <div class="notification_date">
-                    <p>Date: 20/02/2020</p>
-                </div>
-                <!------------Notification Body------------>
-            </div>
-            <!------------------End of Single Institute------------------>
-            <!------------------Single Institute------------------>
-            <div class="n_s_con">
-                <a href="#">
-                <div class="institute_name">
-                    <p>Institute Name</p>
-                </div>
-                </a>
-                <!------------Notification Body------------>
-                <a href="#">
-                <div class="notification">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                </div>
-                </a>
-                <div class="notification_date">
-                    <p>Date: 20/02/2020</p>
-                </div>
-                <!------------Notification Body------------>
-                <!------------Notification Body------------>
-                <a href="#">
-                    <div class="notification">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                    </div>
-                    </a>
-                    <div class="notification_date">
-                        <p>Date: 20/02/2020</p>
-                    </div>
-                    <!------------Notification Body------------>
-                <!------------Notification Body------------>
-                <a href="#">
-                    <div class="notification">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                    </div>
-                    </a>
-                    <div class="notification_date">
-                        <p>Date: 20/02/2020</p>
-                    </div>
-                    <!------------Notification Body------------>
-                <!------------Notification Body------------>
-                <a href="#">
-                    <div class="notification">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                    </div>
-                    </a>
-                    <div class="notification_date">
-                        <p>Date: 20/02/2020</p>
-                    </div>
-                    <!------------Notification Body------------>
-            </div>
-            <!------------------End of Single Institute------------------>
-            <!------------------Single Institute------------------>
-            <div class="n_s_con">
-                <a href="#">
-                <div class="institute_name">
-                    <p>Institute Name</p>
-                </div>
-                </a>
-                <!------------Notification Body------------>
-                <a href="#">
-                <div class="notification">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                </div>
-                </a>
-                <div class="notification_date">
-                    <p>Date: 20/02/2020</p>
-                </div>
-                <!------------Notification Body------------>
-            </div>
-            <!------------------End of Single Institute------------------>
-            <!------------------Single Institute------------------>
-            <div class="n_s_con">
-                <a href="#">
-                <div class="institute_name">
-                    <p>Institute Name</p>
-                </div>
-                </a>
-                <!------------Notification Body------------>
-                <a href="#">
-                <div class="notification">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                </div>
-                </a>
-                <div class="notification_date">
-                    <p>Date: 20/02/2020</p>
-                </div>
-                <!------------Notification Body------------>
-            </div>
-            <!------------------End of Single Institute------------------>
-            <!------------------Single Institute------------------>
-            <div class="n_s_con">
-                <a href="#">
-                <div class="institute_name">
-                    <p>Institute Name</p>
-                </div>
-                </a>
-                <!------------Notification Body------------>
-                <a href="#">
-                <div class="notification">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                </div>
-                </a>
-                <div class="notification_date">
-                    <p>Date: 20/02/2020</p>
-                </div>
-                <!------------Notification Body------------>
-                <!------------Notification Body------------>
-                <a href="#">
-                    <div class="notification">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
-                    </div>
-                    </a>
-                    <div class="notification_date">
-                        <p>Date: 20/02/2020</p>
-                    </div>
-                    <!------------Notification Body------------>
-            </div>
-            <!------------------End of Single Institute------------------>
-        </div>
+        <notification-desktop></notification-desktop>
     </section>
 </section>

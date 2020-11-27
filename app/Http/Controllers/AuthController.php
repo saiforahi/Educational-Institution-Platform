@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Institute;
 use App\Admin;
+use App\Student;
 use App\UserDetails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -203,10 +204,10 @@ class AuthController extends Controller
             ]);
             $credentials = request(['email', 'password']);
             if (!Auth::attempt($credentials)) {
-            return response()->json([
-                'status_code' => 500,
-                'message' => 'Unauthorized'
-            ]);
+                return response()->json([
+                    'status_code' => 405,
+                    'message' => 'Unauthorized'
+                ]);
             }
             $user = User::where('email', $request->email)->first();
             //if ( $request->password == $user->password) {

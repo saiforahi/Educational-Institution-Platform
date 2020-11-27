@@ -23,6 +23,13 @@ class SubscriptionController extends Controller
         $newSubscriber->save();
         return response()->json(['subscribed'=>'subscribed']);
     }
+    public function _check($institute_id){
+        if(Subscriber::where('institute_id',$institute_id)->where('user_id',Auth::user()->id)->exists()){
+            return response()->json(["status"=>"Subscribed"]);
+        }else{
+            return response()->json(["status"=>"unsubscribed"]);
+        }
+    }
     public function web_subscription(Request $request){
         $request->validate(['institute_id'=>'required|exists:institutes,id']);
         if(Subscriber::where('user_id',Auth::user()->id)->where('institute_id',$request->institute_id)->exists()){

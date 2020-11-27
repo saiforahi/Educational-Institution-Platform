@@ -29,6 +29,7 @@ Vue.component('show-news-component', require('./components/newsfeed_components/S
 Vue.component('notification-phone', require('./components/notification/Phone.vue').default);
 Vue.component('notification-desktop', require('./components/notification/Desktop.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

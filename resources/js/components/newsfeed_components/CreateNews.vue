@@ -35,7 +35,7 @@ export default {
             axios.post('/api/news/create',
             formData,{
                 headers: {
-                        'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data'
                 }
             }).then(response=>{
                 console.log(response.data);
