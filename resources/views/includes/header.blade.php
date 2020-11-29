@@ -3,7 +3,7 @@
     <section class="left_menu">
         <nav>
             <ul>
-                <li><a href="#"><img src="{{asset('img/IconLogo.png')}}" alt="Logo"></a></li>
+                <li><a href="{{route('home')}}"><img src="{{asset('img/IconLogo.png')}}" alt="Logo"></a></li>
                 <li><form action="#">
                     <input type="text" placeholder="Search Here">
                     <button><i class="fas fa-search"></i></button>

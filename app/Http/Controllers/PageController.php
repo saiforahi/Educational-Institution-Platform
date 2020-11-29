@@ -88,4 +88,7 @@ class PageController extends Controller
         $subdistricts=SubDistrict::where('district_id',$district_id)->get();
         return response()->json(['subdistricts'=>$subdistricts]);
     }
+    public function show_career_with_us_view(){
+        return view('pages.additional_pages.career');
+    }
 }
