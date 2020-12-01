@@ -89,6 +89,27 @@
                 </div>
             </a>
         </div>
+        <div class="notification_section">
+            <!------------------Single Institute------------------>
+            <div class="n_s_con">
+                <a href="#">
+                <div class="institute_name">
+                    <p>Institute Name</p>
+                </div>
+                </a>
+                <!------------Notification Body------------>
+                <a href="#">
+                    <div class="notification">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500 kjyhudzsgk</p>
+                    </div>
+                    </a>
+                    <div class="notification_date">
+                        <p>Date: 20/02/2020</p>
+                    </div>
+                    <!------------Notification Body------------>
+            </div>
+            <!------------------End of Single Institute------------------>
+        </div>
         <notification-desktop></notification-desktop>
     </section>
 </section>

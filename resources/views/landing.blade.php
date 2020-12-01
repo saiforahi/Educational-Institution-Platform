@@ -39,6 +39,7 @@
                     <li><a class="nav_link" href="#team">Team</a></li>
                     <li><a class="nav_link" href="#contact">Contact</a></li>
                     <li><a class="nav_link" href="#download">Download</a></li>
+                    <li><a class="nav_link" href="#" onclick="window.location.href='career'" >Career</a></li>
                 </ul>
             </nav>
         </div>

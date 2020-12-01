@@ -5,10 +5,13 @@ use App\Institute;
 use App\District;
 use App\SubDistrict;
 use App\InsNotification;
+use App\Job;
+use App\JobApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class PageController extends Controller
 {
@@ -89,6 +92,29 @@ class PageController extends Controller
         return response()->json(['subdistricts'=>$subdistricts]);
     }
     public function show_career_with_us_view(){
-        return view('pages.additional_pages.career');
+        $jobs=Job::all();
+        return view('pages.additional_pages.career')->with('jobs',$jobs);
+    }
+
+    public function submit_job_application(Request $request){
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string|between:2,100',
+            'last_name' => 'required|string|between:2,100',
+            'email' => 'required|string|email|max:100',
+            'phone'=> 'required|string|max:20',
+            //'cv'=> 'required',
+            'date'=> 'required|date|after_or_equal:today',
+            'time'=> 'required|date_format:H:i',
+            'job'=>'required|string|exists:jobs,id'
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+        $data=array("first_name"=>$request->first_name,"last_name"=>$request->last_name,"email"=>$request->email,"phone"=>$request->phone,"schedule"=>array("date"=>$request->date,"time"=>$request->time));
+        $application=JobApplication::create([
+            "job_id"=>$request->job,
+            "application"=>json_encode($data),
+        ]);
+        return response()->json($application);
     }
 }

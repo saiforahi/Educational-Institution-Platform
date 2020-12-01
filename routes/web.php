@@ -44,6 +44,7 @@ Route::get('/institute','PageController@show_institute')->name('institute')->mid
 Route::get('/language','PageController@show_language')->name('language')->middleware('auth');
 Route::get('/rateus','PageController@show_rateus')->name('rateus')->middleware('auth');
 Route::get('/career','PageController@show_career_with_us_view')->name('career_with_us');
+Route::post('/career','PageController@submit_job_application')->name('submit_job_application');
 
 Route::get('/notification','PageController@show_notification')->name('notification')->middleware('auth');
 Route::get('/single_news','PageController@show_single_news')->name('single_news')->middleware('auth');
