@@ -53,3 +53,5 @@ Route::get('email/resend', 'VerificationController@resend')->middleware('auth:ap
 Route::get('districts','PageController@_getDistricts');
 Route::get('{district_id}/sub_districts','PageController@_getSubDistricts');
 Route::get('all_institutes','InstituteController@fetch_all');
+
+Route::post('job/application/submit','JobController@submit_job_application');

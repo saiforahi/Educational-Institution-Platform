@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>EnfoMe</title>
-
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
-
     <!--Favicon and Stylesheet-->
     <link rel="icon" href="{{asset('img/frontend/enfologo.png')}}">
     <link rel="stylesheet" href="{{asset('css/frontend/style.css')}}">
-
-
 </head>
 <body>
     
@@ -31,9 +26,9 @@
         <div class="menu">
             <nav>
                 <ul>
-                    <li><a class="nav_link" href="{{route('newsfeed')}}">News</a></li>
+                    <li><a class="nav_link" href="#news">News</a></li>
                     <li><a class="nav_link" href="#about">About</a></li>
-                    <li><a class="nav_link" href="#events">Events</a></li>
+                    <li><a class="nav_link" href="#events">Services</a></li>
                     <li><a class="nav_link" href="#survey">Survey</a></li>
                     <li><a class="nav_link" href="#tutorial">Tutorial</a></li>
                     <li><a class="nav_link" href="#team">Team</a></li>
@@ -47,7 +42,7 @@
             <nav>
                 <ul>
                   @auth
-                  <li><a href="#">{{Auth::user()->firstName}}</a></li>  
+                  <li><a href="{{route('newsfeed')}}">{{Auth::user()->firstName}}</a></li>  
                   <form id="logoutform" action="{{route('logout')}}" method="POST">@csrf</form>
                   <li><a href="#" onclick="document.getElementById('logoutform').submit()">Logout</a></li>
                   @endauth
@@ -439,7 +434,24 @@
 <!--------------------------------------------------------------------
 -----End:- About Section
 --------------------------------------------------------------------->
+<!--------------------------------------------------------------------
+-----Start:- Service Section
+--------------------------------------------------------------------->
+<section class="section_element" id="service">
+  <div class="section_header">
+    <h1>Services</h1>
+  </div>
 
+  <div class="service_section_container">
+    <div class="service_container">
+      <h1>Under Construction</h1>
+    </div>
+  </div>
+
+</section>
+<!--------------------------------------------------------------------
+-----End:- Service Section
+--------------------------------------------------------------------->
 
 <!--------------------------------------------------------------------
 -----Start:- Event Section
@@ -1374,17 +1386,104 @@
 -----End:- Tutorial Section
 --------------------------------------------------------------------->
 
+<!--------------------------------------------------------------------
+-----Start:- Team Section
+--------------------------------------------------------------------->
 <section class="section_element" id="team">
   <div class="section_header">
     <h1>Our Team</h1>
   </div>
 
-  <div class="tutorial_section_container">
-    <div class="tutorial_container">
-      <h1>Under Construction</h1>
+  <div class="team_section_container">
+
+    <div class="team_container">
+
+      <div class="team_slider_container">
+
+        <div class="team_card_slider">
+  
+          <div class="team_card_slide">
+            <div class="team_image_container">
+              <img src="{{asset('img/frontend/team/member1.png')}}" alt="">
+            </div>
+            <div class="team_info_container">
+              <h3>M A S Prince, CEO(EnfoMe)</h3>
+              <p>Chairman: M Fashion Group</p>
+            </div>
+          </div>
+
+          <div class="team_card_slide">
+            <div class="team_image_container">
+              <img src="{{asset('img/frontend/team/member2.png')}}" alt="">
+            </div>
+            <div class="team_info_container">
+              <h3>Dr. Muslima Zahan</h3>
+              <p>Chief Advisor</p>
+            </div>
+          </div>
+
+          <div class="team_card_slide">
+            <div class="team_image_container">
+              <img src="{{asset('img/frontend/team/member4.png')}}" alt="">
+            </div>
+            <div class="team_info_container">
+              <h3>Samawati Khan</h3>
+              <p>Brand Ambassador Jr.</p>
+            </div>
+          </div>
+
+          <div class="team_card_slide">
+            <div class="team_image_container">
+              <img src="{{asset('img/frontend/team/member5.png')}}" alt="">
+            </div>
+            <div class="team_info_container">
+              <h3>Kaniz Fatema Khan</h3>
+              <p>General Manager</p>
+            </div>
+          </div>
+
+          <div class="team_card_slide">
+            <div class="team_image_container">
+              <img src="{{asset('img/frontend/team/member7.png')}}" alt="">
+            </div>
+            <div class="team_info_container">
+              <h3>Saif Azad</h3>
+              <p>Web Developer Senior</p>
+            </div>
+          </div>
+
+          <div class="team_card_slide">
+            <div class="team_image_container">
+              <img src="{{asset('img//frontend/team/member8.png')}}" alt="">
+            </div>
+            <div class="team_info_container">
+              <h3>Md Zahid Ul Islam Saikat</h3>
+              <p>Web Developer Jr.</p>
+            </div>
+          </div>
+  
+        </div>
+  
+        <div class="next_prev_container">
+          <div class="team_prev_btn">
+            <i class="fas fa-arrow-left"></i>
+          </div>
+          <div class="team_next_btn">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="team_left_style"></div>
+      <div class="team_right_style"></div>
+
     </div>
   </div>
 </section>
+<!--------------------------------------------------------------------
+-----End:- Team Section
+--------------------------------------------------------------------->
 <section class="section_element" id="contact">
   <div class="section_header">
     <h1>Contact Us</h1>
@@ -1429,10 +1528,133 @@
 -----End:- Download Section
 --------------------------------------------------------------------->
 
+<!--------------------------------------------------------------------
+-----Start:- Contact Section
+--------------------------------------------------------------------->
+<section class="section_element" id="contact">
+  <div class="section_header">
+    <h1>Contact Us</h1>
+  </div>
 
+  <div class="contact_section_container">
+    <div class="contact_container">
+      <div class="contact_header">
+        <h1>Send us a message</h1>
+      </div>
+      <div class="contact_form">
+        <form action="#" method="post">
+          <input type="text" placeholder="Enter Your Full Name">
+          <input type="email" placeholder="Enter Your Email">
+          <input type="tel" placeholder="Enter Your Number">
+          <textarea placeholder="Enter Your Message"></textarea>
+          <button>Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!--------------------------------------------------------------------
+-----End:- Contact Section
+--------------------------------------------------------------------->
+
+<!--------------------------------------------------------------------
+-----Start:- Footer Section
+--------------------------------------------------------------------->
+<section class="footer_section">
+  <div class="footer_info_container">
+    <div class="footer_info_column">
+
+      <div class="footer_info_row">
+        <div class="footer_logo">
+          <a href="https://www.enfome.info/">
+            <img src="{{asset('img/frontend/Logo.png')}}" alt="EnfoMe Logo">
+          </a>
+        </div>
+        <div class="footer_about">
+          <p>EnfoMe is a solution for Educational institutes, Corporate office's unlimited communication for free of charge to save your sms cost. Our app would be beneficial to the whole community. Online classes, Corporate meetings, Doctors, Patients or F&F reunion are just a click away.</p>
+        </div>
+        <div class="footer_social">
+          <ul>
+            <li><a href="#"><abbr title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></abbr></a></li>
+
+            <li><a href="#"><abbr title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></abbr></a></li>
+
+            <li><a href="#"><abbr title="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></abbr></a></li>
+
+            <li><a href="#"><abbr title="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></abbr></a></li>
+        </ul>
+        </div>
+      </div>
+
+      <div class="footer_info_row">
+        <div class="important_links_header">
+          <h1>Important Links</h1>
+        </div>
+        <div class="important_links">
+          <ul>
+            <li><a href="#">EnfoMe Blog</a></li>
+			<li><a href="#">EnfoMe Career</a></li>
+            <li><a href="#">EnfoMe Management Solution</a></li>
+            <li><a href="#">EnfoMe School Management</a></li>
+            <li><a href="#">EnfoMe Office Management</a></li>
+            <li><a href="#">EnfoMe Web Solution</a></li>
+            <li><a href="#">EnfoMe Softwere Solution</a></li>
+            <li><a href="#">EnfoMe Graphics Solution</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer_info_row">
+        <div class="contant_info_header">
+          <h1>Contact Info</h1>
+        </div>
+        <div class="contact_info">
+
+          <a href="tel:+8801319714358" target="_blank">
+              <div class="contant_info_icon">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+              </div>
+              <div class="contant_info_text">
+                <p>Call Us</p>
+                <p>+8801319714358</p>
+              </div>
+          </a>
+
+          <a href="mailto:enfomein@enfome.info" target="_blank">
+              <div class="contant_info_icon">
+                <i class="far fa-envelope" aria-hidden="true"></i>
+              </div>
+              <div class="contant_info_text">
+                <p>Send Us Email</p>
+                <p>enfomein@enfome.info</p>
+              </div>
+          </a>
+
+          <a href="http://maps.google.com/?q=Location,125BusinessEvenue,Huston,USA" target="_blank">
+              <div class="contant_info_icon">
+                <i class="fas fa-search-location" aria-hidden="true"></i>
+              </div>
+              <div class="contant_info_text">
+                <p>Location</p>
+                <p>Bashundhara Residential Area</p>
+                <p>Dhaka, Bangladesh 1229.</p>
+              </div>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="footer_copy_right">
+    <p>© Copyright 2020 || EnfoMe </p>
+  </div>
+</section>
+<!--------------------------------------------------------------------
+-----End:- Footer Section
+--------------------------------------------------------------------->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <script src=".{{asset('js/frontend/slide.js')}}"></script>
   <script src="{{asset('js/frontend/script.js')}}"></script>
 
 </body>

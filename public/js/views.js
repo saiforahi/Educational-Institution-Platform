@@ -1,6 +1,3 @@
-// const app=new Vue({
-//     el: '#app'
-// })
 const newsfeed_body = new Vue({
     el: '#newsfeed_body',
     data(){
@@ -34,9 +31,7 @@ const newsfeed_body = new Vue({
     }
 });
 
-// const nav_desktop= new Vue({
-//     el: '#navbar_desktop_vue',
-// })
+
 // const nav_mobile= new Vue({
 //     el: '#navbar_mobile_vue',
 // })

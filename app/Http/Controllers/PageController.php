@@ -96,25 +96,5 @@ class PageController extends Controller
         return view('pages.additional_pages.career')->with('jobs',$jobs);
     }
 
-    public function submit_job_application(Request $request){
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|between:2,100',
-            'last_name' => 'required|string|between:2,100',
-            'email' => 'required|string|email|max:100',
-            'phone'=> 'required|string|max:20',
-            //'cv'=> 'required',
-            'date'=> 'required|date|after_or_equal:today',
-            'time'=> 'required|date_format:H:i',
-            'job'=>'required|string|exists:jobs,id'
-        ]);
-        if($validator->fails()){
-            return redirect()->back()->withInput()->withErrors($validator);
-        }
-        $data=array("first_name"=>$request->first_name,"last_name"=>$request->last_name,"email"=>$request->email,"phone"=>$request->phone,"schedule"=>array("date"=>$request->date,"time"=>$request->time));
-        $application=JobApplication::create([
-            "job_id"=>$request->job,
-            "application"=>json_encode($data),
-        ]);
-        return response()->json($application);
-    }
+    
 }

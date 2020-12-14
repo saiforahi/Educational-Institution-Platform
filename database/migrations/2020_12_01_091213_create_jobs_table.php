@@ -17,8 +17,11 @@ class CreateJobsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->json('requirements')->nullable();
+            $table->string('job_id')->nullable();
+            $table->text('description')->nullable();
+            $table->json('responsibilities')->nullable();
+            $table->json('edu_requirements')->nullable();
+            $table->json('exp_requirements')->nullable();
             $table->timestamps();
         });
     }

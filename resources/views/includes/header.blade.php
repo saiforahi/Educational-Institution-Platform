@@ -3,7 +3,7 @@
     <section class="left_menu">
         <nav>
             <ul>
-                <li><a href="{{route('home')}}"><img src="{{asset('img/IconLogo.png')}}" alt="Logo"></a></li>
+                <li><a href="{{route('home')}}"><img src="{{asset('img/IconLogo.png')}}" alt="Logo"/></a></li>
                 <li><form action="#">
                     <input type="text" placeholder="Search Here">
                     <button><i class="fas fa-search"></i></button>
@@ -38,7 +38,7 @@
             <li><a class="{{ Route::current()->getName()=='newsfeed' ? 'nav_active_item' : ''  }}" href="{{route('newsfeed')}}">Newsfeed</a></li>
             {{-- <li><a class="{{ (Route::current()->getName()=='institute' ? 'nav_active_item' : '') ||  (Route::current()->getName()=='institute_details' ? 'nav_active_item' : '') || (Route::current()->getName()=='show_institutes' ? 'nav_active_item' : '')}}" href="{{route('institute')}}">Institutes</a></li> --}}
             <li><a href="{{route('institute')}}" class="{{(Route::current()->getName()=='institute'|| Route::current()->getName()=='institute_details'||Route::current()->getName()=='show_institutes')?'nav_active_item':""}}">Institutes</a></li>
-            <li><a href="#">E-Meet</a></li>
+            <li><a href="{{route('e_meet')}}" class="{{(Route::current()->getName()=='e_meet')?'nav_active_item':""}}">E-Meet</a></li>
             <li><a href="#">Demo Nav Item</a></li>
             <li><a href="#">Demo Nav Item</a></li>
             <li><a href="#">Demo Nav Item</a></li>

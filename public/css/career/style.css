@@ -5,7 +5,6 @@
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
-    list-style-type: none;
 }
 .career_main_container{
     width: 100%;
@@ -21,7 +20,6 @@
 }
 .career_slider{
     width: 600px;
-    min-height: 15rem;
     border-radius: 10px;
     overflow: hidden;
     background-color: white;
@@ -44,6 +42,21 @@
 }
 .career_slide_body{
     padding: 1rem;
+}
+.career_slide_footer{
+    padding: 1rem;
+}
+.career_slide_footer button, .applyBtn{
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: rgb(64, 215, 255);
+    color: white;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(64, 215, 255,0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(64, 215, 255,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(64, 215, 255,0.5);
 }
 .career_slide_next, .career_slide_prev{
     width: 60px;
@@ -76,23 +89,19 @@
     min-height: 30rem;
     background-color: white;
     border-radius: 10px;
-    overflow: hidden;
     -webkit-box-shadow: 0px 0px 90px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 90px 0px rgba(0,0,0,0.1);
     box-shadow: 0px 0px 90px 0px rgba(0,0,0,0.1);
-    position: relative;
 }
 .career_form_slide{
     width: 100%;
     min-height: 30rem;
-    position: absolute;
-    top: 0;
 }
 .career_form_slide form{
     width: calc(100% - 4rem);
     padding: 2rem;
 }
-.career_form_slide form input, .career_form_slide form .file_upload{
+.career_form_slide form input, .career_form_slide form select{
     width: calc(100% - 2rem);
     height: 45px;
     margin-bottom: 2rem;
@@ -104,19 +113,15 @@
 .career_form_slide form input:focus, .career_form_slide form input:active{
     outline: none;
 }
-.career_form_slide form .file_upload{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.career_form_slide form .file_upload input{
-    text-align: center;
+.career_form_slide form select{
     cursor: pointer;
-    height: auto;
-    margin-bottom: 0;
-    padding: 0rem;
-    border-radius: 0px;
-    border:none;
+    width: 100%;
+}
+.career_form_slide form p{
+    margin-bottom: 1rem;
+}
+.career_form_slide form .preferred_time{
+    display: flex;
 }
 .career_form_slide form button{
     padding: 1rem 2rem;
@@ -130,6 +135,82 @@
 }
 .temp{
     display: none;
+}
+.file-upload{
+    display:block;
+    text-align:center;
+    font-size: 12px;
+    margin-bottom: 2rem;
+}
+.file-upload .file-select{
+    display:block;
+    border: 1px solid rgba(0,0,0,0.3);
+    cursor:pointer;
+    height:40px;
+    line-height:40px;
+    text-align:left;
+    background:#FFFFFF;
+    overflow:hidden;
+	position:relative;
+	border-radius: 30px;
+}
+.file-upload label{
+    z-index: 101;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background:#202924;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+.file-upload .file-select input[type="file"] {
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 25%;
+    left: 7px;
+    border: none;
+    outline: none;
+    margin-bottom: 0rem;
+}
+.file-upload .file-select input:active,
+.file-upload .file-select input:focus{
+    outline: none;
+    border: none;
+}
+.file-upload .file-select.file-select-disabled {
+    opacity: 0.65;
+}
+.file-upload .file-select.file-select-disabled:hover {
+    cursor: default;
+    display: block;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 5px;
+    text-align: left;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+.file-upload .file-select.file-select-disabled:hover .file-select-button {
+    color: #666666;
+    padding: 0 10px;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+}
+.file-upload .file-select.file-select-disabled:hover .file-select-name {
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 10px;
 }
 @media screen and (max-width:1600px){
     .career_slide_next{
@@ -158,4 +239,103 @@
         background-color: #202924;
         color: white;
     }
+}
+
+#modal-container {
+    position: absolute;
+    display: table;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    z-index: 1000;
+}
+#modal-container.one {
+    transform: scaleY(0.01) scaleX(0);
+    animation: unfoldIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one .modal-background .modal {
+    transform: scale(0);
+    animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out {
+    transform: scale(1);
+    animation: unfoldOut 1s 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container.one.out .modal-background .modal {
+    animation: zoomOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+#modal-container .modal-background {
+    padding: 5rem 0rem;
+    display: table-cell;
+    background: rgba(0, 0, 0, 0.8);
+    vertical-align: middle;
+}
+#modal-container .modal-background .modal {
+    background: white;
+    padding: 2rem;
+    width: 40rem;
+    min-height: 30rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+@keyframes unfoldIn {
+    0% {
+      transform: scaleY(0.005) scaleX(0);
+    }
+    50% {
+      transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+      transform: scaleY(1) scaleX(1);
+    }
+}
+@keyframes unfoldOut {
+    0% {
+      transform: scaleY(1) scaleX(1);
+    }
+    50% {
+      transform: scaleY(0.005) scaleX(1);
+    }
+    100% {
+      transform: scaleY(0.005) scaleX(0);
+    }
+}
+@keyframes zoomIn {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+@keyframes zoomOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+}
+.mr_b{
+    margin-bottom: 2rem;
+}
+.job_title{
+    width: 100%;
+    text-align: center;
+}
+.job_title h1{
+    color: #7DD0E6;
+}
+.requirement_h{
+    color: #6c757d;
+}
+.requirement_p{
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+.applyBtn{
+    margin: 0 auto;
 }

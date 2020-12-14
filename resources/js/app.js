@@ -3,7 +3,6 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-console.log('app.js executing..')
 require('./bootstrap');
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -28,7 +27,9 @@ Vue.component('create-news-component', require('./components/newsfeed_components
 Vue.component('show-news-component', require('./components/newsfeed_components/ShowNews.vue').default);
 Vue.component('notification-phone', require('./components/notification/Phone.vue').default);
 Vue.component('notification-desktop', require('./components/notification/Desktop.vue').default);
-
+Vue.component('job-application', require('./components/career/JobApplication.vue').default);
+Vue.component('job-list',require('./components/career/Jobs.vue').default);
+Vue.component('job-detail-modal',require('./components/career/JobModal.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -37,6 +38,12 @@ Vue.component('notification-desktop', require('./components/notification/Desktop
  
  * 
  */
+
+const app=new Vue({
+    el: '#app'
+})
+
+
 
 
 

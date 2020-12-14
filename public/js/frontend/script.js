@@ -62,14 +62,17 @@ document.querySelector('.menu').addEventListener('click', function (e) {
         }
 
         const id = e.target.getAttribute('href');
-        const section = document.querySelector(id);
-        const sectionTop = section.getBoundingClientRect();
-        window.scrollTo({
-            left: sectionTop.left + window.pageXOffset,
-            top: sectionTop.top + window.pageYOffset - 120,
-            behavior: 'smooth',
-        });
-
+        if(id == '#career'){
+            window.open('https://www.enfome.info/career');
+        }else{
+            const section = document.querySelector(id);
+            const sectionTop = section.getBoundingClientRect();
+            window.scrollTo({
+                left: sectionTop.left + window.pageXOffset,
+                top: sectionTop.top + window.pageYOffset - 120,
+                behavior: 'smooth',
+            });
+        }
     }
 
 });
@@ -83,26 +86,37 @@ backToTop.addEventListener('click', () => {
       });
 });
 
-// News next previous
+// News next previous 
 const sliderContainer = document.querySelector('.news_slider_container');
 const sliderHeight  = document.querySelector('.news_container').clientHeight;
 sliderContainer.style.height = `${sliderHeight}px`;
 
-function goToslide(slide){
-    allNews.forEach(function(s, i){
+// Slider Function
+function goToslide(slider, slide){
+    slider.forEach(function(s, i){
         s.style.transform = `translateX(${100 * (i - slide)}%)`;
         s.style.opacity = (i === 0? 1: (i - slide)+1)
     });
-    if((slide+1) === allNews.length){
-        allNews[0].style.opacity = 0;
+    if((slide+1) === slider.length){
+        slider[0].style.opacity = 0;
     }else{
-        allNews[slide+1].style.opacity = 0;
+        slider[slide+1].style.opacity = 0;
     }
 }
 
-goToslide(0);
+
+goToslide(allNews, 0);
 let curSlide = 0;
 const maxSlide = allNews.length;
+
+var newsAutoSlide = setInterval(() => {
+    if(curSlide === maxSlide - 1){
+        curSlide = 0;
+    }else{
+        curSlide++
+    };
+    goToslide(allNews, curSlide);
+}, 3000);
 
 function newsNextFn() {
     if(curSlide === maxSlide - 1){
@@ -110,8 +124,8 @@ function newsNextFn() {
     }else{
         curSlide++
     };
-    console.log(curSlide)
-    goToslide(curSlide);
+    goToslide(allNews, curSlide);
+    clearInterval(newsAutoSlide);
 }
 
 function newsPrevFn() {
@@ -120,7 +134,8 @@ function newsPrevFn() {
     }else{
         curSlide--;
     };
-    goToslide(curSlide);
+    goToslide(allNews, curSlide);
+    clearInterval(newsAutoSlide);
 }
 newsNext.addEventListener('click', newsNextFn);
 newsPrev.addEventListener('click', newsPrevFn);
@@ -170,8 +185,170 @@ function surveyQuesNext(){
     nextSurveyQ.classList.add('activeSurveyQuestion');
 }
 
+// Team 
+const teamSlides = document.querySelectorAll('.team_card_slide');
+const teamNext = document.querySelector('.team_next_btn');
+const teamPrev = document.querySelector('.team_prev_btn');
+
+goToslide(teamSlides, 0);
+let curTeamSlide = 0;
+const maxTeamSlide = teamSlides.length;
+
+var teamAutoSlide = setInterval(() => {
+    if(curTeamSlide === maxTeamSlide - 1){
+        curTeamSlide = 0;
+    }else{
+        curTeamSlide++
+    };
+    goToslide(teamSlides, curTeamSlide);
+}, 3000);
+
+function teamNextFn() {
+    if(curTeamSlide === maxTeamSlide - 1){
+        curTeamSlide = 0;
+    }else{
+        curTeamSlide++
+    };
+    goToslide(teamSlides, curTeamSlide);
+    clearInterval(teamAutoSlide);
+}
+
+function teamPrevFn() {
+    if(curTeamSlide === 0){
+        curTeamSlide = maxTeamSlide - 1;
+    }else{
+        curTeamSlide--;
+    };
+    goToslide(teamSlides, curTeamSlide);
+    clearInterval(teamAutoSlide);
+}
+teamNext.addEventListener('click', teamNextFn);
+teamPrev.addEventListener('click', teamPrevFn);
+
+
 // Jquery
 $(document).ready(function(){
+
+    // Header Slider
+    var $slider = $(".slider"),
+        $slideBGs = $(".slide__bg"),
+        diff = 0,
+        curSlide = 0,
+        numOfSlides = $(".slide").length-1,
+        animating = false,
+        animTime = 500,
+        autoSlideTimeout,
+        autoSlideDelay = 6000,
+        $pagination = $(".slider-pagi");
+    
+    function createBullets() {
+      for (var i = 0; i < numOfSlides+1; i++) {
+        var $li = $("<li class='slider-pagi__elem'></li>");
+        $li.addClass("slider-pagi__elem-"+i).data("page", i);
+        if (!i) $li.addClass("active");
+        $pagination.append($li);
+      }
+    };
+    
+    createBullets();
+    
+    function manageControls() {
+      $(".slider-control").removeClass("inactive");
+      if (!curSlide) $(".slider-control.left").addClass("inactive");
+      if (curSlide === numOfSlides) $(".slider-control.right").addClass("inactive");
+    };
+    
+    function autoSlide() {
+      autoSlideTimeout = setTimeout(function() {
+        curSlide++;
+        if (curSlide > numOfSlides) curSlide = 0;
+        changeSlides();
+      }, autoSlideDelay);
+    };
+    
+    autoSlide();
+    
+    function changeSlides(instant) {
+      if (!instant) {
+        animating = true;
+        manageControls();
+        $slider.addClass("animating");
+        $slider.css("top");
+        $(".slide").removeClass("active");
+        $(".slide-"+curSlide).addClass("active");
+        setTimeout(function() {
+          $slider.removeClass("animating");
+          animating = false;
+        }, animTime);
+      }
+      window.clearTimeout(autoSlideTimeout);
+      $(".slider-pagi__elem").removeClass("active");
+      $(".slider-pagi__elem-"+curSlide).addClass("active");
+      $slider.css("transform", "translate3d("+ -curSlide*100 +"%,0,0)");
+      $slideBGs.css("transform", "translate3d("+ curSlide*50 +"%,0,0)");
+      diff = 0;
+      autoSlide();
+    }
+  
+    function navigateLeft() {
+      if (animating) return;
+      if (curSlide > 0) curSlide--;
+      changeSlides();
+    }
+  
+    function navigateRight() {
+      if (animating) return;
+      if (curSlide < numOfSlides) curSlide++;
+      changeSlides();
+    }
+  
+    $(document).on("mousedown touchstart", ".slider", function(e) {
+      if (animating) return;
+      window.clearTimeout(autoSlideTimeout);
+      var startX = e.pageX || e.originalEvent.touches[0].pageX,
+          winW = $(window).width();
+      diff = 0;
+      
+      $(document).on("mousemove touchmove", function(e) {
+        var x = e.pageX || e.originalEvent.touches[0].pageX;
+        diff = (startX - x) / winW * 70;
+        if ((!curSlide && diff < 0) || (curSlide === numOfSlides && diff > 0)) diff /= 2;
+        $slider.css("transform", "translate3d("+ (-curSlide*100 - diff) +"%,0,0)");
+        $slideBGs.css("transform", "translate3d("+ (curSlide*50 + diff/2) +"%,0,0)");
+      });
+    });
+    
+    $(document).on("mouseup touchend", function(e) {
+      $(document).off("mousemove touchmove");
+      if (animating) return;
+      if (!diff) {
+        changeSlides(true);
+        return;
+      }
+      if (diff > -8 && diff < 8) {
+        changeSlides();
+        return;
+      }
+      if (diff <= -8) {
+        navigateLeft();
+      }
+      if (diff >= 8) {
+        navigateRight();
+      }
+    });
+    
+    $(document).on("click", ".slider-control", function() {
+      if ($(this).hasClass("left")) {
+        navigateLeft();
+      } else {
+        navigateRight();
+      }
+    });
+    
+    $(document).on("click", ".slider-pagi__elem", function() {
+      curSlide = $(this).data("page");
+      changeSlides();
+    });
 
     // Event Sliding effect
     $('.event_des_trigger').click(function(){
