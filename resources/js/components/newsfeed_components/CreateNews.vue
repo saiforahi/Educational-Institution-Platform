@@ -1,19 +1,13 @@
 <template>
-<div class="create_news">
+<div class="post_form_container">
     <form>
-        <div class="textarea">
-            <input v-model="title" type="text" required placeholder="Title">
-            <input v-model="body" type="text" required placeholder="Type your news">
+        <input v-model="title" type="text" placeholder="Enter Post Title" class="input">
+        <input v-model="body" type="text" placeholder="Enter Post Description" class="input">
+        <div class="file-select">
+            <label for="chooseFile">Choose File</label>
+            <input ref="file" type="file" v-on:change="handleFileUpload" name="chooseFile" id="chooseFile" required alt="Post" accept="image/jpg, image/jpeg, image/png">
         </div>
-        <div class="actions">
-            <div class="upload_file">
-                <label for="up"><i class="fas fa-image"></i></label>
-                <input ref="file" v-on:change="handleFileUpload" type="file" id="up" accept="image/png, image/jpg, image/jpeg">
-            </div>
-            <div v-on:click="create_news" class="up_btn">
-                <button type="button">Post</button>
-            </div>
-        </div>
+        <button type="button" v-on:click="create_news">Post</button>
     </form>
 </div>
 </template>
@@ -41,7 +35,7 @@ export default {
             axios.post('/api/news/create',
             formData,{
                 headers: {
-                        'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data'
                 }
             }).then(response=>{
                 console.log(response.data);
@@ -53,7 +47,6 @@ export default {
             }).catch(error=>{
                 console.log(error)
             })
-            
         }
     }
 }

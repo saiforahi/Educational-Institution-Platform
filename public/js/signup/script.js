@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+
 $('.tick_con1').click(function(){
     $('.ins_reg').slideToggle();
     $('.cb2_con').toggleClass('display');

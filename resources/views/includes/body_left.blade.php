@@ -7,7 +7,9 @@
     <div class="l_s_m_container">
         <nav>
             <ul>
-                <li><a href="#">Demo Menu Item</a></li>
+                @if(Auth::user()->admin||Auth::user()->user_details->type=="teacher")
+                <li><a href="{{route('show_classes')}}">Classes</a></li>
+                @endif
                 <li><a href="#">Demo Menu Item</a></li>
                 <li><a href="#">Demo Menu Item</a></li>
                 <li><a href="#">Demo Menu Item</a></li>
@@ -40,3 +42,5 @@
         <i class="fas fa-arrow-circle-left"></i>
     </div>
 </div>
+
+

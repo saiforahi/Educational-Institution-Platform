@@ -301,7 +301,6 @@ small{
 .address select{
     width: 200px;
 }
-
 .display{
     display: none;
 }
@@ -312,13 +311,34 @@ small{
     }
     .flex_container{
         width: 330px;
-        height: 650px;
     }
-    .form{
-        width: 280px;
-        height: 310px;
+    #form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-    .form .linput{
+    .form div .linput, .ins_reg div input, .stu_reg input, .gur_reg input{
         width: 260px;
+    }
+    .checkboxes{
+        width: 260px;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .form button, #ins_selection, .address{
+        width: 280px;
+    }
+    .address{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20px;
+        height: 149px;
+    }
+    .address select{
+        width: 280px;
+        margin-top: 20px;
     }
 }
