@@ -57,7 +57,6 @@ class AuthController extends Controller
             'cell' => 'required|string|max:11|min:11|unique:users,phone',
             'password' => 'required|string|min:6'
         ];
-        
         return Validator::make($data,$rules);
     }
     public function register(Request $request){
@@ -104,6 +103,16 @@ class AuthController extends Controller
             Auth::user()->sendEmailVerificationNotification();
             //session('token',$token->plainTextToken);
             return response()->json(['status'=>true,'access_token'=>Auth::user()->api_token]);
+        }
+        elseif($request->type=='super_admin'){
+            if(UserDetails::where('type','super_admin')->exists()){
+                return response()->json(['status'=>false,'message'=>'Super Admin can not be multiple']);
+            }
+            else{
+                $result=$this->register_as_param($request->all(),'super_admin');
+                $result['newUser']->sendEmailVerificationNotification();
+                return response()->json(['status'=>true,'message'=>'Super Admin created successfully!']);
+            }
         }
         
     }
@@ -177,7 +186,8 @@ class AuthController extends Controller
         ]);
         return $result;
     }
-    public function register_as_guardian(array $data){
+    
+    public function register_as_param(array $data,$param){
         $result['newUser']=User::create([
             'firstName' => ucfirst(trans($data['firstName'])),
             'lastName' => ucfirst(trans($data['lastName'])),
@@ -190,8 +200,7 @@ class AuthController extends Controller
         
         $result['user_details']=UserDetails::create([
             'user_id' => $result['newUser']->id,
-            'type' => 'student',
-            'institution_id' => $data['institute']
+            'type' => $param
         ]);
         return $result;
     }
@@ -222,6 +231,7 @@ class AuthController extends Controller
             return response()->json([
             'status_code' => 200,
             'access_token' => $user->api_token,
+            'user_type'=> $user->user_details->type,
             'token_type' => 'Bearer',
             ]);
         } catch (Exception $error) {

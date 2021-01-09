@@ -33,6 +33,7 @@ Route::group(['prefix' => 'command'], function () {
         Artisan::call('config:clear');
     });
 });
+Route::post('contact_us','PageController@send_contact_us_message')->name('contact_us');
 Auth::routes(['verify' => true]);
 Route::get('/', function () {return view('landing');})->name('home');
 Route::get('/profile','PageController@show_profile')->name('profile')->middleware('auth');

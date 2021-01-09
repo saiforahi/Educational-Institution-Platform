@@ -1,17 +1,43 @@
 <!DOCTYPE html>
+{{-- <html lang="en" oncontextmenu="return false"> --}}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EnfoMe</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/f8aa4258e3.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!--Favicon and Stylesheet-->
     <link rel="icon" href="{{asset('img/frontend/enfologo.png')}}">
     <link rel="stylesheet" href="{{asset('css/frontend/style.css')}}">
 </head>
 <body>
-    
+<!-- Load Facebook SDK for JavaScript -->
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            xfbml            : true,
+            version          : 'v9.0'
+          });
+        };
+
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+
+      <!-- Your Chat Plugin code -->
+      <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="2336613286552046"
+  theme_color="#6699cc">
+      </div>
 <!--------------------------------------------------------------------
 -----Start:- Menu Section
 --------------------------------------------------------------------->
@@ -28,13 +54,13 @@
                 <ul>
                     <li><a class="nav_link" href="#news">News</a></li>
                     <li><a class="nav_link" href="#about">About</a></li>
-                    <li><a class="nav_link" href="#events">Services</a></li>
+                    <li><a class="nav_link" href="#service">Services</a></li>
                     <li><a class="nav_link" href="#survey">Survey</a></li>
                     <li><a class="nav_link" href="#tutorial">Tutorial</a></li>
                     <li><a class="nav_link" href="#team">Team</a></li>
                     <li><a class="nav_link" href="#contact">Contact</a></li>
                     <li><a class="nav_link" href="#download">Download</a></li>
-                    <li><a class="nav_link" href="#" onclick="window.location.href='career'" >Career</a></li>
+                    <li><a class="nav_link" href="#career">Career</a></li>
                 </ul>
             </nav>
         </div>
@@ -209,13 +235,13 @@
         <!-- Single News -->
         <div class="news_container">
           <div class="title">
-            <h1>1.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
+            <h1>It is our mission to adopt environment friendly and paperless communication</h1>
           </div>
           <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2020/10/27/09/44/macarons-5690175__340.jpg" alt="">
+            <img src="https://courses.enfome.info/wp-content/uploads/2020/12/1.png">
           </div>
           <div class="description">
-            <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing [<a href="#">Read more</a>]</p>
+            <p>Global warming, climate change and deforestation are big issues in the world now. Every company must be environmentally conscious to reduce their carbon footprint. It is EnfoMe's mission to establish an environment friendly and paperless communication system for schools, colleges, universities and offices. [<a target='_blank' href="https://www.facebook.com/2336613286552046/posts/2768655436681160/?sfnsn=mo">Read more</a>]</p>
           </div>
         </div>
         <!-- Single News -->
@@ -223,13 +249,13 @@
         <!-- Single News -->
         <div class="news_container">
           <div class="title">
-            <h1>2.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
+            <h1>Enfome is the one stop solution for your online classes and office meetings</h1>
           </div>
           <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2020/10/27/09/44/macarons-5690175__340.jpg" alt="">
+            <img src="https://courses.enfome.info/wp-content/uploads/2020/12/2.png" alt="">
           </div>
           <div class="description">
-            <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing [<a href="#">Read more</a>]</p>
+            <p>EnfoMe is the one stop solution for your online classes and office meetings. It will allow you to audio or video call upto a 100 people at a time. In this time of a lockdown, having such an app is useful as you can send any updates to your students or employees at free of cost and take meetings and classes from the comfort and safety of your homes. [<a target='_blank' href="https://www.facebook.com/2336613286552046/posts/2633454473534591/?sfnsn=mo">Read more</a>]</p>
           </div>
         </div>
         <!-- Single News -->
@@ -237,13 +263,13 @@
         <!-- Single News -->
         <div class="news_container">
           <div class="title">
-            <h1>3.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
+            <h1>Covid-19 awareness!</h1>
           </div>
           <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2020/10/27/09/44/macarons-5690175__340.jpg" alt="">
+            <img src="https://courses.enfome.info/wp-content/uploads/2020/12/3.png" alt="">
           </div>
           <div class="description">
-            <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing [<a href="#">Read more</a>]</p>
+            <p>For the coronavirus, prevention is better than cure. Please make sure you are following these practices. [<a target='_blank' href="https://www.facebook.com/2336613286552046/posts/2626905730856132/?sfnsn=mo">Read more</a>]</p>
           </div>
         </div>
         <!-- Single News -->
@@ -251,13 +277,55 @@
         <!-- Single News -->
         <div class="news_container">
           <div class="title">
-            <h1>4.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h1>
+            <h1>Make Your life more Digital</h1>
           </div>
           <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2020/10/27/09/44/macarons-5690175__340.jpg" alt="">
+            <img src="https://courses.enfome.info/wp-content/uploads/2020/12/4.png" alt="">
           </div>
           <div class="description">
-            <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing [<a href="#">Read more</a>]</p>
+            <p>অনলাইন ক্লাস,  অনলাইন কোর্স, টিউশনি সবকিছুই এখন EnfoMe তে।  [<a target='_blank' href="https://www.facebook.com/2336613286552046/posts/2589100037970035/?sfnsn=mo">Read more</a>]</p>
+          </div>
+        </div>
+        <!-- Single News -->
+  
+        <!-- Single News -->
+        <div class="news_container">
+          <div class="title">
+            <h1>Enfome will digitalize your education in the easiest and accessible ways</h1>
+          </div>
+          <div class="image">
+            <img src="https://courses.enfome.info/wp-content/uploads/2020/12/5.png" alt="">
+          </div>
+          <div class="description">
+            <p>Online education is a form of education where students use their home computers or mobiles through the internet. For many non-traditional students, among them all those who want to continue working full time or raising families, online graduations and courses have become popular in the COVID-19 Pandemic. [<a target='_blank' href="https://www.facebook.com/2336613286552046/posts/2612874032259302/?sfnsn=mo">Read more</a>]</p>
+          </div>
+        </div>
+        <!-- Single News -->
+  
+        <!-- Single News -->
+        <div class="news_container">
+          <div class="title">
+            <h1>Mr. Ahmed Firoz Kabir, Hon'ble MP (Pabna-2) was honored by EnfoMe for his special contribution in the ICT sector</h1>
+          </div>
+          <div class="image">
+            <img src="https://courses.enfome.info/wp-content/uploads/2020/12/6.png" alt="">
+          </div>
+          <div class="description">
+            <p>আইসিটি সেক্টরে বিশেষ অবদানের জন্য মাননীয় সংসদ সদস্য (পাবনা-২) এবং সদস্য, সংসদীয় স্থায়ী কমিটি অর্থ , ডাক, টেলিযোগাযোগ ও তথ্য প্রযুক্তি মন্ত্রণালয় জনাব আহমেদ ফিরোজ কবীর কে EnfoMe এর পক্ষ থেকে সম্মাননা স্মারক প্রদান করা হল। [<a target="_blank" href="https://www.facebook.com/2336613286552046/posts/2635772246636147/?sfnsn=mo">Read more</a>]</p>
+          </div>
+        </div>
+        <!-- Single News -->
+  
+        <!-- Single News -->
+        <div class="news_container">
+          <div class="title">
+            <h1>Enfome besic plan!</h1>
+          </div>
+          <div class="image">
+            <img src="https://courses.enfome.info/wp-content/uploads/2020/12/7.png" alt="">
+          </div>
+          <div class="description">
+            <p>অনলাইন ক্লাসের ব্যাপক চাহিদার কারণে EnfoMe নিয়ে এলো অনলাইন লাইভ ক্লাস ফিচার। আনলিমিটেড সেশন, আনলিমিটেড সময় ও আনলিমিটেড শিক্ষার্থী অংশগ্রহন করতে পারবে। লিংক শেয়ারের বা পাসওয়ার্ড শেয়ারের কোনো ঝামেলা আর থাকবে না ! [<a target="_blank" href="https://www.facebook.com/2336613286552046/posts/2670089913204380/?sfnsn=mo">Read more</a>]</p>
           </div>
         </div>
         <!-- Single News -->
@@ -434,6 +502,7 @@
 <!--------------------------------------------------------------------
 -----End:- About Section
 --------------------------------------------------------------------->
+
 <!--------------------------------------------------------------------
 -----Start:- Service Section
 --------------------------------------------------------------------->
@@ -442,90 +511,74 @@
     <h1>Services</h1>
   </div>
 
-  <div class="service_section_container">
-    <div class="service_container">
-      <h1>Under Construction</h1>
-    </div>
-  </div>
-
-</section>
-<!--------------------------------------------------------------------
------End:- Service Section
---------------------------------------------------------------------->
-
-<!--------------------------------------------------------------------
------Start:- Event Section
---------------------------------------------------------------------->
-<section class="section_element" id="events">
-  <div class="section_header">
-    <h1>Events</h1>
-  </div>
-
   <div class="events_section_body">
 
     <div class="events_container">
       <div class="events_card">
         <div class="event_date_month">
           <div class="date">
-            <h1>26</h1>
-          </div>
-          <div class="month">
-            <p>Novembar</p>
-          </div>
-        </div>
-        <div class="event_title">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-        </div>
-        <div class="event_des_trigger">
-          <p>View Event Details</p>
-          <i class="fas fa-plus-circle"></i>
-        </div>
-        <div class="event_description">
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)</p>
-        </div>
-      </div>
-
-
-      <div class="events_card">
-        <div class="event_date_month">
-          <div class="date">
-            <h1>29</h1>
-          </div>
-          <div class="month">
-            <p>Decembar</p>
-          </div>
-        </div>
-        <div class="event_title">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-        </div>
-        <div class="event_des_trigger">
-          <p>View Event Details</p>
-          <i class="fas fa-plus-circle"></i>
-        </div>
-        <div class="event_description">
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)</p>
-        </div>
-      </div>
-
-
-      <div class="events_card">
-        <div class="event_date_month">
-          <div class="date">
             <h1>01</h1>
           </div>
           <div class="month">
-            <p>January</p>
+            <p>Service</p>
           </div>
         </div>
         <div class="event_title">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+          <p>School Management System</p>
         </div>
         <div class="event_des_trigger">
-          <p>View Event Details</p>
+          <p>View Service Details</p>
           <i class="fas fa-plus-circle"></i>
         </div>
         <div class="event_description">
-          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)</p>
+          <p>LMS Solutions For All Types of Educational Institutions
+E-Learning mobile app, software, website development service for all types of Schools, Colleges, Universities, and Educational Institutes and Academies. 
+ Streamline communication with parents, teachers, students and other staff members of school. Get access to the status of all communication between teachers and students. No matter where you are, get instantly connected to your students whenever you want with your own branded mobile app.</p>
+        </div>
+      </div>
+
+
+      <div class="events_card">
+        <div class="event_date_month">
+          <div class="date">
+            <h1>02</h1>
+          </div>
+          <div class="month">
+            <p>Service</p>
+          </div>
+        </div>
+        <div class="event_title">
+          <p>Custom Web & Mobile App Development</p>
+        </div>
+        <div class="event_des_trigger">
+          <p>View Service Details</p>
+          <i class="fas fa-plus-circle"></i>
+        </div>
+        <div class="event_description">
+          <p>We develop Progressive Web Apps (PWA) that are highly responsive, operate smoothly on all mobile browsers, are easily sharable and linkable, and maintain consistent usability despite inconsistent internet speeds. Our mobile web app developers are experts in JavaScript, HTML5, CSS and a variety of web services. 
+We prioritize a native feel for our cross-platform and hybrid apps, taking the time to lock down a consistent functionality and responsiveness between iOS, Android and Microsoft Windows app versions. We leverage our programmers' mastery of Javascript, as well as development tools like Xamarin, Telerik, Cordova, React Native, PhoneGap, Ionic, and Appcelerator.</p>
+        </div>
+      </div>
+
+
+      <div class="events_card">
+        <div class="event_date_month">
+          <div class="date">
+            <h1>03</h1>
+          </div>
+          <div class="month">
+            <p>Service</p>
+          </div>
+        </div>
+        <div class="event_title">
+          <p>Media & Communication</p>
+        </div>
+        <div class="event_des_trigger">
+          <p>View Service Details</p>
+          <i class="fas fa-plus-circle"></i>
+        </div>
+        <div class="event_description">
+          <p>From logo to animation, we support companies in building their ideal b2b and b2c communication path, at a local and international level, helping them to define their brand and product image within an increasingly sophisticated and competitive market.</p>
         </div>
       </div>
 
@@ -536,7 +589,7 @@
 
 </section>
 <!--------------------------------------------------------------------
------End:- Event Section
+-----End:- Service Section
 --------------------------------------------------------------------->
 
 
@@ -1484,17 +1537,6 @@
 <!--------------------------------------------------------------------
 -----End:- Team Section
 --------------------------------------------------------------------->
-<section class="section_element" id="contact">
-  <div class="section_header">
-    <h1>Contact Us</h1>
-  </div>
-
-  <div class="tutorial_section_container">
-    <div class="tutorial_container">
-      <h1>Under Construction</h1>
-    </div>
-  </div>
-</section>
 
 
 <!--------------------------------------------------------------------
@@ -1515,7 +1557,7 @@
           <i class="fab fa-apple"></i>
           <p>Apple Store</p>
         </a>
-        <a href="#">
+        <a href="https://play.google.com/store/apps/details?id=info.enfome.enfome&hl=en_us&fbclid=IwAR2zs3e64B79ModCAHhIjbeYFsCnLKLab0JfDr8KRLd80gbew3HN1dOjmwY">
           <i class="fab fa-google-play"></i>
           <p>Play Store</p>
         </a>
@@ -1542,12 +1584,13 @@
         <h1>Send us a message</h1>
       </div>
       <div class="contact_form">
-        <form action="#" method="post">
-          <input type="text" placeholder="Enter Your Full Name">
-          <input type="email" placeholder="Enter Your Email">
-          <input type="tel" placeholder="Enter Your Number">
-          <textarea placeholder="Enter Your Message"></textarea>
-          <button>Send</button>
+        <form action="{{route('contact_us')}}" method="post">
+            @csrf
+          <input name="name" type="text" placeholder="Enter Your Full Name">
+          <input name="email" type="email" placeholder="Enter Your Email">
+          <input name="phone" type="tel" placeholder="Enter Your Number">
+          <textarea name="message" placeholder="Enter Your Message"></textarea>
+          <button type="submit">Send</button>
         </form>
       </div>
     </div>
@@ -1571,17 +1614,17 @@
           </a>
         </div>
         <div class="footer_about">
-          <p>EnfoMe is a solution for Educational institutes, Corporate office's unlimited communication for free of charge to save your sms cost. Our app would be beneficial to the whole community. Online classes, Corporate meetings, Doctors, Patients or F&F reunion are just a click away.</p>
+          <p>EnfoMe engaged in developing customer centric softwares, websites and applications of all kind included logo designing and 2D/3D animation. We are experienced in building applications with unmatched simple, intuitive, highly user friendly, modern UI/UX, scalable  features which are result oriented & cost effective</p>
         </div>
         <div class="footer_social">
           <ul>
-            <li><a href="#"><abbr title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></abbr></a></li>
+            <li><a target='_blank' href="https://www.facebook.com/enfome.info/"><abbr title="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></abbr></a></li>
 
-            <li><a href="#"><abbr title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></abbr></a></li>
+            <li><a target='_blank' href="https://www.instagram.com/enfomebd/"><abbr title="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></abbr></a></li>
 
-            <li><a href="#"><abbr title="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></abbr></a></li>
+            <li><a target='_blank' href="https://twitter.com/enfo_me"><abbr title="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></abbr></a></li>
 
-            <li><a href="#"><abbr title="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></abbr></a></li>
+            <li><a target='_blank' href="https://wa.me/+393348373873"><abbr title="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></abbr></a></li>
         </ul>
         </div>
       </div>
@@ -1592,14 +1635,9 @@
         </div>
         <div class="important_links">
           <ul>
-            <li><a href="#">EnfoMe Blog</a></li>
-			<li><a href="#">EnfoMe Career</a></li>
-            <li><a href="#">EnfoMe Management Solution</a></li>
-            <li><a href="#">EnfoMe School Management</a></li>
-            <li><a href="#">EnfoMe Office Management</a></li>
-            <li><a href="#">EnfoMe Web Solution</a></li>
-            <li><a href="#">EnfoMe Softwere Solution</a></li>
-            <li><a href="#">EnfoMe Graphics Solution</a></li>
+			<li><a target='blank' href="https://www.enfome.info/career">EnfoMe Career</a></li>
+			<li><a target='blank' href="http://www.pabnadigitalhaat.com">EnfoMe Project Pabna Digital Haat</a></li>
+			<li><a target='blank' href="https://www.relightresearch.bd">EnfoMe Project Relight Research</a></li>
           </ul>
         </div>
       </div>
@@ -1610,7 +1648,7 @@
         </div>
         <div class="contact_info">
 
-          <a href="tel:+8801319714358" target="_blank">
+          <a href="https://wa.me/+8801319714358" target="_blank">
               <div class="contant_info_icon">
                 <i class="fas fa-phone-alt" aria-hidden="true"></i>
               </div>
@@ -1619,8 +1657,18 @@
                 <p>+8801319714358</p>
               </div>
           </a>
+          
+          <a href="https://wa.me/+393348373873" target="_blank">
+              <div class="contant_info_icon">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+              </div>
+              <div class="contant_info_text">
+                <p>Call Us</p>
+                <p>+393348373873</p>
+              </div>
+          </a>
 
-          <a href="mailto:enfomein@enfome.info" target="_blank">
+          <a href="mailto:enfomebd@gmail.com" target="_blank">
               <div class="contant_info_icon">
                 <i class="far fa-envelope" aria-hidden="true"></i>
               </div>
@@ -1630,7 +1678,7 @@
               </div>
           </a>
 
-          <a href="http://maps.google.com/?q=Location,125BusinessEvenue,Huston,USA" target="_blank">
+          <a href="https://goo.gl/maps/5wmtnRYgLx6PTqHZA" target="_blank">
               <div class="contant_info_icon">
                 <i class="fas fa-search-location" aria-hidden="true"></i>
               </div>
@@ -1638,6 +1686,17 @@
                 <p>Location</p>
                 <p>Bashundhara Residential Area</p>
                 <p>Dhaka, Bangladesh 1229.</p>
+              </div>
+          </a>
+          
+          <a href="https://goo.gl/maps/wT99SUpbVtCGFPDX6" target="_blank">
+              <div class="contant_info_icon">
+                <i class="fas fa-search-location" aria-hidden="true"></i>
+              </div>
+              <div class="contant_info_text">
+                <p>Location</p>
+                <p>Via per alessandro paravia 75</p>
+                <p>20148 Milan (MI), Italy</p>
               </div>
           </a>
 
@@ -1656,6 +1715,18 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <script src="{{asset('js/frontend/script.js')}}"></script>
-
+  
+  <script>
+    window.onload = (event) => {
+      var status={!!json_encode(session('status'))!!};
+      var message={!!json_encode(session('message'))!!};
+      if(status===true){
+        swal('Message sent!',message?message:'','success');
+      }
+      else if(status===false){
+        swal('Failed!',message?message:'','error');
+      }
+    };
+  </script>
 </body>
 </html>

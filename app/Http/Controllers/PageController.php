@@ -6,16 +6,61 @@ use App\District;
 use App\SubDistrict;
 use App\InsNotification;
 use App\Job;
+use App\Message;
 use App\JobApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Validator;
-
+use Mail;
 class PageController extends Controller
 {
     //
+    public function send_contact_us_message(Request $request){
+        $details = [
+            'to' => 'enfomebd@gmail.com',
+            'from' => 'dev@enfome.info',
+            'subject' => 'Contact Us Message',
+            'title' => "Message from ".$request->name,
+            "body"  => $request->message
+        ];
+        $new_message=Message::create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'message'=>$request->message
+        ]);
+        Mail::to('enfomebd@gmail.com')->send(new \App\Mail\ContactUsMail($details));
+        if (Mail::failures()) {
+            $request->session()->flash('status', false);
+            $request->session()->flash('message', 'Message sent failed!');
+            return redirect()->route('home');
+            // return response()->json([
+            //     'status'  => false,
+            //     'data'    => $details,
+            //     'message' => 'Nnot sending mail.. retry again...'
+            // ]);
+        }
+        $request->session()->flash('status', true);
+        $request->session()->flash('message', 'Message sent successfully!');
+        return redirect()->route('home');
+        // return response()->json([
+        //     'status'  => true,
+        //     'data'    => $details,
+        //     'message' => 'Your details mailed successfully'
+        // ]);
+        // $data=$request->all();
+		//  $_username      = $data['name'];
+	    //  $_email_user    = $data['email'];
+		//  $_phone    = $data['phone'];
+		//  $_message = $data['message'];
+        // Mail::send('emails.verify', array('confirmation_code' =>$confirmation_code),function($message) use ($_username,$_email_user,$_title_site,$_email_noreply) {
+        //     $message->from($_email_noreply, $_title_site);
+        //     $message->subject('Contact Us Message');
+        //     $message->to($_email_user,$_username);
+        // });
+    }
     public function show_admin_dashboard(){
         return view('pages.admin_dashboard');
     }
